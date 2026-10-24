@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const WHATSAPP_URL = "https://wa.me/491735434710";
 const EMAIL = "kontakt@khashman-webdesign.de";
@@ -287,13 +288,19 @@ export default function Home() {
       {/* Über mich */}
       <section id="ueber-mich" className="border-y border-slate-200 bg-white">
         <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 py-24 md:grid-cols-[2fr_3fr]">
-          {/* Platzhalter Profilbild – später ersetzen durch:
-              <Image src="/khashman.jpg" alt="Khashman Alturki" fill className="object-cover" /> */}
+          
+          {/* Profilbild mit elegantem Glow-Effekt */}
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm">
             <div className="absolute -inset-3 -z-0 rounded-3xl bg-gradient-to-tr from-blue-200 to-indigo-100 blur-xl" />
-            <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-3xl border border-slate-200 bg-slate-100 text-slate-400">
-              <UserIcon className="h-24 w-24" />
-              <span className="mt-3 text-sm">Profilbild folgt</span>
+            <div className="relative h-full w-full overflow-hidden rounded-3xl border border-slate-200 shadow-xl">
+              <Image 
+                src="/khashman.jpeg" 
+                alt="Khashman Alturki - Gründer von Khashman Webdesign" 
+                fill 
+                sizes="(max-width: 768px) 100vw, 384px"
+                className="object-cover object-top"
+                priority
+              />
             </div>
           </div>
 
