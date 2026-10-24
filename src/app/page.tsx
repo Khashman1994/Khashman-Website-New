@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Analytics } from "@vercel/analytics/next";
+
 
 const WHATSAPP_URL = "https://wa.me/491735434710";
 const EMAIL = "kontakt@khashman-webdesign.de";
