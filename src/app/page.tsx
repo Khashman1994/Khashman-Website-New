@@ -418,7 +418,7 @@ export default function Home() {
                 </span>
                 <span>
                   <span className="block font-semibold">WhatsApp</span>
-                  <span className="block text-sm text-slate-500">+49 173 5434710</span>
+                  <span className="block text-sm text-slate-500">+49 15908048034</span>
                 </span>
               </a>
 
