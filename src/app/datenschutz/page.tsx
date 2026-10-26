@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/legal-page";
 
 export const metadata: Metadata = {
-  title: "Datenschutz | Khashman Webdesign",
+  title: "Datenschutz",
+  alternates: { canonical: "/datenschutz" },
   robots: { index: false },
 };
 

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/legal-page";
 
 export const metadata: Metadata = {
-  title: "Impressum | Khashman Webdesign",
+  title: "Impressum",
+  alternates: { canonical: "/impressum" },
   robots: { index: false },
 };
 

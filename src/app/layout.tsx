@@ -1,31 +1,71 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Link from "next/link";
-import { Outfit, Cormorant_Garamond } from "next/font/google";
+import { Geist, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import SiteHeader from "@/components/SiteHeader";
+import SmoothScroll from "@/components/SmoothScroll";
+import { SITE } from "@/lib/site";
 
-const outfit = Outfit({
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-geist",
 });
 
-const cormorant = Cormorant_Garamond({
+const instrument = Instrument_Serif({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-cormorant",
+  weight: "400",
+  style: "italic",
+  variable: "--font-instrument",
 });
 
 export const metadata: Metadata = {
-  title: "Khashman Webdesign | Professionelle Webseiten für Unternehmen",
-  description:
-    "Maßgeschneiderte Webseiten & Webhosting für KMU und Gründer aus Aachen. Transparent, modern und DSGVO-konform ab 299 €.",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: SITE.title,
+    template: `%s | ${SITE.name}`,
+  },
+  description: SITE.description,
+  keywords: [
+    "Webdesign Aachen",
+    "Webdesigner Aachen",
+    "Website erstellen lassen Aachen",
+    "Homepage erstellen lassen",
+    "Webentwicklung Aachen",
+    "Website für Handwerker",
+    "Website für Selbstständige",
+    "Local SEO Aachen",
+  ],
+  authors: [{ name: SITE.owner, url: SITE.url }],
+  creator: SITE.owner,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "de_DE",
+    url: "/",
+    siteName: SITE.name,
+    title: SITE.title,
+    description: SITE.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE.title,
+    description: SITE.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  // Sonst macht iOS aus Preisen/Zahlen ungewollt Telefon-Links
+  formatDetection: { telephone: false },
+  category: "Webdesign",
 };
 
-const navLinks = [
-  { href: "/#leistungen", label: "Leistungen" },
-  { href: "/#ueber-mich", label: "Über mich" },
-  { href: "/#preise", label: "Preise" },
-];
+export const viewport: Viewport = {
+  themeColor: "#05060a",
+  colorScheme: "dark",
+};
 
 export default function RootLayout({
   children,
@@ -33,51 +73,51 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className="scroll-smooth">
-      <body
-        className={`${outfit.variable} ${cormorant.variable} font-sans bg-slate-50 text-slate-900 antialiased`}
-      >
-        <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-slate-50/80 backdrop-blur-md">
-          <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-            <Link href="/" className="font-display text-2xl font-bold tracking-tight">
-              Khashman<span className="text-blue-600">.</span>
-            </Link>
-
-            <div className="flex items-center gap-6 text-sm font-medium">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="hidden text-slate-600 transition-colors hover:text-slate-900 md:inline"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Link
-                href="/#kontakt"
-                className="rounded-full bg-slate-900 px-4 py-2 text-white transition-colors hover:bg-blue-600"
-              >
-                Kontakt
-              </Link>
-            </div>
-          </nav>
-        </header>
+    <html lang="de">
+      <body className={`${geist.variable} ${instrument.variable} grain bg-ink-950 font-sans text-white antialiased`}>
+        <SmoothScroll />
+        <SiteHeader />
 
         <main className="min-h-screen">{children}</main>
 
-        <footer className="border-t border-slate-200 bg-white">
-          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-slate-500 md:flex-row">
-            <p>© 2026 Khashman Alturki. Alle Rechte vorbehalten.</p>
-            <div className="flex gap-6">
-              <Link href="/impressum" className="transition-colors hover:text-slate-900">
-                Impressum
-              </Link>
-              <Link href="/datenschutz" className="transition-colors hover:text-slate-900">
-                Datenschutz
-              </Link>
+        <footer className="relative overflow-hidden border-t border-white/10">
+          <div className="mx-auto max-w-6xl px-6 pt-20">
+            <div className="flex flex-col justify-between gap-10 md:flex-row">
+              <div className="max-w-sm">
+                <p className="text-lg font-semibold">
+                  Khashman<span className="text-accent">.</span>
+                </p>
+                <p className="mt-3 text-sm text-white/50">
+                  Webdesign &amp; Entwicklung aus {SITE.city}. Schnelle, moderne Webseiten für Unternehmen, die
+                  auffallen wollen.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-10 text-sm">
+                <div className="flex flex-col gap-3">
+                  <p className="text-white/40">Kontakt</p>
+                  <a href={`mailto:${SITE.email}`} className="text-white/70 hover:text-white">{SITE.email}</a>
+                  <a href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
+                    WhatsApp
+                  </a>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <p className="text-white/40">Rechtliches</p>
+                  <Link href="/impressum" className="text-white/70 hover:text-white">Impressum</Link>
+                  <Link href="/datenschutz" className="text-white/70 hover:text-white">Datenschutz</Link>
+                </div>
+              </div>
             </div>
+            <p className="mt-16 text-xs text-white/40">© 2026 {SITE.owner}. Alle Rechte vorbehalten.</p>
           </div>
+          {/* Riesiger Schriftzug als Abschluss */}
+          <p
+            aria-hidden="true"
+            className="pointer-events-none mt-6 select-none whitespace-nowrap text-center text-[19vw] font-semibold leading-[0.8] tracking-tighter text-transparent [-webkit-text-stroke:1px_rgb(255_255_255/0.12)]"
+          >
+            KHASHMAN
+          </p>
         </footer>
+        <Analytics />
       </body>
     </html>
   );

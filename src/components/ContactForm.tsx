@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
+import { PACKAGE_EVENT } from "@/components/motion";
 import { submitContactForm, type ContactField, type ContactFormState } from "@/app/actions/contact";
 import { BUDGET_OPTIONS, PACKAGE_OPTIONS, type PackageValue } from "@/lib/contact-options";
 
 const initialState: ContactFormState = { status: "idle", message: "" };
 
 const inputClass =
-  "w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-shadow focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 aria-[invalid=true]:border-red-400";
+  "w-full rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3.5 text-white placeholder:text-white/30 transition-colors focus:border-accent focus:bg-white/[0.05] focus:outline-none focus:ring-1 focus:ring-accent aria-[invalid=true]:border-red-400";
 
 /* ---------- Icons ---------- */
 
@@ -88,7 +89,7 @@ function Spinner() {
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} className="mt-1 text-sm text-red-600">
+    <p id={id} className="mt-1 text-sm text-red-400">
       {message}
     </p>
   );
@@ -97,14 +98,14 @@ function FieldError({ id, message }: { id: string; message?: string }) {
 function PackagePicker({ defaultValue, error }: { defaultValue?: string; error?: string }) {
   return (
     <fieldset className="sm:col-span-2" aria-describedby={error ? "package-error" : undefined}>
-      <legend className="mb-3 block text-sm font-medium text-slate-700">Welches Paket interessiert Sie?</legend>
+      <legend className="mb-3 block text-sm font-medium text-white/70">Welches Paket interessiert Sie?</legend>
       <div className="grid grid-cols-2 gap-3">
         {PACKAGE_OPTIONS.map((option) => {
           const Icon = PACKAGE_ICONS[option.value];
           return (
             <label
               key={option.value}
-              className="group relative cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-300 ease-out hover:z-10 hover:scale-105 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-600/15 active:scale-[1.02] has-checked:border-blue-600 has-checked:bg-slate-900 has-checked:shadow-[0_0_0_1px_var(--color-blue-600),0_12px_40px_-8px_rgb(37_99_235/0.65)] has-focus-visible:ring-2 has-focus-visible:ring-blue-500 has-focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
+              className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition-all duration-300 ease-out hover:z-10 hover:scale-[1.03] hover:border-white/25 active:scale-[1.01] has-checked:border-accent has-checked:bg-accent/10 has-checked:shadow-[0_0_0_1px_var(--color-accent),0_12px_40px_-8px_rgb(91_140_255/0.55)] has-focus-visible:ring-2 has-focus-visible:ring-accent has-focus-visible:ring-offset-2 has-focus-visible:ring-offset-ink-950 motion-reduce:transform-none motion-reduce:transition-none"
             >
               <input
                 type="radio"
@@ -118,27 +119,27 @@ function PackagePicker({ defaultValue, error }: { defaultValue?: string; error?:
               {/* Weicher Glow im aktiven Zustand */}
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-blue-600/40 opacity-0 blur-2xl transition-opacity duration-500 group-has-checked:opacity-100"
+                className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-accent/40 opacity-0 blur-2xl transition-opacity duration-500 group-has-checked:opacity-100"
               />
 
               {/* Häkchen ploppt beim Auswählen auf */}
               <span
                 aria-hidden="true"
-                className="absolute right-3 top-3 flex h-6 w-6 scale-0 items-center justify-center rounded-full bg-blue-600 text-white opacity-0 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-has-checked:scale-100 group-has-checked:opacity-100"
+                className="absolute right-3 top-3 flex h-6 w-6 scale-0 items-center justify-center rounded-full bg-accent text-white opacity-0 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-has-checked:scale-100 group-has-checked:opacity-100"
               >
                 <CheckIcon className="h-3.5 w-3.5" />
               </span>
 
-              <span className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-all duration-300 group-hover:rotate-[-6deg] group-has-checked:bg-blue-600 group-has-checked:text-white group-has-checked:shadow-lg group-has-checked:shadow-blue-600/40 motion-reduce:group-hover:rotate-0">
+              <span className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-accent-soft transition-all duration-300 group-hover:rotate-[-6deg] group-has-checked:bg-accent group-has-checked:text-white group-has-checked:shadow-lg group-has-checked:shadow-accent/40 motion-reduce:group-hover:rotate-0">
                 <Icon className="h-5 w-5" />
               </span>
-              <span className="relative mt-3 block font-semibold text-slate-900 transition-colors group-has-checked:text-white">
+              <span className="relative mt-3 block font-semibold text-white">
                 {option.label}
               </span>
-              <span className="relative block text-xs text-slate-500 transition-colors group-has-checked:text-slate-300">
+              <span className="relative block text-xs text-white/50 transition-colors group-has-checked:text-white/60">
                 {option.tagline}
               </span>
-              <span className="relative mt-2 block text-sm font-semibold text-blue-600 transition-colors group-has-checked:text-blue-400">
+              <span className="relative mt-2 block text-sm font-semibold text-accent-soft transition-colors group-has-checked:text-white">
                 {option.price}
               </span>
             </label>
@@ -158,13 +159,13 @@ function BudgetSlider({ index, onChange }: { index: number; onChange: (index: nu
   return (
     <div className="sm:col-span-2">
       <div className="mb-3 flex items-center justify-between gap-4">
-        <label htmlFor="budget-range" className="text-sm font-medium text-slate-700">
+        <label htmlFor="budget-range" className="text-sm font-medium text-white/70">
           Ungefähres Budget
         </label>
         {/* key erzwingt Neu-Mount → @starting-style-Animation bei jeder Änderung */}
         <span
           key={current.value}
-          className="rounded-full bg-slate-900 px-3 py-1 text-sm font-semibold text-white shadow-md shadow-blue-600/20 transition-all duration-300 starting:scale-75 starting:opacity-0"
+          className="rounded-full bg-accent px-3 py-1 text-sm font-semibold text-white shadow-md shadow-accent/30 transition-all duration-300 starting:scale-75 starting:opacity-0"
         >
           {current.label}
         </span>
@@ -180,8 +181,8 @@ function BudgetSlider({ index, onChange }: { index: number; onChange: (index: nu
         value={index}
         onChange={(event) => onChange(Number(event.target.value))}
         aria-valuetext={current.label}
-        style={{ background: `linear-gradient(to right, var(--color-blue-600) ${percent}%, var(--color-slate-200) ${percent}%)` }}
-        className="h-2 w-full cursor-pointer appearance-none rounded-full focus:outline-none [&::-moz-range-thumb]:h-6 [&::-moz-range-thumb]:w-6 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-4 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:bg-blue-600 [&::-moz-range-thumb]:shadow-[0_0_0_1px_var(--color-blue-600),0_4px_14px_rgb(37_99_235/0.5)] [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-4 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:bg-blue-600 [&::-webkit-slider-thumb]:shadow-[0_0_0_1px_var(--color-blue-600),0_4px_14px_rgb(37_99_235/0.5)] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:duration-200 hover:[&::-webkit-slider-thumb]:scale-110 focus-visible:[&::-webkit-slider-thumb]:ring-4 focus-visible:[&::-webkit-slider-thumb]:ring-blue-500/30 active:[&::-webkit-slider-thumb]:scale-125"
+        style={{ background: `linear-gradient(to right, var(--color-accent) ${percent}%, rgb(255 255 255 / 0.1) ${percent}%)` }}
+        className="h-2 w-full cursor-pointer appearance-none rounded-full focus:outline-none [&::-moz-range-thumb]:h-6 [&::-moz-range-thumb]:w-6 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-4 [&::-moz-range-thumb]:border-ink-950 [&::-moz-range-thumb]:bg-accent [&::-moz-range-thumb]:shadow-[0_0_0_1px_var(--color-accent),0_4px_14px_rgb(91_140_255/0.5)] [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-4 [&::-webkit-slider-thumb]:border-ink-950 [&::-webkit-slider-thumb]:bg-accent [&::-webkit-slider-thumb]:shadow-[0_0_0_1px_var(--color-accent),0_4px_14px_rgb(91_140_255/0.5)] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:duration-200 hover:[&::-webkit-slider-thumb]:scale-110 focus-visible:[&::-webkit-slider-thumb]:ring-4 focus-visible:[&::-webkit-slider-thumb]:ring-accent/30 active:[&::-webkit-slider-thumb]:scale-125"
       />
 
       <div className="mt-3 hidden justify-between sm:flex" aria-hidden="true">
@@ -191,7 +192,7 @@ function BudgetSlider({ index, onChange }: { index: number; onChange: (index: nu
             type="button"
             tabIndex={-1}
             onClick={() => onChange(i)}
-            className={`text-xs transition-colors ${i === index ? "font-semibold text-blue-600" : "text-slate-400 hover:text-slate-700"}`}
+            className={`text-xs transition-colors ${i === index ? "font-semibold text-accent-soft" : "text-white/30 hover:text-white/70"}`}
           >
             {option.label}
           </button>
@@ -208,6 +209,18 @@ const DEFAULT_BUDGET_INDEX = 0;
 export default function ContactForm() {
   const [state, formAction, pending] = useActionState(submitContactForm, initialState);
   const [budgetIndex, setBudgetIndex] = useState(DEFAULT_BUDGET_INDEX);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Klick auf ein Paket in der Preisübersicht wählt es hier direkt vor
+  useEffect(() => {
+    function selectPackage(event: Event) {
+      const value = (event as CustomEvent<string>).detail;
+      const input = formRef.current?.querySelector<HTMLInputElement>(`input[name="package"][value="${CSS.escape(value)}"]`);
+      if (input) input.checked = true;
+    }
+    window.addEventListener(PACKAGE_EVENT, selectPackage);
+    return () => window.removeEventListener(PACKAGE_EVENT, selectPackage);
+  }, []);
 
   // Nach erfolgreichem Absenden auch den (kontrollierten) Slider zurücksetzen.
   // Felder ohne State setzt React nach der Action automatisch zurück.
@@ -228,13 +241,14 @@ export default function ContactForm() {
 
   return (
     <form
+      ref={formRef}
       action={formAction}
-      className="grid gap-6 rounded-2xl border border-slate-200 bg-slate-50 p-8 sm:grid-cols-2"
+      className="grid gap-6 rounded-3xl border border-white/10 bg-ink-900/80 p-6 backdrop-blur sm:grid-cols-2 sm:p-8"
     >
       {state.status === "success" && (
         <div
           role="status"
-          className="flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-800 transition-all duration-500 starting:-translate-y-2 starting:opacity-0 sm:col-span-2"
+          className="flex items-start gap-3 rounded-xl border border-emerald-400/30 bg-emerald-400/10 p-4 text-emerald-300 transition-all duration-500 starting:-translate-y-2 starting:opacity-0 sm:col-span-2"
         >
           <svg className="mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="10" />
@@ -245,7 +259,7 @@ export default function ContactForm() {
       )}
 
       {state.status === "error" && (
-        <div role="alert" className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm font-medium text-red-700 transition-all duration-500 starting:-translate-y-2 starting:opacity-0 sm:col-span-2">
+        <div role="alert" className="rounded-xl border border-red-400/30 bg-red-400/10 p-4 text-sm font-medium text-red-300 transition-all duration-500 starting:-translate-y-2 starting:opacity-0 sm:col-span-2">
           {state.message}
         </div>
       )}
@@ -260,24 +274,24 @@ export default function ContactForm() {
       <BudgetSlider index={budgetIndex} onChange={setBudgetIndex} />
 
       <div>
-        <label htmlFor="name" className="mb-1 block text-sm font-medium text-slate-700">Name</label>
+        <label htmlFor="name" className="mb-1 block text-sm font-medium text-white/70">Name</label>
         <input type="text" required maxLength={100} autoComplete="name" placeholder="Max Mustermann" {...fieldProps("name")} />
         <FieldError id="name-error" message={state.errors?.name} />
       </div>
       <div>
-        <label htmlFor="phone" className="mb-1 block text-sm font-medium text-slate-700">
-          Telefonnummer <span className="font-normal text-slate-400">(optional)</span>
+        <label htmlFor="phone" className="mb-1 block text-sm font-medium text-white/70">
+          Telefonnummer <span className="font-normal text-white/40">(optional)</span>
         </label>
         <input type="tel" maxLength={30} autoComplete="tel" placeholder="+49 …" {...fieldProps("phone")} />
         <FieldError id="phone-error" message={state.errors?.phone} />
       </div>
       <div className="sm:col-span-2">
-        <label htmlFor="email" className="mb-1 block text-sm font-medium text-slate-700">E-Mail</label>
+        <label htmlFor="email" className="mb-1 block text-sm font-medium text-white/70">E-Mail</label>
         <input type="email" required maxLength={254} autoComplete="email" placeholder="mail@beispiel.de" {...fieldProps("email")} />
         <FieldError id="email-error" message={state.errors?.email} />
       </div>
       <div className="sm:col-span-2">
-        <label htmlFor="message" className="mb-1 block text-sm font-medium text-slate-700">Nachricht</label>
+        <label htmlFor="message" className="mb-1 block text-sm font-medium text-white/70">Nachricht</label>
         <textarea rows={5} required minLength={10} maxLength={5000} placeholder="Beschreiben Sie kurz Ihr Projekt …" {...fieldProps("message")} />
         <FieldError id="message-error" message={state.errors?.message} />
       </div>
@@ -287,7 +301,7 @@ export default function ContactForm() {
           type="submit"
           disabled={pending}
           aria-busy={pending}
-          className="flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 py-3.5 font-medium text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/30 disabled:cursor-not-allowed disabled:opacity-70"
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-white py-4 font-medium text-ink-950 transition-colors duration-300 hover:bg-accent hover:text-white disabled:cursor-not-allowed disabled:opacity-70"
         >
           {pending ? (
             <>
@@ -298,9 +312,9 @@ export default function ContactForm() {
             "Anfrage senden"
           )}
         </button>
-        <p className="mt-3 text-center text-xs text-slate-500">
+        <p className="mt-3 text-center text-xs text-white/40">
           Mit dem Absenden stimmen Sie der Datenverarbeitung gemäß unserer{" "}
-          <Link href="/datenschutz" className="underline hover:text-slate-900">Datenschutzerklärung</Link> zu.
+          <Link href="/datenschutz" className="underline hover:text-white">Datenschutzerklärung</Link> zu.
         </p>
       </div>
     </form>

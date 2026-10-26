@@ -1,10 +1,8 @@
 import Image from "next/image";
 import AnimatedHero from "@/components/AnimatedHero";
 import ContactForm from "@/components/ContactForm";
-
-
-const WHATSAPP_URL = "https://wa.me/491735434710";
-const EMAIL = "kontakt@khashman-webdesign.de";
+import { PackageLink, ProcessTimeline, Reveal, ScrollWords, SpotlightCard } from "@/components/motion";
+import { SITE } from "@/lib/site";
 
 /* ---------- Icons ---------- */
 
@@ -12,7 +10,7 @@ type IconProps = { className?: string };
 
 function MonitorIcon({ className }: IconProps) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <rect x="2" y="3" width="20" height="14" rx="2" />
       <path d="M8 21h8M12 17v4M7 8l-2 2 2 2M17 8l2 2-2 2M13.5 7l-3 6" />
     </svg>
@@ -21,7 +19,7 @@ function MonitorIcon({ className }: IconProps) {
 
 function ShieldIcon({ className }: IconProps) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       <path d="m9 12 2 2 4-4" />
     </svg>
@@ -30,10 +28,18 @@ function ShieldIcon({ className }: IconProps) {
 
 function GaugeIcon({ className }: IconProps) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M12 14l4-4" />
       <path d="M3.34 19a10 10 0 1 1 17.32 0" />
       <circle cx="12" cy="14" r="1.5" />
+    </svg>
+  );
+}
+
+function SparkIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8" />
     </svg>
   );
 }
@@ -54,25 +60,26 @@ function WhatsAppIcon({ className }: IconProps) {
   );
 }
 
+function PhoneIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
+    </svg>
+  );
+}
+
 function MailIcon({ className }: IconProps) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <rect x="2" y="4" width="20" height="16" rx="2" />
       <path d="m22 7-10 6L2 7" />
     </svg>
   );
 }
 
-function UserIcon({ className }: IconProps) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.25} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="12" cy="8" r="4" />
-      <path d="M4 21a8 8 0 0 1 16 0" />
-    </svg>
-  );
-}
-
 /* ---------- Daten ---------- */
+
+const marqueeItems = ["Webdesign", "Entwicklung", "Local SEO", "Hosting", "Performance", "DSGVO-konform", "Online-Shops", "Terminbuchung"];
 
 const services = [
   {
@@ -92,14 +99,29 @@ const services = [
   {
     icon: GaugeIcon,
     title: "Local SEO & Performance",
-    text: "Google My Business, Ladezeitoptimierung und Core Web Vitals – damit Kunden aus Ihrer Region Sie zuerst finden.",
-    tags: ["Google My Business", "Core Web Vitals"],
-    className: "md:col-span-2",
+    text: "Google Unternehmensprofil, Ladezeitoptimierung und Core Web Vitals – damit Kunden aus Ihrer Region Sie zuerst finden.",
+    tags: ["Google", "Core Web Vitals"],
+    className: "",
   },
+  {
+    icon: SparkIcon,
+    title: "Design mit Wirkung",
+    text: "Animationen, klare Typografie und eine Bildsprache, die Ihre Marke hochwertig wirken lässt.",
+    tags: ["UI", "Motion", "Branding"],
+    className: "",
+  },
+];
+
+const steps = [
+  { title: "Erstgespräch", text: "Kostenlos und unverbindlich: Wir klären Ziele, Zielgruppe und Umfang. Danach erhalten Sie ein Festpreis-Angebot.", time: "Tag 1" },
+  { title: "Konzept & Design", text: "Ich entwerfe Struktur und Design Ihrer Seite. Sie geben Feedback, bis alles passt.", time: "Woche 1" },
+  { title: "Entwicklung", text: "Umsetzung mit modernster Technik – schnell, sicher, mobiloptimiert und suchmaschinenfreundlich.", time: "Woche 2–3" },
+  { title: "Launch & Betreuung", text: "Ihre Seite geht live. Hosting, Updates und Backups übernehme ich – Sie konzentrieren sich auf Ihr Geschäft.", time: "Laufend" },
 ];
 
 const packages = [
   {
+    value: "starter",
     name: "Starter",
     subtitle: "Visitenkarte",
     price: "299 €",
@@ -118,6 +140,7 @@ const packages = [
     highlighted: false,
   },
   {
+    value: "business",
     name: "Business",
     subtitle: "Für wachsende Betriebe",
     price: "649 €",
@@ -136,6 +159,7 @@ const packages = [
     highlighted: true,
   },
   {
+    value: "premium",
     name: "Premium",
     subtitle: "All-in-One",
     price: "1.199 €",
@@ -154,260 +178,421 @@ const packages = [
   },
 ];
 
+const faqs = [
+  {
+    q: "Wie lange dauert es, bis meine Website online ist?",
+    a: "Ein Starter-Projekt ist in der Regel in 1–2 Wochen live, Business- und Premium-Projekte in 2–4 Wochen – abhängig davon, wie schnell Inhalte und Feedback vorliegen.",
+  },
+  {
+    q: "Was ist in der monatlichen Gebühr enthalten?",
+    a: "Hosting, SSL-Zertifikat, Domain, Sicherheitsupdates und Backups. Bei Business und Premium zusätzlich Inhaltspflege – Sie schicken mir Änderungen, ich setze sie um.",
+  },
+  {
+    q: "Muss ich Texte und Bilder selbst liefern?",
+    a: "Am besten kennen Sie Ihr Geschäft – deshalb liefern Sie die Inhalte. Ich helfe gern beim Formulieren und beim Auswählen passender Bilder.",
+  },
+  {
+    q: "Gibt es versteckte Kosten?",
+    a: "Nein. Sie erhalten vorab ein Festpreis-Angebot. Zusätzliche Wünsche bespreche ich immer vorher mit Ihnen.",
+  },
+  {
+    q: "Kann ich später ein größeres Paket wählen?",
+    a: "Ja, jederzeit. Ihre Website wächst mit Ihrem Unternehmen – der bereits gezahlte Betrag wird dabei fair berücksichtigt.",
+  },
+];
+
+/* ---------- Bausteine ---------- */
+
+function SectionLabel({ number, children }: { number: string; children: React.ReactNode }) {
+  return (
+    <p className="flex items-center gap-3 text-sm text-white/50">
+      <span className="font-mono text-accent">{number}</span>
+      <span className="h-px w-8 bg-white/20" />
+      {children}
+    </p>
+  );
+}
+
+/* ---------- Strukturierte Daten (JSON-LD) für Google ---------- */
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": `${SITE.url}/#business`,
+      name: SITE.name,
+      description: SITE.description,
+      url: SITE.url,
+      image: `${SITE.url}/opengraph-image`,
+      email: SITE.email,
+      telephone: SITE.phoneE164,
+      priceRange: "299 € – 1.199 €",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: SITE.city,
+        addressRegion: SITE.region,
+        addressCountry: "DE",
+      },
+      areaServed: [
+        { "@type": "City", name: "Aachen" },
+        { "@type": "AdministrativeArea", name: "StädteRegion Aachen" },
+        { "@type": "Country", name: "Deutschland" },
+      ],
+      founder: { "@type": "Person", name: SITE.owner, jobTitle: "Webentwickler" },
+      knowsAbout: ["Webdesign", "Webentwicklung", "Local SEO", "Webhosting", "Online-Shops"],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Webdesign-Pakete",
+        itemListElement: packages.map((pkg) => ({
+          "@type": "Offer",
+          name: `Website-Paket ${pkg.name}`,
+          description: pkg.features.join(", "),
+          price: pkg.price.replace(/[^\d,]/g, "").replace(",", "."),
+          priceCurrency: "EUR",
+        })),
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE.url}/#website`,
+      url: SITE.url,
+      name: SITE.name,
+      inLanguage: "de-DE",
+      publisher: { "@id": `${SITE.url}/#business` },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
+    },
+  ],
+};
+
 /* ---------- Seite ---------- */
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,var(--color-blue-100),transparent_60%)]" />
-        <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 py-20 md:py-28 lg:grid-cols-2">
-          <AnimatedHero />
+      <script
+        type="application/ld+json"
+        // "<" maskieren, damit kein Inhalt aus dem Script-Tag ausbrechen kann
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
+      <AnimatedHero />
 
-          {/* Mockup */}
-          <div className="relative mx-auto w-full max-w-lg" aria-hidden="true">
-            <div className="absolute -inset-8 -z-10 rounded-full bg-gradient-to-tr from-blue-400/30 to-indigo-300/30 blur-3xl" />
-
-            {/* Laptop */}
-            <div className="rounded-t-2xl border border-slate-200 bg-slate-900 p-2.5 shadow-2xl shadow-slate-900/20">
-              <div className="overflow-hidden rounded-lg bg-white">
-                <div className="flex items-center gap-1.5 border-b border-slate-100 px-3 py-2">
-                  <span className="h-2 w-2 rounded-full bg-red-400" />
-                  <span className="h-2 w-2 rounded-full bg-amber-400" />
-                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                  <span className="ml-3 h-3 flex-1 rounded bg-slate-100" />
-                </div>
-                <div className="space-y-3 p-5">
-                  <div className="h-3 w-1/3 rounded bg-slate-200" />
-                  <div className="h-6 w-4/5 rounded bg-slate-800" />
-                  <div className="h-6 w-3/5 rounded bg-blue-500" />
-                  <div className="h-2.5 w-2/3 rounded bg-slate-200" />
-                  <div className="flex gap-2 pt-2">
-                    <div className="h-7 w-24 rounded-full bg-blue-600" />
-                    <div className="h-7 w-20 rounded-full border border-slate-300" />
-                  </div>
-                  <div className="grid grid-cols-3 gap-2 pt-3">
-                    <div className="h-14 rounded-lg bg-slate-100" />
-                    <div className="h-14 rounded-lg bg-blue-50" />
-                    <div className="h-14 rounded-lg bg-slate-100" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="mx-auto h-3 w-[110%] -translate-x-[4.5%] rounded-b-xl bg-gradient-to-b from-slate-300 to-slate-400 shadow-lg" />
-
-            {/* Smartphone */}
-            <div className="absolute -bottom-8 -right-2 w-28 rounded-[1.4rem] border border-slate-200 bg-slate-900 p-1.5 shadow-2xl shadow-slate-900/30 sm:-right-6 sm:w-32">
-              <div className="space-y-2 overflow-hidden rounded-[1.1rem] bg-white p-3">
-                <div className="mx-auto h-1.5 w-10 rounded-full bg-slate-200" />
-                <div className="h-3 w-4/5 rounded bg-slate-800" />
-                <div className="h-3 w-3/5 rounded bg-blue-500" />
-                <div className="h-2 w-full rounded bg-slate-200" />
-                <div className="h-5 w-16 rounded-full bg-blue-600" />
-                <div className="h-12 rounded-lg bg-slate-100" />
-                <div className="h-8 rounded-lg bg-blue-50" />
-              </div>
-            </div>
+      {/* Laufband */}
+      <section aria-label="Schwerpunkte" className="border-y border-white/10 py-6">
+        <div className="flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+          <div className="flex shrink-0 animate-marquee items-center motion-reduce:animate-none">
+            {[...marqueeItems, ...marqueeItems].map((item, i) => (
+              <span key={i} className="flex items-center gap-8 pr-8 text-2xl font-medium tracking-tight text-white/40 md:text-4xl">
+                {item}
+                <span className="text-accent" aria-hidden="true">✦</span>
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Statement */}
+      <section className="mx-auto max-w-6xl px-6 py-32 md:py-44">
+        <SectionLabel number="00">Mein Ansatz</SectionLabel>
+        <ScrollWords
+          className="mt-8 text-3xl font-medium leading-[1.2] tracking-tight md:text-5xl"
+          text="Ihre Website ist oft der erste Eindruck, den Kunden von Ihnen bekommen. Ich sorge dafür, dass er hängen bleibt – mit Design, das überzeugt, und Technik, die einfach funktioniert."
+        />
+      </section>
+
       {/* Leistungen – Bento-Grid */}
-      <section id="leistungen" className="mx-auto max-w-6xl px-6 py-24">
-        <div className="mb-14 max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">Leistungen</p>
-          <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">Alles für Ihren digitalen Auftritt</h2>
-          <p className="mt-4 text-slate-600">
+      <section id="leistungen" className="mx-auto max-w-6xl px-6 pb-32">
+        <Reveal className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <SectionLabel number="01">Leistungen</SectionLabel>
+            <h2 className="mt-6 max-w-xl text-4xl font-semibold tracking-tight md:text-6xl">
+              Alles für Ihren <span className="font-serif font-normal italic text-accent-soft">digitalen</span> Auftritt
+            </h2>
+          </div>
+          <p className="max-w-sm text-white/50">
             Von der ersten Idee bis zum laufenden Betrieb – aus einer Hand und mit klaren Zuständigkeiten.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-3 md:grid-rows-2">
-          {services.map(({ icon: Icon, title, text, tags, className }) => (
-            <article
-              key={title}
-              className={`group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-600/5 ${className}`}
-            >
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-indigo-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <div className="relative flex flex-1 flex-col">
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600/10 text-blue-600 ring-1 ring-blue-600/20 transition-colors group-hover:bg-blue-600 group-hover:text-white">
-                  <Icon className="h-6 w-6" />
+        <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2">
+          {services.map(({ icon: Icon, title, text, tags, className }, i) => (
+            <Reveal key={title} delay={i * 0.08} className={className}>
+              <SpotlightCard className="h-full transition-transform duration-500 hover:-translate-y-1">
+                <div className="flex h-full flex-col p-8">
+                  <div className="mb-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-accent-soft transition-colors duration-500 group-hover:border-accent group-hover:bg-accent group-hover:text-white">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-2xl font-semibold tracking-tight">{title}</h3>
+                  <p className="mt-3 text-white/55">{text}</p>
+                  <div className="mt-auto flex flex-wrap gap-2 pt-8">
+                    {tags.map((tag) => (
+                      <span key={tag} className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/60">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold">{title}</h3>
-                <p className="mt-3 text-slate-600">{text}</p>
-                <div className="mt-auto flex flex-wrap gap-2 pt-6">
-                  {tags.map((tag) => (
-                    <span key={tag} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </article>
+              </SpotlightCard>
+            </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* Prozess */}
+      <section id="prozess" className="border-t border-white/10 bg-ink-900/50">
+        <div className="mx-auto max-w-6xl px-6 py-32">
+          <Reveal className="mb-20 text-center">
+            <div className="flex justify-center">
+              <SectionLabel number="02">Prozess</SectionLabel>
+            </div>
+            <h2 className="mx-auto mt-6 max-w-2xl text-4xl font-semibold tracking-tight md:text-6xl">
+              In vier Schritten <span className="font-serif font-normal italic text-accent-soft">online</span>
+            </h2>
+          </Reveal>
+
+          <ProcessTimeline>
+            <ol className="space-y-16 md:space-y-24">
+              {steps.map((step, i) => (
+                <li key={step.title} className="relative grid gap-4 pl-16 md:grid-cols-2 md:gap-24 md:pl-0">
+                  <span className="absolute left-0 top-0 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-ink-950 font-mono text-sm text-accent-soft md:left-1/2 md:-translate-x-1/2">
+                    0{i + 1}
+                  </span>
+                  <Reveal className={i % 2 === 0 ? "md:text-right" : "md:order-2"}>
+                    <p className="font-mono text-sm text-white/40">{step.time}</p>
+                    <h3 className="mt-2 text-3xl font-semibold tracking-tight">{step.title}</h3>
+                  </Reveal>
+                  <Reveal delay={0.1} className={i % 2 === 0 ? "" : "md:order-1 md:text-right"}>
+                    <p className="text-lg leading-relaxed text-white/55">{step.text}</p>
+                  </Reveal>
+                </li>
+              ))}
+            </ol>
+          </ProcessTimeline>
         </div>
       </section>
 
       {/* Über mich */}
-      <section id="ueber-mich" className="border-y border-slate-200 bg-white">
-        <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 py-24 md:grid-cols-[2fr_3fr]">
-          
-          {/* Profilbild mit elegantem Glow-Effekt */}
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-sm">
-            <div className="absolute -inset-3 -z-0 rounded-3xl bg-gradient-to-tr from-blue-200 to-indigo-100 blur-xl" />
-            <div className="relative h-full w-full overflow-hidden rounded-3xl border border-slate-200 shadow-xl">
-              <Image 
-                src="/khashman.jpeg" 
-                alt="Khashman Alturki - Gründer von Khashman Webdesign" 
-                fill 
+      <section id="ueber-mich" className="border-t border-white/10">
+        <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 py-32 md:grid-cols-[2fr_3fr]">
+          <Reveal className="relative mx-auto aspect-[4/5] w-full max-w-sm">
+            <div className="glow-hero absolute -inset-16" />
+            <div className="relative h-full w-full overflow-hidden rounded-[2rem] border border-white/10">
+              <Image
+                src="/khashman.jpeg"
+                alt="Khashman Alturki – Gründer von Khashman Webdesign"
+                fill
                 sizes="(max-width: 768px) 100vw, 384px"
-                className="object-cover object-top"
-                priority
+                className="object-cover object-top grayscale-[30%] transition-[filter] duration-700 hover:grayscale-0"
               />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950/90 to-transparent p-6">
+                <p className="text-sm text-white/70">{SITE.owner}</p>
+                <p className="text-xs text-white/40">Gründer · {SITE.city}</p>
+              </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">Ihr Partner</p>
-            <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">Khashman Alturki</h2>
-            <p className="mt-2 text-slate-500">Gründer · Student der FH Aachen · Software Engineering</p>
+          <Reveal delay={0.1}>
+            <SectionLabel number="03">Über mich</SectionLabel>
+            <h2 className="mt-6 text-4xl font-semibold tracking-tight md:text-6xl">
+              Kein Agentur-<span className="font-serif font-normal italic text-accent-soft">Wasserkopf.</span>
+            </h2>
+            <p className="mt-8 text-lg leading-relaxed text-white/60">
+              Ich bin Khashman, Student der Software-Entwicklung an der FH Aachen. Ich verbinde fundiertes
+              Software-Engineering mit persönlicher Betreuung auf Augenhöhe: transparente Festpreise, direkte
+              Kommunikation und eine Umsetzung, die sich sehen lassen kann.
+            </p>
 
-            <blockquote className="mt-8 border-l-4 border-blue-600 pl-6 text-lg leading-relaxed text-slate-700">
-              Ich verbinde fundiertes Software-Engineering der FH Aachen mit persönlicher Betreuung auf Augenhöhe.
-              Bei mir gibt es keinen anonymen Agentur-Wasserkopf, sondern transparente Festpreise und direkte
-              Umsetzung.
-            </blockquote>
-
-            <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-slate-200 pt-8">
+            <dl className="mt-12 grid grid-cols-3 gap-6 border-t border-white/10 pt-8">
               <div>
-                <dt className="text-sm text-slate-500">Ansprechpartner</dt>
-                <dd className="mt-1 font-semibold">Direkt &amp; persönlich</dd>
+                <dt className="text-sm text-white/40">Ansprechpartner</dt>
+                <dd className="mt-1 font-medium">Direkt &amp; persönlich</dd>
               </div>
               <div>
-                <dt className="text-sm text-slate-500">Preise</dt>
-                <dd className="mt-1 font-semibold">Feste Pakete</dd>
+                <dt className="text-sm text-white/40">Preise</dt>
+                <dd className="mt-1 font-medium">Feste Pakete</dd>
               </div>
               <div>
-                <dt className="text-sm text-slate-500">Standort</dt>
-                <dd className="mt-1 font-semibold">Aachen</dd>
+                <dt className="text-sm text-white/40">Antwort</dt>
+                <dd className="mt-1 font-medium">Innerhalb 24 h</dd>
               </div>
             </dl>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Preise */}
-      <section id="preise" className="mx-auto max-w-6xl px-6 py-24">
-        <div className="mx-auto mb-16 max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">Preise</p>
-          <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">Transparente Pakete</h2>
-          <p className="mt-4 text-slate-600">Feste Preise, keine versteckten Kosten. Sie wissen von Anfang an, woran Sie sind.</p>
-        </div>
-
-        <div className="grid items-stretch gap-8 lg:grid-cols-3">
-          {packages.map((pkg) => (
-            <div
-              key={pkg.name}
-              className={`relative flex flex-col rounded-2xl p-8 transition-all duration-300 ${
-                pkg.highlighted
-                  ? "bg-slate-900 text-white shadow-2xl shadow-blue-900/20 ring-2 ring-blue-500 lg:-my-4 lg:py-12"
-                  : "border border-slate-200 bg-white hover:border-blue-300 hover:shadow-lg"
-              }`}
-            >
-              {pkg.highlighted && (
-                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-500 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-white shadow-lg">
-                  Beliebteste Wahl
-                </span>
-              )}
-
-              <h3 className="text-xl font-semibold">{pkg.name}</h3>
-              <p className={`text-sm ${pkg.highlighted ? "text-slate-400" : "text-slate-500"}`}>{pkg.subtitle}</p>
-
-              <div className="mt-6">
-                <span className="font-display text-5xl font-bold">{pkg.price}</span>
-                <span className={`ml-2 text-sm ${pkg.highlighted ? "text-slate-400" : "text-slate-500"}`}>einmalig</span>
-              </div>
-              <p className={`mt-1 text-sm ${pkg.highlighted ? "text-blue-300" : "text-blue-600"}`}>
-                {pkg.monthly} <span className={pkg.highlighted ? "text-slate-400" : "text-slate-500"}>({pkg.monthlyNote})</span>
-              </p>
-
-              <p className={`mt-6 rounded-lg px-4 py-3 text-sm ${pkg.highlighted ? "bg-white/5 text-slate-300" : "bg-slate-50 text-slate-600"}`}>
-                <span className="font-semibold">Ideal für:</span> {pkg.idealFor}
-              </p>
-
-              <ul className="mt-8 flex-1 space-y-3">
-                {pkg.features.map((feature) => (
-                  <li key={feature} className="flex gap-3 text-sm">
-                    <CheckIcon className={`mt-0.5 h-5 w-5 shrink-0 ${pkg.highlighted ? "text-blue-400" : "text-blue-600"}`} />
-                    <span className={pkg.highlighted ? "text-slate-200" : "text-slate-700"}>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="#kontakt"
-                className={`mt-10 rounded-full px-6 py-3 text-center font-medium transition-colors ${
-                  pkg.highlighted
-                    ? "bg-blue-600 text-white hover:bg-blue-500"
-                    : "border border-slate-300 text-slate-900 hover:border-slate-900 hover:bg-slate-900 hover:text-white"
-                }`}
-              >
-                {pkg.cta}
-              </a>
+      <section id="preise" className="relative border-t border-white/10">
+        <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-40 h-[40rem] w-[70rem] max-w-full -translate-x-1/2 glow-accent" />
+        <div className="relative mx-auto max-w-6xl px-6 py-32">
+          <Reveal className="mx-auto mb-20 max-w-2xl text-center">
+            <div className="flex justify-center">
+              <SectionLabel number="04">Preise</SectionLabel>
             </div>
-          ))}
-        </div>
+            <h2 className="mt-6 text-4xl font-semibold tracking-tight md:text-6xl">
+              Transparente <span className="font-serif font-normal italic text-accent-soft">Pakete</span>
+            </h2>
+            <p className="mt-6 text-white/50">Feste Preise, keine versteckten Kosten. Sie wissen von Anfang an, woran Sie sind.</p>
+          </Reveal>
 
-        <p className="mt-12 text-center text-sm text-slate-500">
-          Alle Preise gemäß § 19 UStG ohne Ausweis der Umsatzsteuer. Individuelle Anforderungen auf Anfrage.
-        </p>
+          <div className="grid items-stretch gap-6 lg:grid-cols-3">
+            {packages.map((pkg, i) => (
+              <Reveal key={pkg.name} delay={i * 0.1} className={pkg.highlighted ? "lg:-my-6" : ""}>
+                <div
+                  className={`relative h-full rounded-3xl p-px ${
+                    pkg.highlighted ? "bg-gradient-to-b from-accent via-violet/60 to-white/10" : "bg-white/10"
+                  }`}
+                >
+                  <div className={`flex h-full flex-col rounded-[calc(1.5rem-1px)] p-8 ${pkg.highlighted ? "bg-ink-800 lg:py-12" : "bg-ink-900"}`}>
+                    {pkg.highlighted && (
+                      <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-accent to-violet px-4 py-1 text-xs font-medium uppercase tracking-wider text-white shadow-lg shadow-accent/30">
+                        Beliebteste Wahl
+                      </span>
+                    )}
+
+                    <h3 className="text-xl font-semibold">{pkg.name}</h3>
+                    <p className="text-sm text-white/40">{pkg.subtitle}</p>
+
+                    <div className="mt-8 flex items-baseline gap-2">
+                      <span className="text-6xl font-semibold tracking-tighter">{pkg.price}</span>
+                      <span className="text-sm text-white/40">einmalig</span>
+                    </div>
+                    <p className="mt-2 text-sm text-accent-soft">
+                      {pkg.monthly} <span className="text-white/40">({pkg.monthlyNote})</span>
+                    </p>
+
+                    <p className="mt-6 rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3 text-sm text-white/60">
+                      <span className="font-medium text-white/80">Ideal für:</span> {pkg.idealFor}
+                    </p>
+
+                    <ul className="mt-8 flex-1 space-y-3">
+                      {pkg.features.map((feature) => (
+                        <li key={feature} className="flex gap-3 text-sm text-white/70">
+                          <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <PackageLink
+                      value={pkg.value}
+                      className={`mt-10 rounded-full px-6 py-3.5 text-center font-medium transition-colors duration-300 ${
+                        pkg.highlighted
+                          ? "bg-white text-ink-950 hover:bg-accent hover:text-white"
+                          : "border border-white/15 text-white hover:border-white hover:bg-white hover:text-ink-950"
+                      }`}
+                    >
+                      {pkg.cta}
+                    </PackageLink>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <p className="mt-16 text-center text-sm text-white/40">
+            Alle Preise gemäß § 19 UStG ohne Ausweis der Umsatzsteuer. Individuelle Anforderungen auf Anfrage.
+          </p>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="border-t border-white/10">
+        <div className="mx-auto grid max-w-6xl gap-16 px-6 py-32 md:grid-cols-[2fr_3fr]">
+          <Reveal>
+            <SectionLabel number="05">FAQ</SectionLabel>
+            <h2 className="mt-6 text-4xl font-semibold tracking-tight md:text-6xl">
+              Häufige <span className="font-serif font-normal italic text-accent-soft">Fragen</span>
+            </h2>
+            <p className="mt-6 text-white/50">Ihre Frage ist nicht dabei? Schreiben Sie mir einfach.</p>
+          </Reveal>
+
+          <Reveal delay={0.1} className="divide-y divide-white/10 border-y border-white/10">
+            {faqs.map((faq) => (
+              <details key={faq.q} className="group py-6 [&_summary::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-medium">
+                  {faq.q}
+                  <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/15 transition-colors group-open:border-accent group-open:bg-accent" aria-hidden="true">
+                    <span className="absolute h-px w-3 bg-white" />
+                    <span className="absolute h-3 w-px bg-white transition-transform duration-300 group-open:rotate-90 group-open:scale-0" />
+                  </span>
+                </summary>
+                <p className="mt-4 max-w-xl leading-relaxed text-white/55">{faq.a}</p>
+              </details>
+            ))}
+          </Reveal>
+        </div>
       </section>
 
       {/* Kontakt */}
-      <section id="kontakt" className="border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <div className="mx-auto mb-14 max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">Kontakt</p>
-            <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">Lassen Sie uns starten</h2>
-            <p className="mt-4 text-slate-600">
-              Schreiben Sie direkt per WhatsApp, senden Sie eine E-Mail oder nutzen Sie das Kontaktformular. Ich melde
-              mich in der Regel innerhalb von 24 Stunden.
-            </p>
-          </div>
+      <section id="kontakt" className="relative overflow-hidden border-t border-white/10">
+        <div aria-hidden="true" className="pointer-events-none absolute -left-60 top-0 h-[44rem] w-[44rem] glow-violet" />
+        <div className="relative mx-auto max-w-6xl px-6 py-32">
+          <Reveal className="mb-20">
+            <SectionLabel number="06">Kontakt</SectionLabel>
+            <h2 className="mt-6 text-[clamp(2.75rem,8vw,7rem)] font-semibold leading-[0.95] tracking-[-0.04em]">
+              Lassen Sie uns <br />
+              <span className="text-gradient font-serif font-normal italic">etwas bauen.</span>
+            </h2>
+          </Reveal>
 
           <div className="grid items-start gap-12 md:grid-cols-[2fr_3fr]">
-            <div className="flex flex-col gap-4">
+            <Reveal className="flex flex-col gap-4">
+              <p className="mb-4 text-white/55">
+                Schreiben Sie direkt per WhatsApp, senden Sie eine E-Mail oder nutzen Sie das Formular. Ich melde mich in
+                der Regel innerhalb von 24 Stunden.
+              </p>
               <a
-                href={WHATSAPP_URL}
+                href={SITE.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-2xl border border-slate-200 p-5 transition-all hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-500/10"
+                className="group flex items-center gap-4 rounded-3xl border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-emerald-400/50 hover:bg-emerald-400/5"
               >
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-white">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-500 text-white">
                   <WhatsAppIcon className="h-6 w-6" />
                 </span>
                 <span>
-                  <span className="block font-semibold">WhatsApp</span>
-                  <span className="block text-sm text-slate-500">+49 15908048034</span>
+                  <span className="block font-medium">WhatsApp</span>
+                  <span className="block text-sm text-white/50">{SITE.whatsappDisplay}</span>
                 </span>
               </a>
 
               <a
-                href={`mailto:${EMAIL}`}
-                className="group flex items-center gap-4 rounded-2xl border border-slate-200 p-5 transition-all hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/10"
+                href={SITE.phoneUrl}
+                className="group flex items-center gap-4 rounded-3xl border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-accent/50 hover:bg-accent/5"
               >
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-white">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent text-white">
+                  <PhoneIcon className="h-6 w-6" />
+                </span>
+                <span>
+                  <span className="block font-medium">Anrufen</span>
+                  <span className="block text-sm text-white/50">{SITE.phoneDisplay}</span>
+                </span>
+              </a>
+
+              <a
+                href={`mailto:${SITE.email}`}
+                className="group flex items-center gap-4 rounded-3xl border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-accent/50 hover:bg-accent/5"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-ink-950">
                   <MailIcon className="h-6 w-6" />
                 </span>
                 <span>
-                  <span className="block font-semibold">E-Mail</span>
-                  <span className="block text-sm text-slate-500">{EMAIL}</span>
+                  <span className="block font-medium">E-Mail</span>
+                  <span className="block text-sm text-white/50">{SITE.email}</span>
                 </span>
               </a>
-            </div>
+            </Reveal>
 
-            <ContactForm />
+            <Reveal delay={0.1}>
+              <ContactForm />
+            </Reveal>
           </div>
         </div>
       </section>
