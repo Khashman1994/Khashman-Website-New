@@ -1,15 +1,15 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, Float, Lightformer, MeshTransmissionMaterial, PerformanceMonitor, Sparkles } from "@react-three/drei";
+import { Environment, Float, Lightformer, PerformanceMonitor, Sparkles } from "@react-three/drei";
 import { useState, useRef } from "react";
 import { MathUtils, type Group } from "three";
 
-type SceneProps = { active: boolean; lite: boolean; onReady: () => void };
+type SceneProps = { active: boolean; onReady: () => void };
 
-/* ---------- Glasskulptur ---------- */
+/* ---------- Schillernde Skulptur ---------- */
 
-function Sculpture({ lite }: { lite: boolean }) {
+function Sculpture() {
   const group = useRef<Group>(null);
 
   useFrame((state, delta) => {
@@ -25,40 +25,23 @@ function Sculpture({ lite }: { lite: boolean }) {
     <group ref={group} position-x={0.6} scale={0.82}>
       <Float speed={1.4} rotationIntensity={0.6} floatIntensity={0.9}>
         <mesh>
-          <torusKnotGeometry args={[1, 0.34, lite ? 128 : 200, lite ? 20 : 32]} />
-          {lite ? (
-            // Günstiges Material für Handys: schillernd statt echter Lichtbrechung
-            <meshPhysicalMaterial
-              color="#c9d6ff"
-              metalness={0.15}
-              roughness={0.08}
-              iridescence={1}
-              iridescenceIOR={1.6}
-              clearcoat={1}
-            />
-          ) : (
-            <MeshTransmissionMaterial
-              backside
-              samples={4}
-              resolution={256}
-              thickness={0.7}
-              roughness={0.04}
-              ior={1.45}
-              chromaticAberration={0.45}
-              anisotropicBlur={0.2}
-              distortion={0.35}
-              distortionScale={0.4}
-              temporalDistortion={0.12}
-              color="#eef2ff"
-            />
-          )}
+          <torusKnotGeometry args={[1, 0.34, 200, 32]} />
+          {/* Iridescence statt echter Lichtbrechung: gleicher Glanz, aber nur ein Render-Durchgang */}
+          <meshPhysicalMaterial
+            color="#c9d6ff"
+            metalness={0.15}
+            roughness={0.08}
+            iridescence={1}
+            iridescenceIOR={1.6}
+            clearcoat={1}
+          />
         </mesh>
       </Float>
     </group>
   );
 }
 
-/* ---------- Farbige Lichtkugeln hinter dem Glas – werden darin gebrochen ---------- */
+/* ---------- Farbige Lichtkugeln hinter der Skulptur ---------- */
 
 function Orbs() {
   const group = useRef<Group>(null);
@@ -67,7 +50,7 @@ function Orbs() {
   });
 
   return (
-    // Dicht hinter dem Knoten: Sie sind fast nur durch das Glas hindurch zu sehen
+    // Dicht hinter dem Knoten: Sie blitzen nur an den Rändern hervor
     <group ref={group} position={[0.6, 0, -2]}>
       <mesh position={[-0.7, 0.5, 0]}>
         <sphereGeometry args={[0.45, 32, 32]} />
@@ -102,8 +85,8 @@ function Studio() {
 
 const MAX_DPR = 1.5;
 
-export default function HeroScene({ active, lite, onReady }: SceneProps) {
-  const [dpr, setDpr] = useState(lite ? 1 : MAX_DPR);
+export default function HeroScene({ active, onReady }: SceneProps) {
+  const [dpr, setDpr] = useState(MAX_DPR);
 
   return (
     <Canvas
@@ -115,12 +98,12 @@ export default function HeroScene({ active, lite, onReady }: SceneProps) {
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
     >
       {/* Fällt die Bildrate, wird die Auflösung gesenkt – flüssig schlägt gestochen scharf */}
-      <PerformanceMonitor onDecline={() => setDpr(1)} onIncline={() => setDpr(lite ? 1 : MAX_DPR)} />
+      <PerformanceMonitor onDecline={() => setDpr(1)} onIncline={() => setDpr(MAX_DPR)} />
       <ambientLight intensity={0.4} />
       <directionalLight position={[5, 5, 5]} intensity={1.5} />
       <Orbs />
-      <Sculpture lite={lite} />
-      <Sparkles count={lite ? 30 : 60} scale={[10, 6, 4]} size={1.6} speed={0.3} opacity={0.6} color="#a8c0ff" />
+      <Sculpture />
+      <Sparkles count={60} scale={[10, 6, 4]} size={1.6} speed={0.3} opacity={0.6} color="#a8c0ff" />
       <Studio />
     </Canvas>
   );

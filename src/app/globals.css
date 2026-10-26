@@ -16,16 +16,10 @@
   --color-violet: #9b7bff;
 
   --animate-marquee: marquee 40s linear infinite;
-  --animate-shine: shine 6s linear infinite;
 
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
-  }
-
-  @keyframes shine {
-    from { background-position: 0% 50%; }
-    to { background-position: 200% 50%; }
   }
 }
 
@@ -62,14 +56,13 @@ html.lenis body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Verlaufstext mit langsam wanderndem Glanz */
+/* Verlaufstext – bewusst statisch: background-position zu animieren
+   ist nicht GPU-beschleunigt und kostet in jedem Frame Style & Layout */
 .text-gradient {
-  background: linear-gradient(90deg, #ffffff, var(--color-accent-soft), var(--color-violet), #ffffff);
-  background-size: 200% auto;
+  background: linear-gradient(90deg, #ffffff, var(--color-accent-soft) 45%, var(--color-violet));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: var(--animate-shine);
 }
 
 /* Karte mit Lichtkegel, der dem Mauszeiger folgt (--x/--y setzt SpotlightCard) */
@@ -111,8 +104,69 @@ html.lenis body {
   background: radial-gradient(closest-side, rgb(91 140 255 / 0.35), rgb(155 123 255 / 0.15) 55%, transparent);
 }
 
+/* ---------- Scroll-Animationen ohne JavaScript (CSS Scroll-Driven Animations) ----------
+   Laufen in der Rendering-Engine statt im Main Thread. Browser ohne Unterstützung
+   zeigen einfach alles statisch an. */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes word-light {
+  from { opacity: 0.15; }
+  to { opacity: 1; }
+}
+@keyframes grow-y {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+@keyframes hero-out {
+  to { opacity: 0; transform: translateY(-30%); }
+}
+@keyframes scene-out {
+  to { opacity: 0; transform: scale(1.25); }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      /* --reveal-offset verschiebt den Start leicht → gestaffelter Einstieg in Rastern */
+      animation-range: entry calc(5% + var(--reveal-offset, 0%)) entry calc(65% + var(--reveal-offset, 0%));
+    }
+
+    .scroll-words {
+      view-timeline-name: --words;
+    }
+    .scroll-words > span {
+      animation: word-light linear both;
+      animation-timeline: --words;
+      animation-range: cover var(--word-start) cover var(--word-end);
+    }
+
+    .process-timeline {
+      view-timeline-name: --process;
+    }
+    .process-line {
+      animation: grow-y linear both;
+      animation-timeline: --process;
+      animation-range: cover 20% cover 80%;
+    }
+
+    .hero-scroll-out {
+      animation: hero-out linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 70vh;
+    }
+    .scene-scroll-out {
+      animation: scene-out linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 90vh;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .text-gradient,
   .hero-word,
   .hero-fade {
     animation: none;

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import AnimatedHero from "@/components/AnimatedHero";
 import ContactForm from "@/components/ContactForm";
-import { PackageLink, ProcessTimeline, Reveal, ScrollWords, SpotlightCard } from "@/components/motion";
+import { PackageLink, SpotlightCard } from "@/components/motion";
+import { ProcessTimeline, Reveal, ScrollWords } from "@/components/scroll-effects";
 import { SITE } from "@/lib/site";
 
 /* ---------- Icons ---------- */
