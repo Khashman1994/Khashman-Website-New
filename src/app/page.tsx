@@ -1,10 +1,10 @@
-import Link from "next/link";
 import Image from "next/image";
+import AnimatedHero from "@/components/AnimatedHero";
+import ContactForm from "@/components/ContactForm";
 
 
 const WHATSAPP_URL = "https://wa.me/491735434710";
 const EMAIL = "kontakt@khashman-webdesign.de";
-const FORMSPREE_URL = "https://formspree.io/f/myekwrol";
 
 /* ---------- Icons ---------- */
 
@@ -154,9 +154,6 @@ const packages = [
   },
 ];
 
-const inputClass =
-  "w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500";
-
 /* ---------- Seite ---------- */
 
 export default function Home() {
@@ -166,41 +163,7 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,var(--color-blue-100),transparent_60%)]" />
         <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 py-20 md:py-28 lg:grid-cols-2">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-700">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-              </span>
-              Verfügbar für neue Projekte im Quartal
-            </span>
-
-            <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
-              Digitale Lösungen, <br className="hidden sm:block" />
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
-                die Ihr Geschäft voranbringen.
-              </span>
-            </h1>
-
-            <p className="mt-6 max-w-xl text-lg text-slate-600">
-              Moderne, performante und conversion-starke Webseiten für KMU &amp; Startups – ohne Technik-Stress.
-            </p>
-
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="#kontakt"
-                className="rounded-full bg-blue-600 px-7 py-3.5 text-center font-medium text-white shadow-lg shadow-blue-600/25 transition-all hover:-translate-y-0.5 hover:bg-blue-700"
-              >
-                Kostenloses Erstgespräch
-              </a>
-              <a
-                href="#preise"
-                className="rounded-full border border-slate-300 bg-white px-7 py-3.5 text-center font-medium text-slate-900 transition-all hover:-translate-y-0.5 hover:border-slate-900"
-              >
-                Pakete ansehen
-              </a>
-            </div>
-          </div>
+          <AnimatedHero />
 
           {/* Mockup */}
           <div className="relative mx-auto w-full max-w-lg" aria-hidden="true">
@@ -444,43 +407,7 @@ export default function Home() {
               </a>
             </div>
 
-            <form
-              action={FORMSPREE_URL}
-              method="POST"
-              className="grid gap-5 rounded-2xl border border-slate-200 bg-slate-50 p-8 sm:grid-cols-2"
-            >
-              <div>
-                <label htmlFor="name" className="mb-1 block text-sm font-medium text-slate-700">Name</label>
-                <input type="text" name="name" id="name" required autoComplete="name" className={inputClass} placeholder="Max Mustermann" />
-              </div>
-              <div>
-                <label htmlFor="phone" className="mb-1 block text-sm font-medium text-slate-700">
-                  Telefonnummer <span className="font-normal text-slate-400">(optional)</span>
-                </label>
-                <input type="tel" name="phone" id="phone" autoComplete="tel" className={inputClass} placeholder="+49 …" />
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="email" className="mb-1 block text-sm font-medium text-slate-700">E-Mail</label>
-                <input type="email" name="email" id="email" required autoComplete="email" className={inputClass} placeholder="mail@beispiel.de" />
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="message" className="mb-1 block text-sm font-medium text-slate-700">Nachricht</label>
-                <textarea name="message" id="message" rows={5} required className={inputClass} placeholder="Beschreiben Sie kurz Ihr Projekt …" />
-              </div>
-
-              <div className="sm:col-span-2">
-                <button
-                  type="submit"
-                  className="w-full rounded-full bg-blue-600 py-3.5 font-medium text-white shadow-lg shadow-blue-600/25 transition-colors hover:bg-blue-700"
-                >
-                  Anfrage senden
-                </button>
-                <p className="mt-3 text-center text-xs text-slate-500">
-                  Mit dem Absenden stimmen Sie der Datenverarbeitung gemäß unserer{" "}
-                  <Link href="/datenschutz" className="underline hover:text-slate-900">Datenschutzerklärung</Link> zu.
-                </p>
-              </div>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </section>

@@ -30,23 +30,67 @@ export default function Datenschutz() {
         <li>E-Mail-Adresse</li>
         <li>Telefonnummer</li>
         <li>Ihre Nachricht / Projektbeschreibung</li>
+        <li>Das gewählte Paket und Ihr ungefähres Budget</li>
       </ul>
 
-      <h2>3. Zweck der Datenverarbeitung</h2>
+      <h2>3. Zweck und Rechtsgrundlage der Datenverarbeitung</h2>
       <p>
-        Die erhobenen Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage und zur Kontaktaufnahme verwendet. Eine
-        Weitergabe an Dritte findet nicht statt.
+        Die erhobenen Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage, zur Erstellung eines Angebots und zur
+        Kontaktaufnahme mit Ihnen verwendet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen),
+        soweit Ihre Anfrage auf einen Vertragsabschluss gerichtet ist, im Übrigen Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+        Interesse an der Beantwortung von Anfragen). Ihre Daten werden nicht verkauft und nicht zu Werbezwecken an Dritte
+        weitergegeben. Zur technischen Abwicklung setze ich die in Abschnitt 4 genannten Dienstleister als
+        Auftragsverarbeiter ein.
       </p>
 
-      <h2>4. Formspree (Kontaktformular)</h2>
+      <h2>4. Kontaktformular, Hosting und Datenspeicherung</h2>
       <p>
-        Das Kontaktformular dieser Website wird über den Dienst Formspree (formspree.io) betrieben. Beim Absenden des
-        Formulars werden Ihre Daten an Server von Formspree in den USA übertragen. Formspree verarbeitet diese Daten gemäß
-        seiner eigenen Datenschutzrichtlinie (
-        <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
-          formspree.io/legal/privacy-policy
+        Wenn Sie das Kontaktformular nutzen, werden Ihre Angaben verschlüsselt (HTTPS/TLS) übertragen und wie folgt
+        verarbeitet:
+      </p>
+      <h3>Hosting (Vercel)</h3>
+      <p>
+        Diese Website und die Verarbeitung des Kontaktformulars werden bei der Vercel Inc., 440 N Barranca Ave #4133,
+        Covina, CA 91723, USA, gehostet. Beim Absenden des Formulars werden Ihre Angaben sowie technisch notwendige Daten
+        (z. B. IP-Adresse, Zeitpunkt der Anfrage) über die Server von Vercel verarbeitet. Weitere Informationen:{" "}
+        <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
+          vercel.com/legal/privacy-policy
         </a>
-        ).
+        .
+      </p>
+      <h3>Speicherung in einer Datenbank (Neon / Vercel Postgres)</h3>
+      <p>
+        Ihre Anfrage wird in einer Postgres-Datenbank gespeichert, die über Vercel bei der Neon Inc., San Francisco, USA,
+        betrieben wird. Der Serverstandort der Datenbank befindet sich in den USA. Die Daten werden verschlüsselt übertragen
+        und gespeichert; Zugriff habe ausschließlich ich. Weitere Informationen:{" "}
+        <a href="https://neon.com/privacy-policy" target="_blank" rel="noopener noreferrer">
+          neon.com/privacy-policy
+        </a>
+        .
+      </p>
+      <h3>E-Mail-Benachrichtigung (Google Mail)</h3>
+      <p>
+        Unmittelbar nach dem Speichern erhalte ich eine Benachrichtigung mit dem Inhalt Ihrer Anfrage per E-Mail. Der
+        Versand und Empfang erfolgt über Google Mail (Gmail), einen Dienst der Google Ireland Limited, Gordon House, Barrow
+        Street, Dublin 4, Irland. Dabei können Daten auch an die Google LLC in den USA übermittelt werden. Weitere
+        Informationen:{" "}
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+          policies.google.com/privacy
+        </a>
+        .
+      </p>
+      <h3>Übermittlung in die USA</h3>
+      <p>
+        Die genannten Anbieter verarbeiten Daten auch in den USA. Die Übermittlung erfolgt auf Grundlage des
+        Angemessenheitsbeschlusses der EU-Kommission zum EU-US Data Privacy Framework (Art. 45 DSGVO), soweit der jeweilige
+        Anbieter danach zertifiziert ist, und ergänzend auf Grundlage der EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit.
+        c DSGVO).
+      </p>
+      <h3>Speicherdauer</h3>
+      <p>
+        Ihre Anfrage wird gelöscht, sobald sie abschließend bearbeitet ist und kein Vertrag zustande kommt, spätestens
+        jedoch nach 6 Monaten. Kommt ein Vertrag zustande, gelten die gesetzlichen Aufbewahrungsfristen (z. B. nach HGB und
+        AO).
       </p>
 
       <h2>5. Schriftarten</h2>
