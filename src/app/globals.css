@@ -141,6 +141,15 @@ html.lenis body {
   animation: hero-fade 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* Navigationsleiste gleitet beim Laden von oben ein */
+@keyframes header-in {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: none; }
+}
+.header-in {
+  animation: header-in 0.9s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* Weicher Farbschein ohne filter: blur() – ein Verlauf kostet beim Scrollen fast nichts */
 .glow-accent {
   background: radial-gradient(closest-side, rgb(91 140 255 / 0.18), transparent);
@@ -216,6 +225,7 @@ html.lenis body {
 
 @media (prefers-reduced-motion: reduce) {
   .hero-word,
+  .header-in,
   .hero-fade {
     animation: none;
   }
