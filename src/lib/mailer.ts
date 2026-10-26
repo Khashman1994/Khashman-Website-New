@@ -12,6 +12,7 @@ export type ContactMail = {
   message: string;
   packageValue: PackageValue;
   budgetValue: BudgetValue;
+  locale: "de" | "en";
 };
 
 const transporter = nodemailer.createTransport({
@@ -53,7 +54,8 @@ export async function sendContactNotification(data: ContactMail): Promise<void> 
     to: CONTACT_RECIPIENT,
     // "Antworten" im Mailprogramm geht direkt an den Kunden
     replyTo: { name: data.name, address: data.email },
-    subject: `Neue Anfrage #${data.id} · ${packageLabel} · ${data.name}`,
+    // [EN] markiert Anfragen von der englischen Seite – dann am besten auf Englisch antworten
+    subject: `${data.locale === "en" ? "[EN] " : ""}Neue Anfrage #${data.id} · ${packageLabel} · ${data.name}`,
     text: [
       `Paket:   ${packageLabel}${pkg ? ` (${pkg.price})` : ""}`,
       `Budget:  ${budget}`,

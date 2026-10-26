@@ -1,18 +1,27 @@
 @import "tailwindcss";
 
+/* light: … gilt, wenn <html data-theme="light"> gesetzt ist (Theme-Umschalter) */
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+
+/* Theme-abhängige Farben: Die Werte kommen aus den Variablen unten und wechseln mit
+   data-theme. "fg" ist die Vordergrundfarbe (dunkel: weiß, hell: fast schwarz),
+   "ink-*" sind die Flächen (dunkel: fast schwarz, hell: weiß/grau).
+   Für Text auf farbigen Flächen (Akzent, WhatsApp-Grün) bleibt bewusst "white". */
 @theme inline {
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-instrument), Georgia, serif;
+
+  --color-fg: var(--fg);
+  --color-ink-950: var(--ink-950);
+  --color-ink-900: var(--ink-900);
+  --color-ink-800: var(--ink-800);
+  --color-ink-700: var(--ink-700);
+  --color-accent-soft: var(--accent-soft);
 }
 
 @theme {
-  --color-ink-950: #05060a;
-  --color-ink-900: #0a0c12;
-  --color-ink-800: #11141c;
-  --color-ink-700: #1a1e29;
   --color-accent: #5b8cff;
-  --color-accent-soft: #8fb0ff;
   --color-violet: #9b7bff;
 
   --animate-marquee: marquee 40s linear infinite;
@@ -23,9 +32,28 @@
   }
 }
 
+:root {
+  --fg: #ffffff;
+  --ink-950: #05060a;
+  --ink-900: #0a0c12;
+  --ink-800: #11141c;
+  --ink-700: #1a1e29;
+  --accent-soft: #8fb0ff;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --fg: #0b0d14;
+  --ink-950: #f5f6fa;
+  --ink-900: #ffffff;
+  --ink-800: #eef1f7;
+  --ink-700: #e1e5ee;
+  --accent-soft: #3a67e8;
+  color-scheme: light;
+}
+
 html {
   scroll-padding-top: 6rem;
-  color-scheme: dark;
 }
 
 /* Lenis übernimmt das Scrollen – natives smooth würde sich doppeln */
@@ -59,7 +87,7 @@ html.lenis body {
 /* Verlaufstext – bewusst statisch: background-position zu animieren
    ist nicht GPU-beschleunigt und kostet in jedem Frame Style & Layout */
 .text-gradient {
-  background: linear-gradient(90deg, #ffffff, var(--color-accent-soft) 45%, var(--color-violet));
+  background: linear-gradient(90deg, var(--fg), var(--color-accent-soft) 45%, var(--color-violet));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -74,7 +102,27 @@ html.lenis body {
 .spotlight-border {
   background:
     radial-gradient(400px circle at var(--x, 50%) var(--y, 50%), rgb(143 176 255 / 0.55), transparent 40%),
-    rgb(255 255 255 / 0.08);
+    color-mix(in oklab, var(--fg) 8%, transparent);
+}
+
+/* Feines Raster im Hero, zu den Rändern hin ausgeblendet */
+.hero-grid {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--fg) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--fg) 4%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+}
+
+/* Riesiger Schriftzug im Footer – nur als Kontur */
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in oklab, var(--fg) 12%, transparent);
+}
+
+/* Im hellen Modus wirkt das Korn sonst schmutzig */
+:root[data-theme="light"] .grain::after {
+  opacity: 0.03;
 }
 
 /* Hero-Intro als reines CSS: läuft ab dem ersten Paint, unabhängig vom JavaScript */

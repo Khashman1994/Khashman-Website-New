@@ -25,6 +25,9 @@ function canRunLiveScene(): boolean {
   }
 }
 
+const POSTER_CLASS =
+  "object-cover transition-opacity duration-[1500ms] [mask-image:radial-gradient(closest-side,black_55%,transparent)]";
+
 const INTERACTION_EVENTS = ["pointermove", "pointerdown", "wheel", "keydown", "scroll"] as const;
 
 // Erst bei der ersten echten Interaktion laden: Das Standbild trägt den ersten Eindruck,
@@ -63,7 +66,8 @@ export default function HeroCanvas() {
     <div ref={container} className="absolute inset-0" aria-hidden="true">
       <div className="glow-hero absolute left-1/2 top-1/2 h-[80vmin] w-[80vmin] -translate-x-1/2 -translate-y-1/2" />
 
-      {/* Vorgerendertes Standbild der Szene – Ränder weich ausgeblendet, damit kein Kasten sichtbar ist */}
+      {/* Vorgerendertes Standbild der Szene – Ränder weich ausgeblendet, damit kein Kasten sichtbar ist.
+          Je Theme ein eigenes Bild, weil der Hintergrund mitgerendert ist. */}
       <Image
         src="/hero-poster.jpg"
         alt=""
@@ -72,9 +76,16 @@ export default function HeroCanvas() {
         loading="eager"
         fetchPriority="high"
         sizes="(min-width: 1024px) 70vw, 100vw"
-        className={`object-cover transition-opacity duration-[1500ms] [mask-image:radial-gradient(closest-side,black_55%,transparent)] ${
-          ready ? "opacity-0" : "opacity-100"
-        }`}
+        className={`${POSTER_CLASS} light:hidden ${ready ? "opacity-0" : "opacity-100"}`}
+      />
+      {/* lazy + display:none → wird nur geladen, wenn der helle Modus aktiv ist */}
+      <Image
+        src="/hero-poster-light.jpg"
+        alt=""
+        fill
+        loading="lazy"
+        sizes="(min-width: 1024px) 70vw, 100vw"
+        className={`${POSTER_CLASS} hidden light:block ${ready ? "opacity-0" : "opacity-100"}`}
       />
 
       {enabled && (

@@ -14,12 +14,12 @@ const MAGNET_SPRING = { stiffness: 220, damping: 18, mass: 0.6 };
 
 const buttonVariants = {
   primary: {
-    base: "bg-white text-ink-950 hover:text-white",
+    base: "bg-fg text-ink-950 hover:text-white",
     sweep: "bg-accent",
   },
   outline: {
-    base: "border border-white/20 bg-white/5 text-white backdrop-blur hover:border-white hover:text-ink-950",
-    sweep: "bg-white",
+    base: "border border-fg/20 bg-fg/5 text-fg backdrop-blur hover:border-fg hover:text-ink-950",
+    sweep: "bg-fg",
   },
 } as const;
 

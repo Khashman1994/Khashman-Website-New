@@ -53,7 +53,7 @@ export function ScrollWords({ text, className = "" }: { text: string; className?
 export function ProcessTimeline({ children }: { children: ReactNode }) {
   return (
     <div className="process-timeline relative">
-      <div aria-hidden="true" className="absolute bottom-0 left-[1.4rem] top-0 w-px bg-white/10 md:left-1/2">
+      <div aria-hidden="true" className="absolute bottom-0 left-[1.4rem] top-0 w-px bg-fg/10 md:left-1/2">
         <div className="process-line h-full w-full origin-top bg-gradient-to-b from-accent via-violet to-accent" />
       </div>
       {children}

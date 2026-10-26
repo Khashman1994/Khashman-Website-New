@@ -3,6 +3,7 @@
 import { getDb } from "@/lib/db";
 import { findBudget, findPackage, type BudgetValue, type PackageValue } from "@/lib/contact-options";
 import { sendContactNotification } from "@/lib/mailer";
+import { DEFAULT_LOCALE, getDictionary, isLocale } from "@/lib/i18n";
 
 export type ContactField = "name" | "email" | "phone" | "message" | "package" | "budget";
 
@@ -27,10 +28,15 @@ export async function submitContactForm(
   _prevState: ContactFormState,
   formData: FormData,
 ): Promise<ContactFormState> {
+  // Sprache des Formulars bestimmt die Sprache der Meldungen (Fallback: Deutsch)
+  const rawLocale = readField(formData, "lang");
+  const locale = isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
+  const t = getDictionary(locale).form.messages;
+
   // Honeypot: Für Menschen unsichtbares Feld – Bots füllen es aus.
   // Wir tun so, als wäre alles geklappt, speichern aber nichts.
   if (readField(formData, "website") !== "") {
-    return { status: "success", message: "Vielen Dank für Ihre Anfrage!" };
+    return { status: "success", message: t.thanksShort };
   }
 
   const values = {
@@ -43,27 +49,27 @@ export async function submitContactForm(
   };
 
   const errors: ContactFormState["errors"] = {};
-  if (!values.name) errors.name = "Bitte geben Sie Ihren Namen an.";
-  else if (values.name.length > LIMITS.name) errors.name = "Der Name ist zu lang.";
+  if (!values.name) errors.name = t.nameRequired;
+  else if (values.name.length > LIMITS.name) errors.name = t.nameTooLong;
 
   if (!EMAIL_PATTERN.test(values.email) || values.email.length > LIMITS.email)
-    errors.email = "Bitte geben Sie eine gültige E-Mail-Adresse an.";
+    errors.email = t.emailInvalid;
 
   if (values.phone && !PHONE_PATTERN.test(values.phone))
-    errors.phone = "Bitte geben Sie eine gültige Telefonnummer an.";
+    errors.phone = t.phoneInvalid;
 
-  if (values.message.length < 10) errors.message = "Bitte schreiben Sie mindestens 10 Zeichen.";
-  else if (values.message.length > LIMITS.message) errors.message = "Die Nachricht ist zu lang.";
+  if (values.message.length < 10) errors.message = t.messageTooShort;
+  else if (values.message.length > LIMITS.message) errors.message = t.messageTooLong;
 
   // Nur bekannte Werte akzeptieren – manipulierte Requests werden abgewiesen
   const selectedPackage = findPackage(values.package);
-  if (!selectedPackage) errors.package = "Bitte wählen Sie ein Paket aus.";
+  if (!selectedPackage) errors.package = t.packageRequired;
 
   const selectedBudget = findBudget(values.budget);
-  if (!selectedBudget) errors.budget = "Bitte wählen Sie ein gültiges Budget aus.";
+  if (!selectedBudget) errors.budget = t.budgetInvalid;
 
   if (!selectedPackage || !selectedBudget || Object.keys(errors).length > 0) {
-    return { status: "error", message: "Bitte prüfen Sie Ihre Eingaben.", errors, values };
+    return { status: "error", message: t.checkInputs, errors, values };
   }
 
   const phone = values.phone || null;
@@ -85,7 +91,7 @@ export async function submitContactForm(
     console.error("[contact] Speichern fehlgeschlagen:", error);
     return {
       status: "error",
-      message: "Ihre Anfrage konnte leider nicht gesendet werden. Bitte versuchen Sie es später erneut oder schreiben Sie uns per WhatsApp.",
+      message: t.sendFailed,
       values,
     };
   }
@@ -99,6 +105,7 @@ export async function submitContactForm(
       message: values.message,
       packageValue,
       budgetValue,
+      locale,
     });
   } catch (error) {
     // Anfrage ist bereits gespeichert – für den Kunden trotzdem ein Erfolg
@@ -107,6 +114,6 @@ export async function submitContactForm(
 
   return {
     status: "success",
-    message: "Vielen Dank für Ihre Anfrage! Ich melde mich in der Regel innerhalb von 24 Stunden bei Ihnen.",
+    message: t.thanks,
   };
 }

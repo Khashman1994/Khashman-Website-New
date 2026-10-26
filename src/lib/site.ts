@@ -14,9 +14,7 @@ export const SITE = {
   city: "Aachen",
   region: "Nordrhein-Westfalen",
   url: resolveSiteUrl(),
-  title: "Webdesign Aachen | Khashman Webdesign – Moderne Webseiten ab 299 €",
-  description:
-    "Webdesign aus Aachen: Moderne, schnelle und DSGVO-konforme Webseiten für Selbstständige, KMU und Gründer. Festpreise ab 299 €, Hosting & Wartung inklusive. Jetzt kostenloses Erstgespräch sichern.",
+  // Titel & Beschreibung stehen je Sprache in src/lib/dictionaries/
   email: "kontakt@khashman-webdesign.de",
   phoneDisplay: "+49 173 5434710",
   phoneUrl: "tel:+491735434710",
