@@ -3,6 +3,7 @@ import Script from "next/script";
 export const metadata = {
   title: "Blog | Khashman Webdesign",
   description: "Tipps und Neuigkeiten rund um Webdesign für KMU und Gründer.",
+  alternates: { canonical: "/blog" },
 };
 
 export default function BlogPage() {
