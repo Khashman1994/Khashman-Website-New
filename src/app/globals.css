@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
-/* light: … gilt, wenn <html data-theme="light"> gesetzt ist (Theme-Umschalter) */
-@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+/* light: … gilt, wenn <html data-theme="light"> gesetzt ist (Theme-Umschalter) oder die Seite
+   ein Element mit der Klasse "force-light" enthält (z. B. der Blog, immer hell). */
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *, :root:has(.force-light), :root:has(.force-light) *));
 
 /* Theme-abhängige Farben: Die Werte kommen aus den Variablen unten und wechseln mit
    data-theme. "fg" ist die Vordergrundfarbe (dunkel: weiß, hell: fast schwarz),
@@ -42,7 +43,8 @@
   color-scheme: dark;
 }
 
-:root[data-theme="light"] {
+:root[data-theme="light"],
+:root:has(.force-light) {
   --fg: #0b0d14;
   --ink-950: #f5f6fa;
   --ink-900: #ffffff;
@@ -121,7 +123,8 @@ html.lenis body {
 }
 
 /* Im hellen Modus wirkt das Korn sonst schmutzig */
-:root[data-theme="light"] .grain::after {
+:root[data-theme="light"] .grain::after,
+:root:has(.force-light) .grain::after {
   opacity: 0.03;
 }
 
