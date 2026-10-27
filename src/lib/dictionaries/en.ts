@@ -270,7 +270,19 @@ const en: Dictionary = {
     legal: "Legal",
     imprint: "Legal notice (German)",
     privacy: "Privacy policy (German)",
+    cookieSettings: "Cookie settings",
     rights: "All rights reserved.",
+  },
+
+  cookie: {
+    title: "External content & settings",
+    text: "For the blog we load content from the external service Soro, which may transmit your IP address to the provider. This only happens with your consent. Technically necessary settings such as your light/dark choice are stored locally in your browser.",
+    privacyLink: "More in the privacy policy (German)",
+    accept: "Accept",
+    decline: "Decline",
+    blogTitle: "The blog needs your consent",
+    blogText: "The posts are provided by the external service Soro. You need to agree to loading this content to view it.",
+    blogButton: "Load blog",
   },
 
   jsonLd: {

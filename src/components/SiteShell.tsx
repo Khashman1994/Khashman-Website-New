@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Geist, Instrument_Serif } from "next/font/google";
 import "@/app/globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import CookieBanner from "@/components/CookieBanner";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 import SiteHeader from "@/components/SiteHeader";
 import SmoothScroll from "@/components/SmoothScroll";
 import { getDictionary, type Locale } from "@/lib/i18n";
@@ -61,6 +63,7 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
                   {/* Impressum & Datenschutz gibt es nur auf Deutsch (rechtlich maßgeblich) */}
                   <Link href="/impressum" hrefLang="de" className="text-fg/70 hover:text-fg">{t.footer.imprint}</Link>
                   <Link href="/datenschutz" hrefLang="de" className="text-fg/70 hover:text-fg">{t.footer.privacy}</Link>
+                  <CookieSettingsButton label={t.footer.cookieSettings} />
                 </div>
               </div>
             </div>
@@ -74,6 +77,7 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
             KHASHMAN
           </p>
         </footer>
+        <CookieBanner t={t.cookie} />
         <Analytics />
       </body>
     </html>

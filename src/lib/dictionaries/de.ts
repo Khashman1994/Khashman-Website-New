@@ -270,7 +270,20 @@ const de = {
     legal: "Rechtliches",
     imprint: "Impressum",
     privacy: "Datenschutz",
+    cookieSettings: "Cookie-Einstellungen",
     rights: "Alle Rechte vorbehalten.",
+  },
+
+  // Einwilligungs-Banner (src/components/CookieBanner.tsx) und Platzhalter für den Blog
+  cookie: {
+    title: "Externe Inhalte & Einstellungen",
+    text: "Für den Blog laden wir Inhalte vom externen Dienst Soro. Dabei kann Ihre IP-Adresse an den Anbieter übertragen werden. Das geschieht nur mit Ihrer Zustimmung. Technisch notwendige Einstellungen wie Ihre Hell-/Dunkel-Wahl speichern wir lokal in Ihrem Browser.",
+    privacyLink: "Mehr in der Datenschutzerklärung",
+    accept: "Akzeptieren",
+    decline: "Ablehnen",
+    blogTitle: "Der Blog braucht Ihre Zustimmung",
+    blogText: "Die Beiträge werden vom externen Dienst Soro bereitgestellt. Zum Anzeigen müssen Sie dem Laden dieser Inhalte zustimmen.",
+    blogButton: "Blog laden",
   },
 
   jsonLd: {
