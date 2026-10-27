@@ -26,6 +26,7 @@ const de = {
       { href: "#ueber-mich", label: "Über mich" },
       { href: "#preise", label: "Preise" },
       { href: "#faq", label: "FAQ" },
+      { href: "/blog", label: "Blog" },
     ],
     cta: "Projekt starten",
     openMenu: "Menü öffnen",

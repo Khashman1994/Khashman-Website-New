@@ -20,7 +20,8 @@ export default function SiteHeader({ locale, t }: { locale: Locale; t: Dictionar
 
   // Anker immer auf die Startseite der aktuellen Sprache – funktioniert auch vom Impressum aus
   const home = HOME_PATH[locale];
-  const anchor = (hash: string) => `${home === "/" ? "/" : home}${hash}`;
+  // Echte Pfade wie "/blog" bleiben unverändert, nur "#…"-Anker werden an die Startseite gehängt
+  const anchor = (hash: string) => (hash.startsWith("/") ? hash : `${home === "/" ? "/" : home}${hash}`);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">

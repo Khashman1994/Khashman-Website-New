@@ -27,6 +27,8 @@ const en: Dictionary = {
       { href: "#ueber-mich", label: "About" },
       { href: "#preise", label: "Pricing" },
       { href: "#faq", label: "FAQ" },
+      // Der Blog ist nur auf Deutsch verfügbar
+      { href: "/blog", label: "Blog (DE)" },
     ],
     cta: "Start a project",
     openMenu: "Open menu",
