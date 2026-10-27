@@ -18,9 +18,14 @@ export default function CookieBanner({ t }: { t: Dictionary["cookie"] }) {
       <div className="mx-auto max-w-3xl rounded-3xl border border-fg/10 bg-ink-900/95 p-6 shadow-2xl shadow-black/30 backdrop-blur-xl">
         <p className="text-base font-semibold text-fg">{t.title}</p>
         <p className="mt-2 text-sm leading-relaxed text-fg/70">
-          {t.text}{" "}
+          {t.text}
+        </p>
+        <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
           <Link href="/datenschutz" hrefLang="de" className="text-fg underline underline-offset-4 hover:text-accent">
             {t.privacyLink}
+          </Link>
+          <Link href="/impressum" hrefLang="de" className="text-fg underline underline-offset-4 hover:text-accent">
+            {t.imprintLink}
           </Link>
         </p>
         <div className="mt-5 flex flex-col gap-3 sm:flex-row">
