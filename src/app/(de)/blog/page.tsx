@@ -8,7 +8,8 @@ export const metadata = {
 
 export default function BlogPage() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24">
+    // force-light: Der Blog wird immer im hellen Design gezeigt, unabhängig vom gewählten Modus (globals.css)
+    <section className="force-light mx-auto max-w-6xl px-6 py-24">
       <h1 className="mb-12 text-5xl font-semibold tracking-tight">Blog</h1>
       <div id="soro-blog" />
       <Script
