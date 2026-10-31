@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useState, type ReactNode } from "react";
 import { DemoPhoto } from "@/components/demo/ui";
 
 /* Kleine interaktive Bausteine für die besonderen Layouts. */
@@ -222,6 +222,135 @@ export function FloatingContact({ contactLine }: { contactLine: string }) {
           </svg>
         </button>
       ))}
+    </div>
+  );
+}
+
+/* ---------- Haus-Animation neu abspielen ---------- */
+
+export function Replay({ children, label }: { children: ReactNode; label: string }) {
+  const [run, setRun] = useState(0);
+  return (
+    <div className="relative">
+      <div key={run}>{children}</div>
+      <button
+        type="button"
+        onClick={() => setRun((r) => r + 1)}
+        className={`absolute bottom-2 right-2 inline-flex min-h-10 items-center gap-2 rounded-full border border-[color:var(--d-line)] bg-[color:var(--d-bg)]/90 px-4 text-sm font-medium text-[color:var(--d-ink)] shadow-sm transition-colors hover:border-[color:var(--d-accent)] ${focus}`}
+      >
+        <span aria-hidden="true">↻</span> {label}
+      </button>
+    </div>
+  );
+}
+
+/* ---------- Objektsuche mit Filter ---------- */
+
+type Listing = {
+  title: string;
+  place: string;
+  deal: "Kaufen" | "Mieten";
+  type: "Wohnung" | "Haus" | "Gewerbe";
+  price: string;
+  priceValue: number;
+  rooms: number;
+  area: number;
+  tone: string;
+  tag?: string;
+};
+
+export function PropertySearch({ listings, places }: { listings: Listing[]; places: string[] }) {
+  const [deal, setDeal] = useState<"Kaufen" | "Mieten">("Kaufen");
+  const [place, setPlace] = useState(places[0]);
+  const [type, setType] = useState("Alle Arten");
+  const [rooms, setRooms] = useState(0);
+  const id = useId();
+
+  const result = listings.filter(
+    (l) =>
+      l.deal === deal &&
+      (place === places[0] || l.place === place) &&
+      (type === "Alle Arten" || l.type === type) &&
+      l.rooms >= rooms,
+  );
+  const select =
+    "min-h-12 w-full rounded-xl border border-[color:var(--d-line)] bg-[color:var(--d-bg)] px-3 text-[color:var(--d-ink)] focus:border-[color:var(--d-accent)] focus:outline-none";
+  const lbl = "mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[color:var(--d-muted)]";
+
+  return (
+    <div>
+      <div className="rounded-3xl border border-[color:var(--d-line)] bg-[color:var(--d-bg)] p-5 shadow-xl sm:p-6">
+        <div role="group" aria-label="Kaufen oder Mieten" className="mb-5 inline-flex rounded-full border border-[color:var(--d-line)] p-1">
+          {(["Kaufen", "Mieten"] as const).map((d) => (
+            <button
+              key={d}
+              type="button"
+              aria-pressed={deal === d}
+              onClick={() => setDeal(d)}
+              className={`min-h-10 rounded-full px-5 text-sm font-semibold transition-colors ${focus} ${
+                deal === d ? "bg-[color:var(--d-accent)] text-[color:var(--d-on-accent)]" : "text-[color:var(--d-ink)]"
+              }`}
+            >
+              {d}
+            </button>
+          ))}
+        </div>
+        <div className="grid gap-4 sm:grid-cols-3">
+          <div>
+            <label htmlFor={`${id}-ort`} className={lbl}>Ort</label>
+            <select id={`${id}-ort`} value={place} onChange={(e) => setPlace(e.target.value)} className={select}>
+              {places.map((p) => <option key={p}>{p}</option>)}
+            </select>
+          </div>
+          <div>
+            <label htmlFor={`${id}-art`} className={lbl}>Objektart</label>
+            <select id={`${id}-art`} value={type} onChange={(e) => setType(e.target.value)} className={select}>
+              {["Alle Arten", "Wohnung", "Haus", "Gewerbe"].map((t) => <option key={t}>{t}</option>)}
+            </select>
+          </div>
+          <div>
+            <label htmlFor={`${id}-zi`} className={lbl}>Zimmer ab</label>
+            <select id={`${id}-zi`} value={rooms} onChange={(e) => setRooms(Number(e.target.value))} className={select}>
+              {[0, 2, 3, 4, 5].map((r) => <option key={r} value={r}>{r === 0 ? "Egal" : `${r}+`}</option>)}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <p className="mt-8 text-sm text-[color:var(--d-muted)]" aria-live="polite">
+        {result.length} {result.length === 1 ? "Objekt" : "Objekte"} zum {deal === "Kaufen" ? "Kauf" : "Mieten"}
+      </p>
+      {result.length === 0 ? (
+        <div className="mt-4 rounded-3xl border border-dashed border-[color:var(--d-line)] p-8 text-center">
+          <p className="font-semibold text-[color:var(--d-ink)]">Gerade nichts Passendes online.</p>
+          <p className="mt-1 text-sm text-[color:var(--d-muted)]">Mit einem Suchauftrag hören Sie zuerst von neuen Objekten.</p>
+          <button type="button" onClick={() => { setPlace(places[0]); setType("Alle Arten"); setRooms(0); }} className={`mt-4 min-h-11 rounded-full border border-[color:var(--d-line)] px-5 text-sm font-semibold text-[color:var(--d-ink)] hover:border-[color:var(--d-accent)] ${focus}`}>
+            Filter zurücksetzen
+          </button>
+        </div>
+      ) : (
+        <ul className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {result.map((l) => (
+            <li key={l.title} className="group overflow-hidden rounded-3xl border border-[color:var(--d-line)] bg-[color:var(--d-bg)] transition-[translate,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none starting:opacity-0">
+              <div className="relative">
+                <DemoPhoto label={l.title} tone={l.tone} icon="home" className="aspect-[4/3]" />
+                {l.tag && (
+                  <span className="absolute left-3 top-3 rounded-full bg-[color:var(--d-accent)] px-3 py-1 text-xs font-semibold text-[color:var(--d-on-accent)]">{l.tag}</span>
+                )}
+              </div>
+              <div className="p-5">
+                <p className="text-xs font-semibold uppercase tracking-wider text-[color:var(--d-accent-text)]">{l.place} · {l.type}</p>
+                <h3 className="mt-1 font-[family-name:var(--d-display)] text-lg text-[color:var(--d-ink)]">{l.title}</h3>
+                <p className="mt-3 flex flex-wrap gap-x-4 text-sm tabular-nums text-[color:var(--d-muted)]">
+                  <span>{l.rooms} Zimmer</span>
+                  <span>{l.area} m²</span>
+                </p>
+                <p className="mt-3 text-xl font-semibold tabular-nums text-[color:var(--d-ink)]">{l.price}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

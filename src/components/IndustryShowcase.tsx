@@ -183,9 +183,10 @@ const INDUSTRIES: Industry[] = [
     category: "handel",
     title: "Immobilienmakler",
     audience: "Makler, Hausverwaltungen",
-    features: ["Objektliste mit Filtern", "Online-Wertermittlung als Lead-Formular", "Exposé-Download nach Anfrage"],
-    mock: { domain: "immo-lindner.de", headline: "Ihr Haus. Richtig bewertet.", signature: "Wert ermitteln" },
-    hue: 160,
+    features: ["Animiertes Hochhaus, das sich im Hero aufbaut", "Objektsuche mit Filter nach Ort und Zimmern", "Online-Wertermittlung als Lead-Formular"],
+    mock: { domain: "immo-lindner.de", headline: "Ihr neues Zuhause in Aachen", signature: "Objekte entdecken" },
+    hue: 38,
+    featured: true,
   },
   {
     id: "zahnarzt",

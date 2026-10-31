@@ -3,6 +3,7 @@ import DemoShell from "@/components/demo/DemoShell";
 import DemoWidget from "@/components/demo/DemoWidget";
 import AtelierLayout from "@/components/demo/layouts/Atelier";
 import ClassicLayout from "@/components/demo/layouts/Classic";
+import EstateLayout from "@/components/demo/layouts/Estate";
 import PortalLayout from "@/components/demo/layouts/Portal";
 import { DISPLAY_FONT, DemoFooter, display, ghostBtn, ink, line, muted, primaryBtn } from "@/components/demo/ui";
 import type { DemoSite as Site } from "@/lib/demo-sites";
@@ -22,6 +23,8 @@ export default function DemoSite({ site }: { site: Site }) {
         <AtelierLayout site={site} content={site.atelier} />
       ) : site.layout === "classic" && site.classic ? (
         <ClassicLayout site={site} content={site.classic} />
+      ) : site.layout === "estate" && site.estate ? (
+        <EstateLayout site={site} content={site.estate} />
       ) : site.layout === "portal" && site.portal ? (
         <PortalLayout site={site} content={site.portal} />
       ) : (

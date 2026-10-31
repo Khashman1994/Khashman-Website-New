@@ -88,6 +88,25 @@ export type ClassicContent = {
   hours: { day: string; time: string }[];
 };
 
+/** Immobilien: Hochhaus baut sich im Hero auf, Objektsuche mit Filter */
+export type EstateContent = {
+  heroCards: { eyebrow: string; title: string }[];
+  listings: {
+    title: string;
+    place: string;
+    deal: "Kaufen" | "Mieten";
+    type: "Wohnung" | "Haus" | "Gewerbe";
+    price: string;
+    priceValue: number;
+    rooms: number;
+    area: number;
+    tone: string;
+    tag?: string;
+  }[];
+  places: string[];
+  process: { title: string; text: string }[];
+};
+
 /** Praxis-Portal (Hinweisleiste, Sprechzeiten-Karte, Online-Services) */
 export type PortalContent = {
   announcement: { text: string; link: string };
@@ -125,10 +144,11 @@ export type DemoSite = {
   testimonials: { quote: string; name: string; role: string }[];
   contact: { address: string; hours: string[]; cta: string };
   /** Seitenaufbau – ohne Angabe die Standard-Vorlage */
-  layout?: "standard" | "atelier" | "classic" | "portal";
+  layout?: "standard" | "atelier" | "classic" | "portal" | "estate";
   atelier?: AtelierContent;
   classic?: ClassicContent;
   portal?: PortalContent;
+  estate?: EstateContent;
 };
 
 export const DEMO_SITES: DemoSite[] = [
@@ -806,18 +826,19 @@ export const DEMO_SITES: DemoSite[] = [
     logoMark: "IL",
     domain: "immo-lindner.de",
     icon: "home",
-    font: "grotesk",
+    font: "serif",
+    layout: "estate",
     palettes: {
-      light: { bg: "#ffffff", surface: "#f3f6f5", ink: "#0f1a17", muted: "#4f5d58", line: "#dfe6e3", accent: "#0a6b4f", onAccent: "#ffffff", accentText: "#0a6b4f" },
-      dark: { bg: "#0c1314", surface: "#151f21", ink: "#e9eeee", muted: "#9ba8ae", line: "#283438", accent: "#0f9872", onAccent: "#0c1314", accentText: "#0f9872" },
+      light: { bg: "#fbfaf7", surface: "#f2efe8", ink: "#1c1a17", muted: "#5c5750", line: "#e5e0d6", accent: "#8a6a3a", onAccent: "#ffffff", accentText: "#7f6135" },
+      dark: { bg: "#121110", surface: "#1c1a17", ink: "#f3efe8", muted: "#aba398", line: "#302c26", accent: "#c9a46a", onAccent: "#121110", accentText: "#d0ad75" },
     },
     nav: ["Kaufen", "Verkaufen", "Bewertung", "Über uns"],
     hero: {
       eyebrow: "Immobilienmakler für Aachen und die Städteregion",
-      title: "Ihr Haus. Richtig bewertet.",
-      text: "Erste Einschätzung in einer Minute, persönliche Bewertung vor Ort innerhalb einer Woche. Verkauft im Schnitt in 9 Wochen.",
-      primary: "Wert ermitteln",
-      secondary: "Aktuelle Objekte",
+      title: "Ihr neues Zuhause in Aachen",
+      text: "Vom ersten Besichtigungstermin bis zum Notar: Wir begleiten Käufer, Verkäufer und Mieter persönlich. Neue Objekte sehen Sie bei uns, bevor sie auf den Portalen stehen.",
+      primary: "Objekte entdecken",
+      secondary: "Wert ermitteln",
       badge: { label: "Zuletzt verkauft", value: "EFH Laurensberg · 6 Wochen" },
     },
     facts: [["9 Wochen", "durchschnittliche Vermarktung"], ["97 %", "des Angebotspreises erzielt"], ["240+", "verkaufte Objekte"]],
@@ -856,6 +877,28 @@ export const DEMO_SITES: DemoSite[] = [
       { quote: "Über den Suchauftrag unsere Wohnung gefunden, bevor sie online war.", name: "Daniel & Sophie", role: "Käufer" },
     ],
     contact: { address: "Hubertusstraße 1, 52064 Aachen", hours: ["Mo–Fr 9:00–18:00", "Besichtigungen auch samstags"], cta: "Bewertung anfragen" },
+    estate: {
+      heroCards: [
+        { eyebrow: "Kaufen", title: "Traumhaus finden" },
+        { eyebrow: "Verkaufen", title: "Bestpreis erzielen" },
+        { eyebrow: "Bewerten", title: "Wert in 1 Minute" },
+      ],
+      listings: [
+        { title: "Penthouse mit Domblick", place: "Aachen-Mitte", deal: "Kaufen", type: "Wohnung", price: "689.000 €", priceValue: 689000, rooms: 4, area: 128, tone: "#d6d0c4", tag: "Neu" },
+        { title: "Einfamilienhaus mit Garten", place: "Laurensberg", deal: "Kaufen", type: "Haus", price: "545.000 €", priceValue: 545000, rooms: 5, area: 156, tone: "#cbd3c2" },
+        { title: "Altbauwohnung am Frankenberger Park", place: "Frankenberg", deal: "Mieten", type: "Wohnung", price: "1.240 € kalt", priceValue: 1240, rooms: 3, area: 92, tone: "#e0d6c8" },
+        { title: "Reihenhaus, frisch saniert", place: "Brand", deal: "Kaufen", type: "Haus", price: "419.000 €", priceValue: 419000, rooms: 4, area: 118, tone: "#d3d6d9" },
+        { title: "Büroetage im Neubau", place: "Aachen-Mitte", deal: "Mieten", type: "Gewerbe", price: "2.900 € kalt", priceValue: 2900, rooms: 6, area: 210, tone: "#c9ced4", tag: "Erstbezug" },
+        { title: "2-Zimmer-Wohnung mit Balkon", place: "Burtscheid", deal: "Mieten", type: "Wohnung", price: "780 € kalt", priceValue: 780, rooms: 2, area: 58, tone: "#e3dccf" },
+      ],
+      places: ["Alle Orte", "Aachen-Mitte", "Burtscheid", "Frankenberg", "Laurensberg", "Brand"],
+      process: [
+        { title: "Bewertung", text: "Kostenlose Einschätzung vor Ort, mit Vergleichsdaten aus Ihrem Viertel." },
+        { title: "Vermarktung", text: "Profi-Fotos, 3D-Rundgang und Exposé. Vorgemerkte Käufer zuerst." },
+        { title: "Besichtigung", text: "Wir übernehmen Termine und prüfen die Bonität der Interessenten." },
+        { title: "Notar", text: "Vertragsentwurf, Notartermin und Übergabe mit Protokoll." },
+      ],
+    },
   },
   {
     slug: "fotografie",
