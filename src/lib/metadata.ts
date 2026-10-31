@@ -41,6 +41,6 @@ export function buildMetadata(locale: Locale): Metadata {
 }
 
 export const viewport: Viewport = {
-  themeColor: THEME_COLORS.dark,
+  themeColor: THEME_COLORS.light,
   colorScheme: "dark light",
 };

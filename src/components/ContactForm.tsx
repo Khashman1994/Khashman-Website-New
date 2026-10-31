@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useActionState, useEffect, useRef, useState } from "react";
 import { PACKAGE_EVENT } from "@/components/motion";
+import { PREFILL_EVENT } from "@/components/IndustryShowcase";
 import { submitContactForm, type ContactField, type ContactFormState } from "@/app/actions/contact";
 import { BUDGET_OPTIONS, localized, PACKAGE_OPTIONS, type PackageValue } from "@/lib/contact-options";
 import type { Dictionary, Locale } from "@/lib/i18n";
@@ -225,6 +226,16 @@ export default function ContactForm({ locale, t }: { locale: Locale; t: FormText
     }
     window.addEventListener(PACKAGE_EVENT, selectPackage);
     return () => window.removeEventListener(PACKAGE_EVENT, selectPackage);
+  }, []);
+
+  // Klick auf „Ähnliches Design anfragen“ füllt das Nachrichtenfeld vor
+  useEffect(() => {
+    function prefill(event: Event) {
+      const field = formRef.current?.querySelector<HTMLTextAreaElement>('textarea[name="message"]');
+      if (field && !field.value.trim()) field.value = (event as CustomEvent<string>).detail;
+    }
+    window.addEventListener(PREFILL_EVENT, prefill);
+    return () => window.removeEventListener(PREFILL_EVENT, prefill);
   }, []);
 
   // Nach erfolgreichem Absenden auch den (kontrollierten) Slider zurücksetzen.

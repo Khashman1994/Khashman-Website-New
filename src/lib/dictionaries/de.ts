@@ -22,6 +22,7 @@ const de = {
   nav: {
     links: [
       { href: "#leistungen", label: "Leistungen" },
+      { href: "#branchen", label: "Beispiele" },
       { href: "#prozess", label: "Prozess" },
       { href: "#ueber-mich", label: "Über mich" },
       { href: "#preise", label: "Preise" },
