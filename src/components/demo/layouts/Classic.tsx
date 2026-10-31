@@ -43,7 +43,7 @@ export default function ClassicLayout({ site, content }: { site: DemoSite; conte
       {/* Fester Termin-Knopf, bleibt beim Scrollen sichtbar */}
       <a
         href="#termin"
-        className={`${primaryBtn} fixed right-[max(1rem,env(safe-area-inset-right))] top-16 z-40 min-h-11 rounded-lg px-4 text-sm shadow-lg`}
+        className={`${primaryBtn} fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-40 min-h-11 rounded-lg px-4 text-sm shadow-lg sm:bottom-auto sm:top-16`}
       >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="mr-2 h-4 w-4" aria-hidden="true">
           <rect x="4" y="5" width="16" height="15" rx="2" />

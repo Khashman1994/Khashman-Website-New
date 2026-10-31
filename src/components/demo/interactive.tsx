@@ -67,7 +67,7 @@ export function HeroSlider({ slides }: { slides: { label: string; caption: strin
       >
         ›
       </button>
-      <div className="absolute inset-x-0 bottom-4 flex justify-center gap-2">
+      <div className="absolute bottom-4 right-4 flex gap-2 sm:inset-x-0 sm:right-auto sm:justify-center">
         {slides.map((slide, i) => (
           <button
             key={slide.label}
