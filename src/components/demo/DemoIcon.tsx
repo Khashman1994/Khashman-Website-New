@@ -16,6 +16,8 @@ const PATHS: Record<IconName, string> = {
   dumbbell: "M6 7v10M3 9v6M18 7v10M21 9v6M6 12h12",
   bag: "M5 8h14l-1 13H6L5 8zM9 8V6a3 3 0 0 1 6 0v2",
   home: "M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6",
+  camera: "M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z",
+  tooth: "M7 3c-2.5 0-4 2-4 4.5 0 3 1.5 4.5 2 7.5.4 2.6 1 6 2.6 6 1.3 0 1.6-2.6 2.1-4.6.3-1.2.6-1.9 2.3-1.9s2 .7 2.3 1.9c.5 2 .8 4.6 2.1 4.6 1.6 0 2.2-3.4 2.6-6 .5-3 2-4.5 2-7.5C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3z",
 };
 
 export default function DemoIcon({ name, className }: { name: IconName; className?: string }) {

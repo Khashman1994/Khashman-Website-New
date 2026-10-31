@@ -550,6 +550,97 @@ function Callback({ config }: { config: Extract<WidgetConfig, { kind: "callback"
   );
 }
 
+
+/* ---------- Portfolio mit Filter ---------- */
+
+function Gallery({ config }: { config: Extract<WidgetConfig, { kind: "gallery" }> }) {
+  const [filter, setFilter] = useState(config.filters[0]);
+  const items = filter === config.filters[0] ? config.items : config.items.filter((i) => i.category === filter);
+  const ratio = { tall: "aspect-[3/4]", wide: "aspect-[4/3]", square: "aspect-square" } as const;
+  return (
+    <div>
+      <div className="flex flex-wrap gap-2" role="group" aria-label="Portfolio filtern">
+        {config.filters.map((f) => (
+          <button key={f} type="button" aria-pressed={filter === f} onClick={() => setFilter(f)} className={`${chip} ${filter === f ? chipOn : chipOff}`}>
+            {f}
+          </button>
+        ))}
+      </div>
+      <p className="sr-only" aria-live="polite">{items.length} Bilder</p>
+      <ul className="mt-8 columns-2 gap-4 md:columns-3 [&>li]:mb-4">
+        {items.map((item) => (
+          <li key={item.title} className="break-inside-avoid">
+            <figure
+              className={`group relative overflow-hidden rounded-3xl ${ratio[item.shape]} transition-[opacity,translate] duration-500 starting:translate-y-2 starting:opacity-0 motion-reduce:transition-none`}
+              style={{ background: `radial-gradient(120% 90% at 25% 20%, color-mix(in oklab, ${item.tone} 50%, white), ${item.tone} 65%, color-mix(in oklab, ${item.tone} 80%, black))` }}
+            >
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 to-transparent p-4 pt-10 text-sm text-white">
+                <span className="block font-semibold">{item.title}</span>
+                <span className="text-white/80">{item.category}</span>
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/* ---------- Online-Services einer Praxis ---------- */
+
+function OnlineServices({ config }: { config: Extract<WidgetConfig, { kind: "onlineServices" }> }) {
+  const [active, setActive] = useState(0);
+  const [done, setDone] = useState<string | null>(null);
+  const id = useId();
+  const service = config.services[active];
+
+  return (
+    <div className="grid gap-6 lg:grid-cols-[18rem_1fr]">
+      <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1" role="group" aria-label="Service wählen">
+        {config.services.map((s, i) => (
+          <button
+            key={s.name}
+            type="button"
+            aria-pressed={active === i}
+            onClick={() => {
+              setActive(i);
+              setDone(null);
+            }}
+            className={`rounded-2xl border p-4 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--d-accent)] ${
+              active === i ? "border-[color:var(--d-accent)] bg-[color:var(--d-accent)]/10" : "border-[color:var(--d-line)] hover:border-[color:var(--d-accent)]"
+            }`}
+          >
+            <span className="block font-semibold text-[color:var(--d-ink)]">{s.name}</span>
+            <span className="mt-1 block text-sm text-[color:var(--d-muted)]">{s.text}</span>
+          </button>
+        ))}
+      </div>
+      {done ? (
+        <Done text={done} onReset={() => setDone(null)} />
+      ) : (
+        <form
+          key={service.name}
+          onSubmit={(e) => {
+            e.preventDefault();
+            setDone(service.confirm);
+          }}
+          className="space-y-4"
+        >
+          <p className="font-[family-name:var(--d-display)] text-xl font-semibold text-[color:var(--d-ink)]">{service.name} anfragen</p>
+          {service.fields.map((f) => (
+            <div key={f}>
+              <label htmlFor={`${id}-${service.name}-${f}`} className={label}>{f}</label>
+              <input id={`${id}-${service.name}-${f}`} required className={input} />
+            </div>
+          ))}
+          <p className="text-sm text-[color:var(--d-muted)]">{config.note}</p>
+          <button type="submit" className={primaryBtn}>{service.name} anfragen</button>
+        </form>
+      )}
+    </div>
+  );
+}
+
 export default function DemoWidget({ config }: { config: WidgetConfig }) {
   switch (config.kind) {
     case "beforeAfter":
@@ -570,5 +661,9 @@ export default function DemoWidget({ config }: { config: WidgetConfig }) {
       return <Reserve config={config} />;
     case "callback":
       return <Callback config={config} />;
+    case "gallery":
+      return <Gallery config={config} />;
+    case "onlineServices":
+      return <OnlineServices config={config} />;
   }
 }

@@ -19,7 +19,7 @@ export const PREFILL_EVENT = "khashman:prefill-message";
 
 /* ---------- Typen ---------- */
 
-type CategoryId = "handwerk" | "gesundheit" | "beratung" | "gastro" | "lifestyle" | "handel";
+type CategoryId = "handwerk" | "gesundheit" | "beratung" | "gastro" | "lifestyle" | "handel" | "kreativ";
 
 type Industry = {
   id: string;
@@ -53,6 +53,7 @@ const CATEGORIES: { id: CategoryId | "alle"; label: string }[] = [
   { id: "gastro", label: "Gastro & Hotel" },
   { id: "lifestyle", label: "Beauty & Fitness" },
   { id: "handel", label: "Handel & Immobilien" },
+  { id: "kreativ", label: "Fotografie & Kreative" },
 ];
 
 const INDUSTRIES: Industry[] = [
@@ -87,10 +88,10 @@ const INDUSTRIES: Industry[] = [
   {
     id: "arztpraxis",
     category: "gesundheit",
-    title: "Arzt- & Zahnarztpraxis",
-    audience: "Hausärzte, Fachärzte, Zahnärzte",
-    features: ["Online-Termine über Doctolib & Co.", "Sprechzeiten und Urlaubshinweis oben", "Barrierefrei nach WCAG"],
-    mock: { domain: "praxis-dr-weber.de", headline: "Ihre Hausarztpraxis in Burtscheid", signature: "Termin online" },
+    title: "Hausarztpraxis",
+    audience: "Allgemeinmedizin, Innere Medizin, Fachärzte",
+    features: ["Online-Services für Rezept und Überweisung", "Sprechzeiten-Karte mit „heute“-Markierung", "Hinweisleiste für Urlaub und Vertretung"],
+    mock: { domain: "praxis-dr-weber.de", headline: "Ihre Hausarztpraxis in Burtscheid", signature: "Rezept anfragen" },
     hue: 195,
     featured: true,
   },
@@ -185,6 +186,25 @@ const INDUSTRIES: Industry[] = [
     features: ["Objektliste mit Filtern", "Online-Wertermittlung als Lead-Formular", "Exposé-Download nach Anfrage"],
     mock: { domain: "immo-lindner.de", headline: "Ihr Haus. Richtig bewertet.", signature: "Wert ermitteln" },
     hue: 160,
+  },
+  {
+    id: "zahnarzt",
+    category: "gesundheit",
+    title: "Zahnarztpraxis",
+    audience: "Zahnärzte, Kieferorthopäden, Oralchirurgen",
+    features: ["Bild-Slider durch die Praxisräume", "Termin-Knopf immer sichtbar", "Sprechzeiten mit „heute“-Markierung"],
+    mock: { domain: "zahnarzt-behrendt.de", headline: "Ihr gesundes Lachen, ein Leben lang", signature: "Termine online buchen" },
+    hue: 95,
+  },
+  {
+    id: "fotografie",
+    category: "kreativ",
+    title: "Fotografie",
+    audience: "Hochzeits-, Familien- und Business-Fotografen",
+    features: ["Portfolio mit Filter nach Anlass", "Kennenlern-Angebot mit Preis", "Kontaktknöpfe für WhatsApp, Telefon, Mail"],
+    mock: { domain: "lenasommer-fotografie.de", headline: "Hallo, ich bin Lena", signature: "Schnupper-Shooting" },
+    hue: 35,
+    featured: true,
   },
 ];
 
@@ -381,7 +401,7 @@ export default function IndustryShowcase({ number = "02" }: { number?: string })
             </h2>
           </div>
           <p className="max-w-sm text-fg/60">
-            14 Konzepte mit den Funktionen, die Ihre Kunden in Ihrer Branche wirklich nutzen. Wählen Sie Ihren Bereich.
+            {INDUSTRIES.length} Konzepte mit den Funktionen, die Ihre Kunden in Ihrer Branche wirklich nutzen. Wählen Sie Ihren Bereich.
           </p>
         </Reveal>
 

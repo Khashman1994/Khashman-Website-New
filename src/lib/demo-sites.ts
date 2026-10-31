@@ -7,7 +7,7 @@ export type DemoFont = "serif" | "grotesk" | "sans";
 
 export type DemoIcon =
   | "brush" | "car" | "sparkle" | "stethoscope" | "activity" | "file" | "scale"
-  | "compass" | "utensils" | "bed" | "scissors" | "dumbbell" | "bag" | "home";
+  | "compass" | "utensils" | "bed" | "scissors" | "dumbbell" | "bag" | "home" | "camera" | "tooth";
 
 export type DemoTheme = {
   bg: string;
@@ -53,7 +53,51 @@ export type DemoWidget =
   | { kind: "availability"; month: string; startWeekday: number; days: number; booked: number[]; pricePerNight: number }
   | { kind: "schedule"; days: { name: string; classes: { time: string; name: string; spots: number }[] }[] }
   | { kind: "reserve"; products: { name: string; text: string; price: string; stock: number }[] }
-  | { kind: "callback"; areas: string[]; confirm: string };
+  | { kind: "callback"; areas: string[]; confirm: string }
+  | {
+      kind: "gallery";
+      filters: string[];
+      items: { title: string; category: string; shape: "tall" | "wide" | "square"; tone: string }[];
+    }
+  | {
+      kind: "onlineServices";
+      note: string;
+      services: { name: string; text: string; fields: string[]; confirm: string }[];
+    };
+
+/* ---------- Zusatzinhalte für die besonderen Layouts ---------- */
+
+/** Luftiges Layout für Kreative (inspiriert von Fotografinnen-Websites) */
+export type AtelierContent = {
+  greeting: string;
+  intro: { eyebrow: string; title: string; text: string };
+  categories: { title: string; text: string; tone: string }[];
+  statement: { eyebrow: string; title: string; text: string };
+  offer: { eyebrow: string; title: string; text: string; price: string; cta: string };
+  closing: { title: string; text: string; cta: string };
+  contactLine: string;
+};
+
+/** Klassisch zentriertes Layout (Logo und Menü mittig, Bild-Slider) */
+export type ClassicContent = {
+  subline: string;
+  slides: { label: string; caption: string; tone: string }[];
+  letter: { salutation: string; paragraphs: string[]; signature: string };
+  treatments: { title: string; text: string }[];
+  team: { name: string; role: string }[];
+  hours: { day: string; time: string }[];
+};
+
+/** Praxis-Portal (Hinweisleiste, Sprechzeiten-Karte, Online-Services) */
+export type PortalContent = {
+  announcement: { text: string; link: string };
+  hours: { day: string; consult: string; phone: string }[];
+  hoursNote: string;
+  notice: { label: string; title: string; text: string };
+  intro: { title: string; paragraphs: string[] };
+  departments: { name: string; items: string[] }[];
+  doctors: { name: string; role: string; focus: string }[];
+};
 
 export type DemoSite = {
   slug: string;
@@ -80,6 +124,11 @@ export type DemoSite = {
   widget: { title: string; text: string; config: DemoWidget };
   testimonials: { quote: string; name: string; role: string }[];
   contact: { address: string; hours: string[]; cta: string };
+  /** Seitenaufbau – ohne Angabe die Standard-Vorlage */
+  layout?: "standard" | "atelier" | "classic" | "portal";
+  atelier?: AtelierContent;
+  classic?: ClassicContent;
+  portal?: PortalContent;
 };
 
 export const DEMO_SITES: DemoSite[] = [
@@ -238,18 +287,19 @@ export const DEMO_SITES: DemoSite[] = [
     domain: "praxis-dr-weber.de",
     icon: "stethoscope",
     font: "sans",
+    layout: "portal",
     palettes: {
-      light: { bg: "#ffffff", surface: "#f2f6fb", ink: "#122033", muted: "#4f5d70", line: "#dfe6ef", accent: "#1d5fd1", onAccent: "#ffffff", accentText: "#1d5fd1" },
-      dark: { bg: "#0d121c", surface: "#171e2b", ink: "#e9edf4", muted: "#9da7b8", line: "#2a3345", accent: "#2b6ee2", onAccent: "#ffffff", accentText: "#4f86e6" },
+      light: { bg: "#ffffff", surface: "#eef6f6", ink: "#12302f", muted: "#4a6261", line: "#d8e8e8", accent: "#17767b", onAccent: "#ffffff", accentText: "#17767b" },
+      dark: { bg: "#0d1516", surface: "#142021", ink: "#e9f3f3", muted: "#9fb4b4", line: "#23393a", accent: "#3fb3b8", onAccent: "#0d1516", accentText: "#4cc2c7" },
     },
-    nav: ["Praxis", "Leistungen", "Team", "Termine"],
+    nav: ["Über uns", "Online-Services", "Fachbereiche", "Ärzte"],
     hero: {
-      eyebrow: "Allgemeinmedizin · Burtscheid",
+      eyebrow: "Gemeinschaftspraxis für Allgemeinmedizin und Innere Medizin",
       title: "Ihre Hausarztpraxis in Burtscheid",
-      text: "Termine online buchen, Rezepte bestellen und alle Infos zur Praxis an einem Ort. Neue Patientinnen und Patienten sind willkommen.",
-      primary: "Termin online buchen",
-      secondary: "Sprechzeiten",
-      badge: { label: "Heute geöffnet", value: "8:00–12:00 · 15:00–18:00" },
+      text: "Rezepte, Überweisungen und Termine erledigen Sie bei uns auch online. So bleibt am Telefon mehr Zeit für die, die uns dringend brauchen.",
+      primary: "Online-Service",
+      secondary: "Kontakt aufnehmen",
+      badge: { label: "Heute", value: "Sprechstunde 8–12 Uhr" },
     },
     facts: [["3", "Ärztinnen und Ärzte"], ["< 3 Tage", "Wartezeit auf Termin"], ["barrierefrei", "Zugang mit Aufzug"]],
     servicesTitle: "Unsere Leistungen",
@@ -260,26 +310,54 @@ export const DEMO_SITES: DemoSite[] = [
       { title: "Labor und EKG", text: "Blutentnahme, Ruhe-EKG und Langzeit-Blutdruck vor Ort." },
     ],
     widget: {
-      title: "Termin online",
-      text: "Wählen Sie den Anlass. Akute Beschwerden: bitte rufen Sie an.",
+      title: "Unsere Online-Services",
+      text: "Für Patientinnen und Patienten, die schon bei uns in Behandlung sind.",
       config: {
-        kind: "booking",
+        kind: "onlineServices",
+        note: "Die Versichertenkarte muss im laufenden Quartal in der Praxis eingelesen sein.",
         services: [
-          { name: "Sprechstunde", detail: "Bekannte Beschwerden, Kontrolle" },
-          { name: "Vorsorge", detail: "Check-up, Screening" },
-          { name: "Impfung", detail: "Bitte Impfpass mitbringen" },
+          { name: "Rezept", text: "Wiederholungsrezept als E-Rezept anfragen, Abholung mit der Karte in der Apotheke.", fields: ["Name", "Geburtsdatum", "Medikament und Stärke"], confirm: "Rezeptanfrage eingegangen. Das E-Rezept liegt in der Regel nach einem Werktag bereit." },
+          { name: "Überweisung", text: "Für einen bereits vereinbarten Facharzttermin.", fields: ["Name", "Geburtsdatum", "Fachrichtung"], confirm: "Überweisung angefragt. Sie können sie ab morgen 10 Uhr am Empfang abholen." },
+          { name: "Impfberatung", text: "Termin für Reise-, Grippe- oder Auffrischimpfungen.", fields: ["Name", "Telefon", "Welche Impfung?"], confirm: "Danke. Wir rufen Sie innerhalb von zwei Werktagen für einen Termin an." },
+          { name: "Videosprechstunde", text: "Für Befundbesprechungen und leichte Infekte ohne Untersuchung.", fields: ["Name", "E-Mail", "Anliegen in einem Satz"], confirm: "Anfrage eingegangen. Den Link zur Videosprechstunde bekommen Sie per E-Mail." },
         ],
-        staff: ["Dr. Weber", "Dr. Yilmaz", "Egal"],
-        days: ["Mo", "Di", "Mi", "Do", "Fr"],
-        slots: ["8:15", "9:00", "10:30", "15:15", "16:00", "17:30"],
-        confirm: "Termin reserviert. Die Bestätigung kommt per E-Mail.",
       },
     },
     testimonials: [
-      { quote: "Termin am Abend online gebucht, am nächsten Morgen dran. Sehr freundliches Team.", name: "Petra M.", role: "Patientin" },
-      { quote: "Rezept online bestellt und am selben Tag in der Apotheke abgeholt.", name: "Hans-Jürgen K.", role: "Patient" },
+      { quote: "Rezept abends online angefragt, am nächsten Tag in der Apotheke abgeholt. So einfach.", name: "Hans-Jürgen K.", role: "Patient" },
+      { quote: "Freundlich, gründlich und man wird auch bei vollem Wartezimmer nicht abgefertigt.", name: "Petra M.", role: "Patientin" },
     ],
-    contact: { address: "Kurparkstraße 3, 52066 Aachen", hours: ["Mo, Di, Do 8:00–12:00 und 15:00–18:00", "Mi, Fr 8:00–12:00"], cta: "Rezept bestellen" },
+    contact: { address: "Kurparkstraße 3, 52066 Aachen", hours: ["Telefon Mo–Fr 8–12 Uhr", "Nachmittags Mo, Di, Do 15–17 Uhr"], cta: "Kontakt aufnehmen" },
+    portal: {
+      announcement: { text: "Vom 23.12. bis 02.01. ist die Praxis geschlossen. Die Vertretung übernimmt Praxis Dr. Lenz.", link: "Alle Hinweise lesen" },
+      hours: [
+        { day: "Montag", consult: "8–12 · 16–18", phone: "8–12 · 15–17" },
+        { day: "Dienstag", consult: "8–12 · 16–18", phone: "8–12 · 15–17" },
+        { day: "Mittwoch", consult: "8–12", phone: "8–12" },
+        { day: "Donnerstag", consult: "8–12 · 16–18", phone: "8–12 · 15–17" },
+        { day: "Freitag", consult: "8–12", phone: "8–12" },
+      ],
+      hoursNote: "Termine nach Vereinbarung. In Notfällen außerhalb der Sprechzeiten: 116 117.",
+      notice: { label: "Wichtig", title: "E-Rezept: Karte einmal pro Quartal einlesen", text: "Damit wir Ihnen ein E-Rezept ausstellen können, muss Ihre Versichertenkarte im laufenden Quartal einmal in der Praxis eingelesen worden sein." },
+      intro: {
+        title: "Wir sind für Sie da",
+        paragraphs: [
+          "Seit über 25 Jahren betreuen wir Familien in Burtscheid und Umgebung, vom ersten Infekt bis zur Begleitung im Alter.",
+          "Wir nehmen uns Zeit für Ihre Fragen und arbeiten eng mit Fachärzten und Kliniken in Aachen zusammen.",
+        ],
+      },
+      departments: [
+        { name: "Hausärztliche Leistungen", items: ["Akut- und Langzeitbehandlung", "EKG, Langzeit- und Belastungs-EKG", "Ultraschall Bauch und Schilddrüse", "Lungenfunktion", "Hausbesuche"] },
+        { name: "Vorsorge", items: ["Check-up ab 35", "Hautkrebs-Screening", "Jugendschutzuntersuchung", "Impfberatung"] },
+        { name: "Chronische Erkrankungen", items: ["Diabetes Typ 2", "Koronare Herzkrankheit", "Asthma und COPD", "Osteoporose"] },
+        { name: "Geriatrie & Palliativ", items: ["Geriatrisches Basisassessment", "Palliativmedizinische Begleitung", "Zusammenarbeit mit Pflegediensten"] },
+      ],
+      doctors: [
+        { name: "Dr. med. Anna Weber", role: "Fachärztin für Allgemeinmedizin", focus: "Palliativmedizin, Geriatrie" },
+        { name: "Dr. med. Kerem Yilmaz", role: "Facharzt für Innere Medizin", focus: "Ultraschall, Diabetologie" },
+        { name: "Julia Brandt", role: "Ärztin in Weiterbildung", focus: "Reisemedizin, Impfungen" },
+      ],
+    },
   },
   {
     slug: "physio",
@@ -778,6 +856,170 @@ export const DEMO_SITES: DemoSite[] = [
       { quote: "Über den Suchauftrag unsere Wohnung gefunden, bevor sie online war.", name: "Daniel & Sophie", role: "Käufer" },
     ],
     contact: { address: "Hubertusstraße 1, 52064 Aachen", hours: ["Mo–Fr 9:00–18:00", "Besichtigungen auch samstags"], cta: "Bewertung anfragen" },
+  },
+  {
+    slug: "fotografie",
+    industry: "Fotografie",
+    name: "Lena Sommer Fotografie",
+    logoMark: "LS",
+    domain: "lenasommer-fotografie.de",
+    icon: "camera",
+    font: "sans",
+    layout: "atelier",
+    palettes: {
+      light: { bg: "#fbf8f4", surface: "#f2ebe2", ink: "#3e4b58", muted: "#5d6873", line: "#e6ddd1", accent: "#86663a", onAccent: "#ffffff", accentText: "#7d5f36" },
+      dark: { bg: "#16171a", surface: "#211f1d", ink: "#f1ece6", muted: "#b3aba1", line: "#34302b", accent: "#c9a46a", onAccent: "#16171a", accentText: "#c9a46a" },
+    },
+    nav: ["Business", "Familie", "Hochzeit", "Über mich"],
+    hero: {
+      eyebrow: "Fotografin in Aachen",
+      title: "Hallo, ich bin Lena",
+      text: "Ich fotografiere Menschen so, wie sie sind. Ohne steife Posen, mit viel Zeit und einem Blick für das Licht, das euch am besten steht.",
+      primary: "Termin vereinbaren",
+      secondary: "Portfolio ansehen",
+      badge: { label: "Nächster freier Samstag", value: "14. November" },
+    },
+    facts: [["12 Jahre", "Erfahrung"], ["340+", "Hochzeiten und Familien"], ["2 Wochen", "bis zu euren Bildern"]],
+    servicesTitle: "Was darf es sein?",
+    services: [],
+    widget: {
+      title: "Ein Blick ins Portfolio",
+      text: "Filtert nach dem, was euch interessiert. Auf der echten Seite stehen hier eure Lieblingsbilder.",
+      config: {
+        kind: "gallery",
+        filters: ["Alle", "Hochzeit", "Familie", "Business"],
+        items: [
+          { title: "Trauung im Dom", category: "Hochzeit", shape: "tall", tone: "#d9c7b0" },
+          { title: "Sonntag im Westpark", category: "Familie", shape: "square", tone: "#c9d3c5" },
+          { title: "Gründerin im Atelier", category: "Business", shape: "wide", tone: "#c7ccd4" },
+          { title: "Erster Tanz", category: "Hochzeit", shape: "square", tone: "#e3d2c4" },
+          { title: "Geschwister am Lousberg", category: "Familie", shape: "tall", tone: "#d6dccb" },
+          { title: "Team-Porträts", category: "Business", shape: "square", tone: "#cfd3d9" },
+          { title: "Getting Ready", category: "Hochzeit", shape: "wide", tone: "#e8dccf" },
+          { title: "Neugeborenen-Shooting", category: "Familie", shape: "square", tone: "#efe3d6" },
+        ],
+      },
+    },
+    testimonials: [
+      { quote: "Wir hatten Angst vor der Kamera. Nach zehn Minuten haben wir sie vergessen, und genau das sieht man auf den Bildern.", name: "Sarah & Tobias", role: "Hochzeit im Juni" },
+      { quote: "Endlich Bewerbungsfotos, auf denen ich aussehe wie ich. Der Termin war entspannter als jeder Friseurbesuch.", name: "Mareike L.", role: "Business-Porträt" },
+    ],
+    contact: { address: "Studio in der Jakobstraße, 52064 Aachen", hours: ["Shootings nach Vereinbarung", "Auch abends und am Wochenende"], cta: "Termin vereinbaren" },
+    atelier: {
+      greeting: "Fotografin aus Aachen mit einem Blick für das Echte.",
+      intro: {
+        eyebrow: "Lena Sommer, eure Fotografin aus Aachen",
+        title: "Hochzeit, Familie oder Business: Bilder, die nach euch aussehen.",
+        text: "Ich begleite euch mit Ruhe, Erfahrung und einem feinen Gespür für Licht und Stimmung. Ein gutes Foto ist für mich eine Erinnerung, die man anfassen kann.",
+      },
+      categories: [
+        { title: "Business & Personal Branding", text: "Porträts für Website, Bewerbung und LinkedIn, die kompetent wirken, ohne steif zu sein.", tone: "#c7ccd4" },
+        { title: "Porträt & Familie", text: "Echte Nähe statt gestellter Posen, im Studio, zu Hause oder draußen im Grünen.", tone: "#d6dccb" },
+        { title: "Hochzeit", text: "Unaufdringlich durch euren Tag, von den ersten Vorbereitungen bis zur Party.", tone: "#e3d2c4" },
+      ],
+      statement: {
+        eyebrow: "Mein Stil",
+        title: "Echte Momente statt gestellter Bilder.",
+        text: "Zeitlose Bearbeitung statt kurzlebiger Filter. Warme, lebendige Bilder, die ihr in zwanzig Jahren noch genauso gern anschaut wie am ersten Tag.",
+      },
+      offer: {
+        eyebrow: "Zum Kennenlernen",
+        title: "Schnupper-Shooting im Studio",
+        text: "In etwa 15 Minuten entstehen natürliche Bilder, aus denen ihr in Ruhe eure Favoriten auswählt. Ideal, um zu sehen, ob wir zusammenpassen.",
+        price: "49 €",
+        cta: "Schnupper-Termin buchen",
+      },
+      closing: {
+        title: "Lass uns Erinnerungen schaffen",
+        text: "Ich freue mich darauf, euch kennenzulernen und Bilder zu machen, die ihr gern anschaut, teilt und aufbewahrt.",
+        cta: "Termin vereinbaren",
+      },
+      contactLine: "hallo@lenasommer-fotografie.de · 0241 / 00 00 00",
+    },
+  },
+  {
+    slug: "zahnarzt",
+    industry: "Zahnarztpraxis",
+    name: "Zahnärzte Dr. Behrendt & Kollegen",
+    logoMark: "B",
+    domain: "zahnarzt-behrendt.de",
+    icon: "tooth",
+    font: "sans",
+    layout: "classic",
+    palettes: {
+      light: { bg: "#ffffff", surface: "#f3f4f2", ink: "#33383d", muted: "#5a6167", line: "#e3e6e1", accent: "#5a7a35", onAccent: "#ffffff", accentText: "#55733a" },
+      dark: { bg: "#121412", surface: "#1b1e1a", ink: "#eef0ec", muted: "#a8aea3", line: "#2c3129", accent: "#8db45c", onAccent: "#121412", accentText: "#9cc06c" },
+    },
+    nav: ["Startseite", "Behandlung", "Das Team", "Praxisrundgang", "Kontakt & Anfahrt"],
+    hero: {
+      eyebrow: "Zahnarztpraxis in Aachen",
+      title: "Ihr gesundes Lachen, ein Leben lang.",
+      text: "Moderne Zahnmedizin mit Zeit für Ihre Fragen.",
+      primary: "Termine online buchen",
+      secondary: "Behandlungen",
+      badge: { label: "Angstpatienten", value: "willkommen" },
+    },
+    facts: [["3", "Zahnärzte"], ["30 Jahre", "am Standort"], ["Mo–Fr", "Sprechstunde"]],
+    servicesTitle: "Behandlungsschwerpunkte",
+    services: [],
+    widget: {
+      title: "Termin online buchen",
+      text: "Wählen Sie den Anlass. Bei Schmerzen bekommen Sie noch am selben Tag einen Termin.",
+      config: {
+        kind: "booking",
+        services: [
+          { name: "Kontrolle", detail: "30 Min. · Bonusheft-Stempel" },
+          { name: "Prophylaxe", detail: "60 Min. · professionelle Zahnreinigung" },
+          { name: "Schmerzen", detail: "Termin noch heute" },
+        ],
+        staff: ["Dr. Behrendt", "Dr. Sander", "Egal"],
+        days: ["Mo", "Di", "Mi", "Do", "Fr"],
+        slots: ["8:00", "9:30", "11:00", "13:30", "15:00", "16:30"],
+        confirm: "Termin gebucht. Sie bekommen eine Erinnerung per SMS am Vortag.",
+      },
+    },
+    testimonials: [
+      { quote: "Ich hatte jahrelang Angst vor dem Zahnarzt. Hier wird jeder Schritt erklärt, bevor er passiert.", name: "Monika R.", role: "Patientin seit 2019" },
+      { quote: "Implantat ohne Probleme, Kosten vorher genau erklärt. Rundum gut aufgehoben.", name: "Werner S.", role: "Patient" },
+    ],
+    contact: { address: "Vaalser Weg 12, 52074 Aachen", hours: ["Mo, Di, Do 8:00–12:30 und 13:30–17:30", "Mi, Fr 8:00–13:00"], cta: "Termin vereinbaren" },
+    classic: {
+      subline: "Dr. Jan Behrendt · Dr. Mira Sander und Kollegen",
+      slides: [
+        { label: "Behandlungsraum", caption: "Helle Behandlungsräume mit moderner Technik", tone: "#dfe7ea" },
+        { label: "Empfang", caption: "Persönlicher Empfang, kurze Wartezeiten", tone: "#e7e9e1" },
+        { label: "Wartebereich", caption: "Ruhiger Wartebereich mit Blick ins Grüne", tone: "#e2e8dc" },
+      ],
+      letter: {
+        salutation: "Liebe Patientinnen und Patienten,",
+        paragraphs: [
+          "herzlich willkommen in unserer Zahnarztpraxis am Westrand von Aachen. Wir behandeln Sie mit moderner Technik und bilden uns regelmäßig fort, damit Sie von aktuellen Methoden profitieren.",
+          "Uns ist wichtig, dass Sie sich bei uns sicher fühlen. Deshalb erklären wir jeden Schritt, bevor er passiert, und nehmen uns Zeit für Ihre Fragen.",
+          "Sie möchten einen Termin oder haben eine Frage? Buchen Sie online oder rufen Sie uns an. Wir freuen uns auf Sie.",
+        ],
+        signature: "Ihr Dr. Jan Behrendt und das Praxisteam",
+      },
+      treatments: [
+        { title: "Prophylaxe", text: "Professionelle Zahnreinigung, Kontrolle und Beratung für gesunde Zähne." },
+        { title: "Implantate", text: "Fester Zahnersatz mit digitaler Planung und transparentem Kostenplan." },
+        { title: "Wurzelbehandlung", text: "Zahnerhalt mit Mikroskop und elektronischer Längenmessung." },
+        { title: "Parodontitis", text: "Behandlung von Zahnfleischentzündungen nach aktuellem Konzept." },
+        { title: "Zahnersatz", text: "Kronen, Brücken und Prothesen aus zertifizierten Laboren." },
+        { title: "Angstpatienten", text: "Ruhige Termine, Pausen auf Handzeichen, auf Wunsch Lachgas." },
+      ],
+      team: [
+        { name: "Dr. Jan Behrendt", role: "Zahnarzt, Implantologie" },
+        { name: "Dr. Mira Sander", role: "Zahnärztin, Endodontie" },
+        { name: "Tom Keller", role: "Zahnarzt, Kinderzahnheilkunde" },
+      ],
+      hours: [
+        { day: "Montag", time: "08:00–12:30 und 13:30–17:30" },
+        { day: "Dienstag", time: "08:00–12:30 und 13:30–17:30" },
+        { day: "Mittwoch", time: "08:00–13:30" },
+        { day: "Donnerstag", time: "08:00–12:30 und 13:30–17:30" },
+        { day: "Freitag", time: "08:00–12:30" },
+      ],
+    },
   },
 ];
 

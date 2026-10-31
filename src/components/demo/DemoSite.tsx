@@ -1,33 +1,39 @@
 import DemoIcon from "@/components/demo/DemoIcon";
 import DemoShell from "@/components/demo/DemoShell";
 import DemoWidget from "@/components/demo/DemoWidget";
-import type { DemoFont, DemoSite as Site } from "@/lib/demo-sites";
+import AtelierLayout from "@/components/demo/layouts/Atelier";
+import ClassicLayout from "@/components/demo/layouts/Classic";
+import PortalLayout from "@/components/demo/layouts/Portal";
+import { DISPLAY_FONT, DemoFooter, display, ghostBtn, ink, line, muted, primaryBtn } from "@/components/demo/ui";
+import type { DemoSite as Site } from "@/lib/demo-sites";
 
 /* Vorlage für alle Beispiel-Websites. Farben und Schriften kommen pro Branche
-   aus demo-sites.ts und werden als CSS-Variablen (--d-*) gesetzt. */
-
-const DISPLAY_FONT: Record<DemoFont, string> = {
-  serif: "var(--font-fraunces), Georgia, serif",
-  grotesk: "var(--font-bricolage), ui-sans-serif, system-ui, sans-serif",
-  sans: "var(--font-jakarta), ui-sans-serif, system-ui, sans-serif",
-};
+   aus demo-sites.ts und werden als CSS-Variablen (--d-*) gesetzt.
+   Manche Branchen haben einen eigenen Seitenaufbau (layout). */
 
 const SECTION_IDS = ["leistungen", "funktion", "stimmen", "kontakt"];
-
-const display = "font-[family-name:var(--d-display)]";
-const muted = "text-[color:var(--d-muted)]";
-const ink = "text-[color:var(--d-ink)]";
-const line = "border-[color:var(--d-line)]";
-const primaryBtn =
-  "inline-flex min-h-12 items-center justify-center rounded-full bg-[color:var(--d-accent)] px-6 font-semibold text-[color:var(--d-on-accent)] transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--d-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--d-bg)]";
-const ghostBtn =
-  "inline-flex min-h-12 items-center justify-center rounded-full border border-[color:var(--d-line)] px-6 font-semibold text-[color:var(--d-ink)] transition-colors hover:border-[color:var(--d-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--d-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--d-bg)]";
 
 /* ---------- Seite ---------- */
 
 export default function DemoSite({ site }: { site: Site }) {
   return (
     <DemoShell industry={site.industry} palettes={site.palettes} display={DISPLAY_FONT[site.font]}>
+      {site.layout === "atelier" && site.atelier ? (
+        <AtelierLayout site={site} content={site.atelier} />
+      ) : site.layout === "classic" && site.classic ? (
+        <ClassicLayout site={site} content={site.classic} />
+      ) : site.layout === "portal" && site.portal ? (
+        <PortalLayout site={site} content={site.portal} />
+      ) : (
+        <StandardLayout site={site} />
+      )}
+    </DemoShell>
+  );
+}
+
+function StandardLayout({ site }: { site: Site }) {
+  return (
+    <>
       {/* Kopfzeile des fiktiven Betriebs */}
       <header className={`border-b ${line}`}>
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
@@ -169,14 +175,7 @@ export default function DemoSite({ site }: { site: Site }) {
         </section>
       </main>
 
-      <footer className={`border-t ${line}`}>
-        <div className={`mx-auto flex max-w-6xl flex-col gap-4 px-4 py-10 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6 ${muted}`}>
-          <p>
-            <span className={`font-semibold ${ink}`}>{site.name}</span> · {site.domain}
-          </p>
-          <p>Impressum · Datenschutz · Fiktiver Betrieb, Design von Khashman Webdesign</p>
-        </div>
-      </footer>
-    </DemoShell>
+      <DemoFooter name={site.name} domain={site.domain} />
+    </>
   );
 }
