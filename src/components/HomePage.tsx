@@ -73,6 +73,14 @@ function PhoneIcon({ className }: IconProps) {
   );
 }
 
+function StarIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3z" />
+    </svg>
+  );
+}
+
 function MailIcon({ className }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -145,6 +153,7 @@ function buildJsonLd(locale: Locale, t: Dictionary) {
           { "@type": "Country", name: t.jsonLd.country },
         ],
         founder: { "@type": "Person", name: SITE.owner, jobTitle: t.jsonLd.jobTitle },
+        sameAs: [SITE.googleProfileUrl],
         knowsAbout: t.jsonLd.knowsAbout,
         hasOfferCatalog: {
           "@type": "OfferCatalog",
@@ -485,6 +494,21 @@ export default function HomePage({ locale }: { locale: Locale }) {
                 <span>
                   <span className="block font-medium">{t.contact.email}</span>
                   <span className="block text-sm text-fg/50">{SITE.email}</span>
+                </span>
+              </a>
+
+              <a
+                href={SITE.googleProfileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-3xl border border-fg/10 bg-fg/[0.03] p-5 transition-colors hover:border-amber-400/50 hover:bg-amber-400/5"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-amber-400 text-ink-950">
+                  <StarIcon className="h-6 w-6" />
+                </span>
+                <span>
+                  <span className="block font-medium">{t.contact.google}</span>
+                  <span className="block text-sm text-fg/50">{t.contact.googleHint}</span>
                 </span>
               </a>
             </Reveal>

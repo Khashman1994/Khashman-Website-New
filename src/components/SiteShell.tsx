@@ -55,6 +55,9 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
                   <a href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-fg/70 hover:text-fg">
                     WhatsApp
                   </a>
+                  <a href={SITE.googleProfileUrl} target="_blank" rel="noopener noreferrer" className="text-fg/70 hover:text-fg">
+                    {t.footer.google}
+                  </a>
                 </div>
                 <div className="flex flex-col gap-3">
                   <p className="text-fg/40">{t.footer.legal}</p>

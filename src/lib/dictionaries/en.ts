@@ -229,6 +229,8 @@ const en: Dictionary = {
     whatsapp: "WhatsApp",
     call: "Call",
     email: "Email",
+    google: "Google profile",
+    googleHint: "Read and write reviews",
   },
 
   form: {
@@ -271,6 +273,7 @@ const en: Dictionary = {
     legal: "Legal",
     imprint: "Legal notice (German)",
     privacy: "Privacy policy (German)",
+    google: "Google profile & reviews",
     rights: "All rights reserved.",
   },
 

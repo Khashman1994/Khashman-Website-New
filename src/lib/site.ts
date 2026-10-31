@@ -21,4 +21,6 @@ export const SITE = {
   phoneE164: "+491735434710",
   whatsappDisplay: "+49 159 08048034",
   whatsappUrl: "https://wa.me/4915908048034",
+  // Google-Unternehmensprofil „Khashman Webdesign“ (Bewertungen lesen und schreiben)
+  googleProfileUrl: "https://share.google/hbwKj5Tkv52VqvrRC",
 } as const;

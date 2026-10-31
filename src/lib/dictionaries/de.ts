@@ -228,6 +228,8 @@ const de = {
     whatsapp: "WhatsApp",
     call: "Anrufen",
     email: "E-Mail",
+    google: "Google-Profil",
+    googleHint: "Bewertungen lesen und schreiben",
   },
 
   form: {
@@ -271,6 +273,7 @@ const de = {
     legal: "Rechtliches",
     imprint: "Impressum",
     privacy: "Datenschutz",
+    google: "Google-Profil & Bewertungen",
     rights: "Alle Rechte vorbehalten.",
   },
 
