@@ -38,9 +38,11 @@ export default function AtelierLayout({ site, content }: { site: DemoSite; conte
             </a>
           ))}
         </nav>
-        <a href="#angebot" className={`${ghostBtn} hidden min-h-11 text-sm sm:inline-flex`}>
-          {site.hero.primary}
-        </a>
+        <div className="hidden shrink-0 sm:block">
+          <a href="#angebot" className={`${ghostBtn} min-h-11 text-sm`}>
+            {site.hero.primary}
+          </a>
+        </div>
       </header>
 
       <main id="top">

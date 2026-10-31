@@ -43,9 +43,11 @@ export default function PortalLayout({ site, content }: { site: DemoSite; conten
               </a>
             ))}
           </nav>
-          <a href="#kontakt" className={`${primaryBtn} hidden min-h-11 rounded-lg px-5 text-sm sm:inline-flex`}>
-            {site.hero.secondary}
-          </a>
+          <div className="hidden shrink-0 sm:block">
+            <a href="#kontakt" className={`${primaryBtn} min-h-11 rounded-lg px-5 text-sm`}>
+              {site.hero.secondary}
+            </a>
+          </div>
         </div>
       </header>
 
