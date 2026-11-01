@@ -3,7 +3,7 @@ import Link from "next/link";
 import { formatDate, getAllPosts, readingTime } from "@/lib/blog";
 
 export const metadata = {
-  title: "Blog | Khashman Webdesign",
+  title: "Blog",
   description: "Tipps und Neuigkeiten rund um Webdesign, Local SEO und Datenschutz für Selbstständige, Handwerker und KMU in Aachen.",
   alternates: { canonical: "/blog" },
 };
