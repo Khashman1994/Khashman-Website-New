@@ -6,7 +6,7 @@ import path from "node:path";
 
 const TOKEN = "5323da2a-5529-4d90-8f34-a9a29aa89df9";
 const API = "https://app.trysoro.com";
-const LAST_DAY = "2026-11-16"; // danach macht das Skript nichts mehr
+const LAST_DAY = "2026-11-30"; // danach macht das Skript nichts mehr
 const ROOT = process.cwd();
 const HEADERS = { "User-Agent": "Mozilla/5.0 (soro-sync; khashman-webdesign.de)", Referer: "https://www.khashman-webdesign.de/blog" };
 const CONTENT = path.join(ROOT, "content", "blog");

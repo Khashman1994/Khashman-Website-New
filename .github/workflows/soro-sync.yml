@@ -1,5 +1,5 @@
 # Holt täglich neue Soro-Artikel in den Blog (content/blog + public/blog).
-# Läuft bis zum Ende des Soro-Abos (15.11.2026); danach beendet sich das Skript selbst
+# Läuft bis Ende November 2026 (30.11.); danach beendet sich das Skript selbst
 # und diese Datei kann gelöscht werden.
 # Manuell starten: GitHub → Actions → "Soro-Artikel übernehmen" → Run workflow
 name: Soro-Artikel übernehmen
