@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/blog";
 import { HOME_PATH, LOCALES } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 
@@ -23,6 +24,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "weekly" as const,
     priority: 0.7,
   });
+
+  // Jeder Blog-Artikel mit eigener Adresse
+  for (const post of getAllPosts()) {
+    pages.push({
+      url: absolute(`/blog/${post.slug}`),
+      lastModified: new Date(post.date),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+    });
+  }
 
   return pages;
 }
