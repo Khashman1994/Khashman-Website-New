@@ -1,0 +1,37 @@
+# Holt täglich neue Soro-Artikel in den Blog (content/blog + public/blog).
+# Läuft bis zum Ende des Soro-Abos (15.11.2026); danach beendet sich das Skript selbst
+# und diese Datei kann gelöscht werden.
+# Manuell starten: GitHub → Actions → "Soro-Artikel übernehmen" → Run workflow
+name: Soro-Artikel übernehmen
+
+on:
+  schedule:
+    - cron: "17 13 * * *" # täglich 14:17 Uhr deutscher Zeit
+    - cron: "47 20 * * *" # zweiter Versuch am Abend, falls ein Artikel später kommt
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: soro-sync
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/soro-sync.mjs
+      - name: Neue Artikel committen (löst das Vercel-Deployment aus)
+        run: |
+          git add content/blog public/blog
+          if git diff --cached --quiet; then
+            echo "Nichts Neues."
+            exit 0
+          fi
+          git config user.name "Khashman Alturki"
+          git config user.email "khashman1994@gmail.com"
+          git commit -m "Blog: neue Soro-Artikel übernehmen"
+          git push
