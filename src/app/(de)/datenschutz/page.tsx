@@ -80,6 +80,16 @@ export default function Datenschutz() {
         </a>
         .
       </p>
+      <h3>Reichweitenmessung (Vercel Analytics)</h3>
+      <p>
+        Zur Auswertung, wie diese Website genutzt wird, setze ich Vercel Analytics ein. Es werden dabei keine Cookies
+        gesetzt und keine personenbezogenen Nutzerprofile erstellt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO
+        (berechtigtes Interesse an der Verbesserung meines Angebots). Weitere Informationen:{" "}
+        <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">
+          vercel.com/docs/analytics/privacy-policy
+        </a>
+        .
+      </p>
       <h3>Übermittlung in die USA</h3>
       <p>
         Die genannten Anbieter verarbeiten Daten auch in den USA. Die Übermittlung erfolgt auf Grundlage des
