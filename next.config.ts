@@ -15,6 +15,23 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // Sicherheits-Header für alle Seiten: Schutz vor Einbettung (Clickjacking),
+  // MIME-Sniffing, unnötigen Browser-Rechten und erzwungenem HTTPS
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'none'; base-uri 'self'; form-action 'self'" },
+        ],
+      },
+    ];
+  },
   experimental: {
     // Zwei Root-Layouts (Deutsch/Englisch) → 404 kommt aus app/global-not-found.tsx
     globalNotFound: true,

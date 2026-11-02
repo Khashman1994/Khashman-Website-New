@@ -1,0 +1,13 @@
+# Prüft jede Woche, ob Pakete oder GitHub-Aktionen Sicherheitsupdates brauchen,
+# und öffnet dafür automatisch Pull Requests.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
