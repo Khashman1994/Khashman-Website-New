@@ -1,4 +1,5 @@
 import MagneticButton from "@/components/MagneticButton";
+import ParticleField from "@/components/ParticleField";
 import HeroCanvas from "@/components/three/HeroCanvas";
 import type { Dictionary } from "@/lib/i18n";
 
@@ -68,6 +69,9 @@ export default function AnimatedHero({ t }: { t: HeroText }) {
         aria-hidden="true"
         className="hero-grid pointer-events-none absolute inset-0"
       />
+
+      {/* Dezente Partikel hinter der 3D-Szene; starten erst im Leerlauf nach dem Laden */}
+      <ParticleField defer className="absolute inset-0 h-full w-full opacity-60" />
 
       {/* Beim Wegscrollen zoomt die Szene leicht heran und blendet aus. Unter lg nur die obere Hälfte. */}
       <div className="scene-scroll-out absolute inset-x-0 top-0 h-[58%] lg:inset-y-0 lg:left-[30%] lg:h-auto">

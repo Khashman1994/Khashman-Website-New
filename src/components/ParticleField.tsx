@@ -33,7 +33,8 @@ function createParticles(count: number): Particle[] {
   });
 }
 
-export default function ParticleField({ className }: { className?: string }) {
+// defer: Start erst im Leerlauf nach dem Laden (für Bereiche, die sofort im Bild sind, z. B. der Hero)
+export default function ParticleField({ className, defer = false }: { className?: string; defer?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -52,6 +53,10 @@ export default function ParticleField({ className }: { className?: string }) {
     let visible = false;
     let running = false;
     let started = false;
+    let ready = false;
+    let cancelled = false;
+    let idleId: number | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
     const readColor = () => {
       // Textfarbe der Seite (--fg) folgt automatisch dem hellen/dunklen Theme
@@ -103,7 +108,7 @@ export default function ParticleField({ className }: { className?: string }) {
     };
 
     const update = () => {
-      const shouldRun = visible && !document.hidden && !reduceMotion;
+      const shouldRun = ready && visible && !document.hidden && !reduceMotion;
       if (shouldRun && !running) {
         running = true;
         raf = requestAnimationFrame(loop);
@@ -113,12 +118,20 @@ export default function ParticleField({ className }: { className?: string }) {
       }
     };
 
-    const start = () => {
-      if (started) return;
-      started = true;
+    const begin = () => {
+      if (cancelled) return;
+      ready = true;
       readColor();
       resize();
       update();
+    };
+
+    const start = () => {
+      if (started) return;
+      started = true;
+      if (!defer) return begin();
+      if ("requestIdleCallback" in window) idleId = window.requestIdleCallback(begin, { timeout: 2500 });
+      else timeoutId = setTimeout(begin, 1500);
     };
 
     // Erst starten, wenn der Bereich fast im Bild ist (kein Aufwand beim ersten Laden)
@@ -132,11 +145,14 @@ export default function ParticleField({ className }: { className?: string }) {
     );
     observer.observe(canvas);
 
-    const resizeObserver = new ResizeObserver(() => started && resize());
+    const resizeObserver = new ResizeObserver(() => ready && resize());
     resizeObserver.observe(canvas);
     document.addEventListener("visibilitychange", update);
 
     return () => {
+      cancelled = true;
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
       running = false;
       cancelAnimationFrame(raf);
       observer.disconnect();
