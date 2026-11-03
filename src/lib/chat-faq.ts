@@ -33,7 +33,7 @@ export const CHAT_FAQ: FaqEntry[] = [
   {
     id: "aachen",
     question: "Wo sitzt du?",
-    answer: "Ich bin in Aachen und betreue meine Kunden persönlich, vom ersten Gespräch bis zum Start.",
+    answer: "Ich sitze in Aachen, betreue Kunden aber auch bundesweit und international. Erstgespräch, Abstimmung und Feedback laufen bei Bedarf per Online-Meeting, vom ersten Gespräch bis zum Start.",
   },
   {
     id: "termin",
