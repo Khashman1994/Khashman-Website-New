@@ -163,6 +163,7 @@ const de = {
           "Alles aus Starter",
           "Basis-SEO für Google",
           "Google Maps Integration",
+          "Kontakt-Chat mit Anfragen-Speicherung",
           "30 Min. Inhaltspflege / Monat inklusive",
           "1 Feedback- & Revisionsrunde",
         ],
@@ -181,6 +182,7 @@ const de = {
         features: [
           "Bis zu 10 Unterseiten oder Online-Shop / Terminbuchung",
           "Erweiterte SEO",
+          "Kontakt-Chat mit Anfragen-Speicherung",
           "Prioritäts-Support",
           "60 Min. Inhaltspflege / Monat inklusive",
           "2 Feedbackrunden",
