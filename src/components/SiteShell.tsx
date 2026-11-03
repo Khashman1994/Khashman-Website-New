@@ -3,6 +3,7 @@ import { Geist, Instrument_Serif } from "next/font/google";
 import "@/app/globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import SiteHeader from "@/components/SiteHeader";
+import ChatWidget from "@/components/ChatWidget";
 import SmoothScroll from "@/components/SmoothScroll";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
@@ -77,6 +78,8 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
             KHASHMAN
           </p>
         </footer>
+        {/* Chat-Assistent nur auf Deutsch – die FAQ ist ausschließlich deutsch */}
+        {locale === "de" && <ChatWidget />}
         <Analytics />
       </body>
     </html>

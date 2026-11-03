@@ -90,6 +90,14 @@ export default function Datenschutz() {
         </a>
         .
       </p>
+      <h3>Chat-Assistent</h3>
+      <p>
+        Auf dieser Website gibt es einen Chat-Assistenten mit häufigen Fragen. Die Fragen dazu werden nicht gespeichert.
+        Nur wenn Sie über den Chat eine Anfrage senden, werden Name, E-Mail-Adresse, optional Telefonnummer und Ihre
+        Nachricht in der oben genannten Datenbank gespeichert und per E-Mail an mich übermittelt, damit ich Ihnen antworten
+        kann. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen). Die Speicherung erfolgt, bis die
+        Anfrage erledigt ist.
+      </p>
       <h3>Übermittlung in die USA</h3>
       <p>
         Die genannten Anbieter verarbeiten Daten auch in den USA. Die Übermittlung erfolgt auf Grundlage des

@@ -112,3 +112,30 @@ export async function sendContactNotification(data: ContactMail): Promise<void> 
 </html>`,
   });
 }
+
+export type ChatMail = {
+  name: string;
+  email: string;
+  phone: string | null;
+  message: string;
+  topic: string | null;
+};
+
+// Benachrichtigung für Anfragen aus dem Chat-Assistenten (schlichter Text, ohne HTML-Layout)
+export async function sendChatNotification(data: ChatMail): Promise<void> {
+  await transporter.sendMail({
+    from: `"Khashman Webdesign – Chat" <${process.env.EMAIL_USER}>`,
+    to: CONTACT_RECIPIENT,
+    replyTo: { name: data.name, address: data.email },
+    subject: `Chat-Anfrage · ${data.name}`,
+    text: [
+      `Thema aus dem Chat: ${data.topic ?? "–"}`,
+      "",
+      `Name:    ${data.name}`,
+      `E-Mail:  ${data.email}`,
+      `Telefon: ${data.phone ?? "–"}`,
+      "",
+      data.message,
+    ].join("\n"),
+  });
+}
