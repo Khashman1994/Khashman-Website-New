@@ -220,6 +220,42 @@ const de = {
         q: "Kann ich später ein größeres Paket wählen?",
         a: "Ja, jederzeit. Ihre Website wächst mit Ihrem Unternehmen – der bereits gezahlte Betrag wird dabei fair berücksichtigt.",
       },
+      {
+        q: "Was ist ein KI-Chatbot für die Website?",
+        a: "Ein Assistent auf Ihrer Website, der Fragen von Besuchern in normaler Sprache beantwortet, rund um die Uhr. Er nutzt die Informationen, die ich gemeinsam mit Ihnen für Ihren Betrieb hinterlege, zum Beispiel Leistungen, Preise, Öffnungszeiten und Ablauf.",
+      },
+      {
+        q: "Was kostet ein KI-Chatbot?",
+        a: "Die Kosten bestehen aus einer einmaligen Einrichtung und einer monatlichen Pauschale für Betrieb und Pflege. Die genauen Preise nenne ich Ihnen nach einem kurzen Gespräch, weil sie vom Umfang und vom Besucheraufkommen abhängen.",
+      },
+      {
+        q: "Wie viel Aufwand habe ich mit einem KI-Chatbot?",
+        a: "Wenig. Wir besprechen einmal gemeinsam, was der Chat wissen soll. Ich richte ihn ein, teste ihn und passe ihn an. Änderungen, etwa bei Öffnungszeiten oder Preisen, schicken Sie mir, und ich pflege sie ein.",
+      },
+      {
+        q: "Ist ein KI-Chatbot DSGVO-konform?",
+        a: "Ich richte den Chat so ein, dass Besucher klar erfahren, dass sie mit einer KI sprechen, und ergänze Ihre Datenschutzerklärung. Weil die Fragen an einen KI-Anbieter in den USA gehen, kläre ich die rechtliche Grundlage vor dem Start mit Ihnen.",
+      },
+      {
+        q: "Was passiert, wenn der Chatbot eine Frage nicht beantworten kann?",
+        a: "Er sagt das offen und verweist auf Sie. Auf Wunsch sammelt er den Namen, die Kontaktdaten und die Frage und schickt sie Ihnen per E-Mail.",
+      },
+      {
+        q: "Kann ein KI-Chatbot falsche Antworten geben?",
+        a: "KI kann sich irren. Deshalb beschränke ich ihn auf die Informationen, die Sie freigegeben haben, und teste typische Fragen vor dem Start. Bei Unsicherheit verweist er auf Sie, statt etwas zu erfinden.",
+      },
+      {
+        q: "Für welche Betriebe lohnt sich ein KI-Chatbot?",
+        a: "Vor allem dort, wo viele Besucher dieselben Fragen stellen und nach Feierabend anfragen: Handwerk, Praxen, Immobilien, Dienstleister mit vielen Leistungen. Bei Betrieben mit wenigen Besuchern reicht oft ein einfacher FAQ-Chat.",
+      },
+      {
+        q: "Arbeiten Sie nur in Aachen?",
+        a: "Nein. Ich betreue Kunden auch bundesweit und international, Gespräche laufen bei Bedarf online.",
+      },
+      {
+        q: "Gibt es eine einfachere Variante als einen KI-Chatbot?",
+        a: "Ja. Der FAQ-Chat ist in den Paketen Business und Premium enthalten. Er beantwortet feste Fragen und nimmt Anfragen entgegen, ohne KI.",
+      },
     ],
   },
 
