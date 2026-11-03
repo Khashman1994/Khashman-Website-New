@@ -6,6 +6,7 @@ import { ProcessTimeline, Reveal, ScrollWords } from "@/components/scroll-effect
 import { getDictionary, HOME_PATH, type Dictionary, type Locale } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 import IndustryShowcase from "@/components/IndustryShowcase";
+import ParticleField from "@/components/ParticleField";
 
 // Startseite für beide Sprachen – alle Texte kommen aus src/lib/dictionaries/.
 
@@ -443,6 +444,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
 
       {/* Kontakt */}
       <section id="kontakt" className="relative overflow-hidden border-t border-fg/10">
+        <ParticleField className="absolute inset-0 h-full w-full" />
         <div aria-hidden="true" className="pointer-events-none absolute -left-60 top-0 h-[44rem] w-[44rem] glow-violet" />
         <div className="relative mx-auto max-w-6xl px-6 py-32">
           <Reveal className="mb-20">
