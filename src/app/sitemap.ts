@@ -17,6 +17,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: { languages },
   }));
 
+  // Leistungsseiten (nur Deutsch)
+  pages.push({
+    url: absolute("/seo-aachen"),
+    lastModified: new Date("2026-11-05"),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  });
+
   // Blog (nur Deutsch, Inhalte kommen von Soro)
   pages.push({
     url: absolute("/blog"),

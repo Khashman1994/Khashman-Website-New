@@ -49,7 +49,7 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
                 </p>
                 <p className="mt-3 text-sm text-fg/50">{t.footer.tagline}</p>
               </div>
-              <div className="grid grid-cols-2 gap-10 text-sm">
+              <div className={`grid grid-cols-2 gap-10 text-sm ${locale === "de" ? "sm:grid-cols-3" : ""}`}>
                 <div className="flex flex-col gap-3">
                   <p className="text-fg/40">{t.footer.contact}</p>
                   <a href={`mailto:${SITE.email}`} className="text-fg/70 hover:text-fg">{SITE.email}</a>
@@ -60,6 +60,13 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
                     {t.footer.google}
                   </a>
                 </div>
+                {/* Leistungsseiten gibt es nur auf Deutsch */}
+                {locale === "de" && (
+                  <div className="flex flex-col gap-3">
+                    <p className="text-fg/40">Leistungen</p>
+                    <Link href="/seo-aachen" className="text-fg/70 hover:text-fg">SEO Aachen</Link>
+                  </div>
+                )}
                 <div className="flex flex-col gap-3">
                   <p className="text-fg/40">{t.footer.legal}</p>
                   {/* Impressum & Datenschutz gibt es nur auf Deutsch (rechtlich maßgeblich) */}
