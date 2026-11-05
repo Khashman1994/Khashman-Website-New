@@ -19,6 +19,7 @@ export type ServicePageProps = {
   breadcrumb: string;
   serviceName: string;
   serviceDescription: string;
+  related?: { href: string; label: string }[];
 };
 
 export default function ServicePage(props: ServicePageProps) {
@@ -111,6 +112,19 @@ export default function ServicePage(props: ServicePageProps) {
             ))}
           </div>
         </section>
+
+        {props.related && props.related.length > 0 && (
+          <section>
+            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">Weitere Leistungen</h2>
+            <ul className="mt-4 space-y-2">
+              {props.related.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-accent-soft underline underline-offset-4">{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <section className="rounded-3xl border border-fg/10 bg-fg/[0.03] p-8">
           <h2 className="text-2xl font-semibold tracking-tight">{props.ctaTitle}</h2>

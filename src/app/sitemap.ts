@@ -25,6 +25,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   });
 
+  pages.push({
+    url: absolute("/webdesign-aachen"),
+    lastModified: new Date("2026-11-05"),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  });
+
   // Blog (nur Deutsch, Inhalte kommen von Soro)
   pages.push({
     url: absolute("/blog"),

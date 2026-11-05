@@ -83,6 +83,7 @@ export default function SeoAachenPage() {
       ]}
       ctaTitle="Lassen Sie uns über Ihre Sichtbarkeit sprechen"
       ctaText="Schreiben Sie mir kurz, was Sie anbieten und wo Ihre Kunden sitzen. Ich melde mich in der Regel innerhalb von 24 Stunden mit einer ehrlichen Einschätzung."
+      related={[{ href: "/webdesign-aachen", label: "Webdesign in Aachen: Website erstellen lassen" }]}
       serviceName="Suchmaschinenoptimierung und Local SEO"
       serviceDescription="Technisch saubere Websites mit Basis-SEO, Local SEO und Google Unternehmensprofil für Selbstständige und kleine Unternehmen in Aachen und der Städteregion."
     />

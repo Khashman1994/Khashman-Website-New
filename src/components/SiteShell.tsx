@@ -64,6 +64,7 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
                 {locale === "de" && (
                   <div className="flex flex-col gap-3">
                     <p className="text-fg/40">Leistungen</p>
+                    <Link href="/webdesign-aachen" className="text-fg/70 hover:text-fg">Webdesign Aachen</Link>
                     <Link href="/seo-aachen" className="text-fg/70 hover:text-fg">SEO Aachen</Link>
                   </div>
                 )}
