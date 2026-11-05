@@ -79,7 +79,7 @@ export default function DemoShell({
               {dark ? <SunIcon /> : <MoonIcon />}
               <span className="hidden sm:inline">{dark ? "Hell" : "Dunkel"}</span>
             </button>
-            <Link href="/#branchen" className="inline-flex min-h-9 items-center whitespace-nowrap rounded-full px-3 text-white/70 transition-colors hover:text-white">
+            <Link href="/beispiele" className="inline-flex min-h-9 items-center whitespace-nowrap rounded-full px-3 text-white/70 transition-colors hover:text-white">
               ← <span className="sm:hidden">Zurück</span>
               <span className="hidden sm:inline">Alle Beispiele</span>
             </Link>

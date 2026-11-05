@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useId, useMemo, useState } from "react";
 import { Reveal } from "@/components/scroll-effects";
+import { PREFILL_EVENT, PREFILL_STORAGE_KEY } from "@/lib/prefill";
 
 /* ============================================================
    Branchen-Konzepte
@@ -14,10 +15,6 @@ import { Reveal } from "@/components/scroll-effects";
    ============================================================ */
 
 /* ---------- Ereignis: Nachricht im Kontaktformular vorbefüllen ---------- */
-
-export const PREFILL_EVENT = "khashman:prefill-message";
-// Wird zusätzlich im Browser gemerkt, damit der Text auch ankommt, wenn das Formular auf einer anderen Seite liegt
-export const PREFILL_STORAGE_KEY = "khashman:prefill-message";
 
 function sendPrefill(text: string) {
   window.dispatchEvent(new CustomEvent(PREFILL_EVENT, { detail: text }));

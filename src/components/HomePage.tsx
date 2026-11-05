@@ -5,7 +5,6 @@ import { PackageLink, SpotlightCard } from "@/components/motion";
 import { ProcessTimeline, Reveal, ScrollWords } from "@/components/scroll-effects";
 import { getDictionary, HOME_PATH, type Dictionary, type Locale } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
-import IndustryShowcase from "@/components/IndustryShowcase";
 import ParticleField from "@/components/ParticleField";
 
 // Startseite für beide Sprachen – alle Texte kommen aus src/lib/dictionaries/.
@@ -266,15 +265,14 @@ export default function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      {/* Branchen-Konzepte */}
-      <IndustryShowcase number="02" />
+      {/* Die Branchen-Beispiele liegen auf einer eigenen Seite: /beispiele (Nav & Footer verlinken sie) */}
 
       {/* Prozess */}
       <section id="prozess" className="border-t border-fg/10 bg-ink-900/50">
         <div className="mx-auto max-w-6xl px-6 py-32">
           <Reveal className="mb-20 text-center">
             <div className="flex justify-center">
-              <SectionLabel number="03">{t.process.label}</SectionLabel>
+              <SectionLabel number="02">{t.process.label}</SectionLabel>
             </div>
             <h2 className="mx-auto mt-6 max-w-2xl text-4xl font-semibold tracking-tight md:text-6xl">
               <SerifTitle {...t.process.title} />
@@ -323,7 +321,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <SectionLabel number="04">{t.about.label}</SectionLabel>
+            <SectionLabel number="03">{t.about.label}</SectionLabel>
             <h2 className="mt-6 text-4xl font-semibold tracking-tight md:text-6xl">
               <SerifTitle {...t.about.title} />
             </h2>
@@ -347,7 +345,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
         <div className="relative mx-auto max-w-6xl px-6 py-32">
           <Reveal className="mx-auto mb-20 max-w-2xl text-center">
             <div className="flex justify-center">
-              <SectionLabel number="05">{t.pricing.label}</SectionLabel>
+              <SectionLabel number="04">{t.pricing.label}</SectionLabel>
             </div>
             <h2 className="mt-6 text-4xl font-semibold tracking-tight md:text-6xl">
               <SerifTitle {...t.pricing.title} />
@@ -418,7 +416,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
       <section id="faq" className="border-t border-fg/10">
         <div className="mx-auto grid max-w-6xl gap-16 px-6 py-32 md:grid-cols-[2fr_3fr]">
           <Reveal>
-            <SectionLabel number="06">{t.faq.label}</SectionLabel>
+            <SectionLabel number="05">{t.faq.label}</SectionLabel>
             <h2 className="mt-6 text-4xl font-semibold tracking-tight md:text-6xl">
               <SerifTitle {...t.faq.title} />
             </h2>
@@ -448,7 +446,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
         <div aria-hidden="true" className="pointer-events-none absolute -left-60 top-0 h-[44rem] w-[44rem] glow-violet" />
         <div className="relative mx-auto max-w-6xl px-6 py-32">
           <Reveal className="mb-20">
-            <SectionLabel number="07">{t.contact.label}</SectionLabel>
+            <SectionLabel number="06">{t.contact.label}</SectionLabel>
             <h2 className="mt-6 text-[clamp(2.75rem,8vw,7rem)] font-semibold leading-[0.95] tracking-[-0.04em]">
               {t.contact.titleLine} <br />
               <span className="text-gradient font-serif font-normal italic">{t.contact.titleSerif}</span>

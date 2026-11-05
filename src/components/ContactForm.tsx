@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useActionState, useEffect, useRef, useState } from "react";
 import { PACKAGE_EVENT } from "@/components/motion";
-import { PREFILL_EVENT, PREFILL_STORAGE_KEY } from "@/components/IndustryShowcase";
+import { PREFILL_EVENT, PREFILL_STORAGE_KEY } from "@/lib/prefill";
 import { submitContactForm, type ContactField, type ContactFormState } from "@/app/actions/contact";
 import { BUDGET_OPTIONS, localized, PACKAGE_OPTIONS, type PackageValue } from "@/lib/contact-options";
 import type { Dictionary, Locale } from "@/lib/i18n";

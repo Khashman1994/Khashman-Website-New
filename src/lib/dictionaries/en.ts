@@ -23,7 +23,6 @@ const en: Dictionary = {
   nav: {
     links: [
       { href: "#leistungen", label: "Services" },
-      { href: "#branchen", label: "Examples" },
       { href: "#prozess", label: "Process" },
       { href: "#ueber-mich", label: "About" },
       { href: "#preise", label: "Pricing" },
