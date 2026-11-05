@@ -6,7 +6,7 @@ const en: Dictionary = {
   meta: {
     title: "Web Design Aachen | Khashman Webdesign – Modern Websites from €299",
     description:
-      "Web design from Aachen, Germany: modern, fast and GDPR-compliant websites for freelancers, small businesses and founders. Fixed prices from €299, hosting & maintenance included. Book your free consultation now.",
+      "Web design from Aachen, Germany: modern, fast and GDPR-compliant websites for freelancers, small businesses and founders. Fixed prices from €299, hosting & maintenance optional. Book your free consultation now.",
     keywords: [
       "web design Aachen",
       "web designer Aachen",
@@ -70,7 +70,7 @@ const en: Dictionary = {
       },
       {
         title: "Maintenance & hosting",
-        text: "Regular updates, daily backups, SSL encryption and GDPR security – you don't have to worry about a thing.",
+        text: "Available as an option: regular updates, daily backups, SSL encryption and GDPR security – so you don't have to worry about a thing.",
         tags: ["Updates", "Backups", "SSL"],
       },
       {
@@ -103,7 +103,7 @@ const en: Dictionary = {
       },
       {
         title: "Launch & support",
-        text: "Your site goes live. I take care of hosting, updates and backups – you focus on your business.",
+        text: "Your site goes live. If you like, I take care of hosting, updates and backups – you focus on your business.",
         time: "Ongoing",
       },
     ],
@@ -138,14 +138,14 @@ const en: Dictionary = {
         amount: 299,
         price: "€299",
         monthly: "+ €29 / month",
-        monthlyNote: "hosting & maintenance",
+        monthlyNote: "optional: hosting & maintenance",
         idealFor: "Local service providers, tradespeople, founders",
         features: [
           "1 modern one-page website",
           "Fully mobile-optimised",
           "WhatsApp & contact form",
           "Incl. 1x .de domain & SSL",
-          "Monthly security updates & backups",
+          "Security updates & backups with hosting & maintenance",
           "GDPR compliant",
         ],
         cta: "Choose Starter",
@@ -158,14 +158,14 @@ const en: Dictionary = {
         amount: 649,
         price: "€649",
         monthly: "+ €39 / month",
-        monthlyNote: "hosting & care",
+        monthlyNote: "optional: hosting & care",
         idealFor: "Established businesses that want to present several services",
         features: [
           "Up to 5 subpages",
           "Everything in Starter",
           "Basic SEO for Google",
           "Google Maps integration",
-          "30 min of content updates / month included",
+          "30 min of content updates / month with hosting & care",
           "1 feedback & revision round",
         ],
         cta: "Choose Business",
@@ -178,13 +178,13 @@ const en: Dictionary = {
         amount: 1199,
         price: "€1,199",
         monthly: "+ €49 / month",
-        monthlyNote: "hosting & care",
+        monthlyNote: "optional: hosting & care",
         idealFor: "Businesses with an online shop, booking system or a large range of services",
         features: [
           "Up to 10 subpages or online shop / booking",
           "Advanced SEO",
           "Priority support",
-          "60 min of content updates / month included",
+          "60 min of content updates / month with hosting & care",
           "2 feedback rounds",
         ],
         cta: "Discuss Premium",
@@ -203,8 +203,8 @@ const en: Dictionary = {
         a: "A Starter project usually goes live within 1–2 weeks, Business and Premium projects within 2–4 weeks – depending on how quickly content and feedback are available.",
       },
       {
-        q: "What's included in the monthly fee?",
-        a: "Hosting, SSL certificate, domain, security updates and backups. Business and Premium also include content updates – you send me changes, I implement them.",
+        q: "Do I have to pay the monthly fee?",
+        a: "No, the monthly fee is optional. If you choose it, I take care of hosting, SSL certificate, domain, security updates and backups, and with Business and Premium also content updates – you send me changes, I implement them. Without the monthly fee you only pay the one-time price and handle hosting and maintenance yourself.",
       },
       {
         q: "Do I have to provide texts and images myself?",

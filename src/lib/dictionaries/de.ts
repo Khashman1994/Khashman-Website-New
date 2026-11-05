@@ -4,7 +4,7 @@ const de = {
   meta: {
     title: "Webdesign Aachen | Khashman Webdesign – Moderne Webseiten ab 299 €",
     description:
-      "Webdesign aus Aachen: Moderne, schnelle und DSGVO-konforme Webseiten für Selbstständige, KMU und Gründer. Festpreise ab 299 €, Hosting & Wartung inklusive. Jetzt kostenloses Erstgespräch sichern.",
+      "Webdesign aus Aachen: Moderne, schnelle und DSGVO-konforme Webseiten für Selbstständige, KMU und Gründer. Festpreise ab 299 €, Hosting & Wartung optional. Jetzt kostenloses Erstgespräch sichern.",
     keywords: [
       "Webdesign Aachen",
       "Webdesigner Aachen",
@@ -68,7 +68,7 @@ const de = {
       },
       {
         title: "Wartung & Hosting",
-        text: "Regelmäßige Updates, tägliche Backups, SSL-Verschlüsselung und DSGVO-Sicherheit – Sie müssen sich um nichts kümmern.",
+        text: "Optional buchbar: regelmäßige Updates, tägliche Backups, SSL-Verschlüsselung und DSGVO-Sicherheit – dann müssen Sie sich um nichts kümmern.",
         tags: ["Updates", "Backups", "SSL"],
       },
       {
@@ -101,7 +101,7 @@ const de = {
       },
       {
         title: "Launch & Betreuung",
-        text: "Ihre Seite geht live. Hosting, Updates und Backups übernehme ich – Sie konzentrieren sich auf Ihr Geschäft.",
+        text: "Ihre Seite geht live. Auf Wunsch übernehme ich Hosting, Updates und Backups – Sie konzentrieren sich auf Ihr Geschäft.",
         time: "Laufend",
       },
     ],
@@ -136,14 +136,14 @@ const de = {
         amount: 299,
         price: "299 €",
         monthly: "+ 29 € / Monat",
-        monthlyNote: "Hosting & Wartung",
+        monthlyNote: "optional: Hosting & Wartung",
         idealFor: "Lokale Dienstleister, Handwerker, Gründer",
         features: [
           "1 moderne One-Page Website",
           "Voll mobiloptimiert",
           "WhatsApp- & Kontaktformular",
           "Inkl. 1x .de-Domain & SSL",
-          "Monatliche Sicherheitsupdates & Backups",
+          "Sicherheitsupdates & Backups mit Hosting & Wartung",
           "DSGVO-konform",
         ],
         cta: "Starter wählen",
@@ -156,7 +156,7 @@ const de = {
         amount: 649,
         price: "649 €",
         monthly: "+ 39 € / Monat",
-        monthlyNote: "Hosting & Pflege",
+        monthlyNote: "optional: Hosting & Pflege",
         idealFor: "Etablierte Betriebe, die mehrere Leistungen präsentieren wollen",
         features: [
           "Bis zu 5 Unterseiten",
@@ -165,7 +165,7 @@ const de = {
           "Google Maps Integration",
           "Kontakt-Chat mit Anfragen-Speicherung",
           "Zusatz: KI-Assistent für deine Website, auf Anfrage",
-          "30 Min. Inhaltspflege / Monat inklusive",
+          "30 Min. Inhaltspflege / Monat mit Hosting & Pflege",
           "1 Feedback- & Revisionsrunde",
         ],
         cta: "Business wählen",
@@ -178,7 +178,7 @@ const de = {
         amount: 1199,
         price: "1.199 €",
         monthly: "+ 49 € / Monat",
-        monthlyNote: "Hosting & Pflege",
+        monthlyNote: "optional: Hosting & Pflege",
         idealFor: "Unternehmen mit Shop, Terminbuchung oder großem Angebot",
         features: [
           "Bis zu 10 Unterseiten oder Online-Shop / Terminbuchung",
@@ -186,7 +186,7 @@ const de = {
           "Kontakt-Chat mit Anfragen-Speicherung",
           "Zusatz: KI-Assistent für deine Website, auf Anfrage",
           "Prioritäts-Support",
-          "60 Min. Inhaltspflege / Monat inklusive",
+          "60 Min. Inhaltspflege / Monat mit Hosting & Pflege",
           "2 Feedbackrunden",
         ],
         cta: "Premium besprechen",
@@ -205,8 +205,8 @@ const de = {
         a: "Ein Starter-Projekt ist in der Regel in 1–2 Wochen live, Business- und Premium-Projekte in 2–4 Wochen – abhängig davon, wie schnell Inhalte und Feedback vorliegen.",
       },
       {
-        q: "Was ist in der monatlichen Gebühr enthalten?",
-        a: "Hosting, SSL-Zertifikat, Domain, Sicherheitsupdates und Backups. Bei Business und Premium zusätzlich Inhaltspflege – Sie schicken mir Änderungen, ich setze sie um.",
+        q: "Muss ich die monatliche Gebühr zahlen?",
+        a: "Nein, die monatliche Gebühr ist optional. Wenn Sie sie buchen, übernehme ich Hosting, SSL-Zertifikat, Domain, Sicherheitsupdates und Backups, bei Business und Premium zusätzlich die Inhaltspflege – Sie schicken mir Änderungen, ich setze sie um. Ohne Monatsgebühr zahlen Sie nur den einmaligen Preis und kümmern sich selbst um Hosting und Pflege.",
       },
       {
         q: "Muss ich Texte und Bilder selbst liefern?",
