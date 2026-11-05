@@ -16,6 +16,17 @@ import { Reveal } from "@/components/scroll-effects";
 /* ---------- Ereignis: Nachricht im Kontaktformular vorbefüllen ---------- */
 
 export const PREFILL_EVENT = "khashman:prefill-message";
+// Wird zusätzlich im Browser gemerkt, damit der Text auch ankommt, wenn das Formular auf einer anderen Seite liegt
+export const PREFILL_STORAGE_KEY = "khashman:prefill-message";
+
+function sendPrefill(text: string) {
+  window.dispatchEvent(new CustomEvent(PREFILL_EVENT, { detail: text }));
+  try {
+    sessionStorage.setItem(PREFILL_STORAGE_KEY, text);
+  } catch {
+    // Speicher nicht verfügbar (z. B. privates Fenster): Event reicht auf der Startseite
+  }
+}
 
 /* ---------- Typen ---------- */
 
@@ -302,14 +313,10 @@ function ExternalIcon({ className }: { className?: string }) {
 }
 
 function requestSimilar(industry: Industry) {
-  window.dispatchEvent(
-    new CustomEvent(PREFILL_EVENT, {
-      detail: `Hallo, mir gefällt das Konzept „${industry.title}“. Ich hätte gern eine ähnliche Website für meinen Betrieb.`,
-    }),
-  );
+  sendPrefill(`Hallo, mir gefällt das Konzept „${industry.title}“. Ich hätte gern eine ähnliche Website für meinen Betrieb.`);
 }
 
-function IndustryCard({ industry, large }: { industry: Industry; large: boolean }) {
+function IndustryCard({ industry, large, contactHref }: { industry: Industry; large: boolean; contactHref: string }) {
   const headingId = useId();
   const href = `/beispiele/${industry.id}`;
   return (
@@ -358,7 +365,7 @@ function IndustryCard({ industry, large }: { industry: Industry; large: boolean 
             <span className="sr-only">(öffnet in neuem Tab)</span>
           </Link>
           <a
-            href="#kontakt"
+            href={contactHref}
             onClick={() => requestSimilar(industry)}
             className="inline-flex min-h-11 items-center gap-2 rounded-full text-sm font-medium text-fg/70 transition-colors hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
@@ -373,7 +380,8 @@ function IndustryCard({ industry, large }: { industry: Industry; large: boolean 
 
 /* ---------- Abschnitt ---------- */
 
-export default function IndustryShowcase({ number = "02" }: { number?: string }) {
+// contactHref: Ziel der Kontakt-Buttons. Auf der Startseite "#kontakt", auf anderen Seiten "/#kontakt".
+export default function IndustryShowcase({ number = "02", contactHref = "#kontakt" }: { number?: string; contactHref?: string }) {
   const [active, setActive] = useState<CategoryId | "alle">("alle");
 
   const visible = useMemo(
@@ -446,7 +454,7 @@ export default function IndustryShowcase({ number = "02" }: { number?: string })
                   large ? "md:col-span-2" : ""
                 }`}
               >
-                <IndustryCard industry={industry} large={large} />
+                <IndustryCard industry={industry} large={large} contactHref={contactHref} />
               </div>
             );
           })}
@@ -460,14 +468,8 @@ export default function IndustryShowcase({ number = "02" }: { number?: string })
               <p className="mt-2 text-fg/60">Ich erstelle Ihnen ein individuelles Konzept, abgestimmt auf Ihre Kunden und Abläufe.</p>
             </div>
             <a
-              href="#kontakt"
-              onClick={() =>
-                window.dispatchEvent(
-                  new CustomEvent(PREFILL_EVENT, {
-                    detail: "Hallo, meine Branche ist: … Ich hätte gern ein individuelles Website-Konzept.",
-                  }),
-                )
-              }
+              href={contactHref}
+              onClick={() => sendPrefill("Hallo, meine Branche ist: … Ich hätte gern ein individuelles Website-Konzept.")}
               className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-fg px-6 py-3.5 font-medium text-ink-950 transition-colors duration-300 hover:bg-accent hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
             >
               Individuelles Konzept anfragen

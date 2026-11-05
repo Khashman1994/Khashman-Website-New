@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useActionState, useEffect, useRef, useState } from "react";
 import { PACKAGE_EVENT } from "@/components/motion";
-import { PREFILL_EVENT } from "@/components/IndustryShowcase";
+import { PREFILL_EVENT, PREFILL_STORAGE_KEY } from "@/components/IndustryShowcase";
 import { submitContactForm, type ContactField, type ContactFormState } from "@/app/actions/contact";
 import { BUDGET_OPTIONS, localized, PACKAGE_OPTIONS, type PackageValue } from "@/lib/contact-options";
 import type { Dictionary, Locale } from "@/lib/i18n";
@@ -235,6 +235,19 @@ export default function ContactForm({ locale, t }: { locale: Locale; t: FormText
       if (field && !field.value.trim()) field.value = (event as CustomEvent<string>).detail;
     }
     window.addEventListener(PREFILL_EVENT, prefill);
+
+    // Kam der Besucher von einer anderen Seite (z. B. /beispiele), liegt der Text im Browser-Speicher
+    try {
+      const stored = sessionStorage.getItem(PREFILL_STORAGE_KEY);
+      if (stored) {
+        sessionStorage.removeItem(PREFILL_STORAGE_KEY);
+        const field = formRef.current?.querySelector<HTMLTextAreaElement>('textarea[name="message"]');
+        if (field && !field.value.trim()) field.value = stored;
+      }
+    } catch {
+      // Speicher nicht verfügbar: dann bleibt das Feld leer
+    }
+
     return () => window.removeEventListener(PREFILL_EVENT, prefill);
   }, []);
 
