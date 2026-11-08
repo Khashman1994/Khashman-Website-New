@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Datenschutz() {
   return (
-    <LegalPage title="Datenschutzerklärung" subtitle="Zuletzt aktualisiert: Oktober 2026">
+    <LegalPage title="Datenschutzerklärung" subtitle="Zuletzt aktualisiert: November 2026">
       <h2>1. Verantwortlicher</h2>
       <p>
         Khashman Alturki
@@ -95,8 +95,8 @@ export default function Datenschutz() {
         Auf dieser Website gibt es einen Chat-Assistenten mit häufigen Fragen. Die Fragen dazu werden nicht gespeichert.
         Nur wenn Sie über den Chat eine Anfrage senden, werden Name, E-Mail-Adresse, optional Telefonnummer und Ihre
         Nachricht in der oben genannten Datenbank gespeichert und per E-Mail an mich übermittelt, damit ich Ihnen antworten
-        kann. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen). Die Speicherung erfolgt, bis die
-        Anfrage erledigt ist.
+        kann. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen). Die Speicherdauer richtet sich nach
+        dem Abschnitt „Speicherdauer“ unten.
       </p>
       <h3>Übermittlung in die USA</h3>
       <p>
@@ -114,11 +114,22 @@ export default function Datenschutz() {
 
       <h2>5. Schriftarten</h2>
       <p>
-        Diese Website verwendet die Schriftarten „Outfit“ und „Cormorant Garamond“. Die Schriftdateien werden lokal vom
-        Server dieser Website ausgeliefert. Beim Aufruf der Seite findet keine Verbindung zu Servern von Google statt.
+        Diese Website verwendet die Schriftarten „Geist“ und „Instrument Serif“, die Beispielseiten zusätzlich „Bricolage
+        Grotesque“, „Fraunces“ und „Plus Jakarta Sans“. Die Schriftdateien werden beim Erstellen der Website heruntergeladen
+        und lokal vom Server dieser Website ausgeliefert. Beim Aufruf der Seite findet keine Verbindung zu Servern von
+        Google statt.
       </p>
 
-      <h2>6. Ihre Rechte</h2>
+      <h2>6. Lokaler Speicher im Browser</h2>
+      <p>
+        Diese Website setzt keine Cookies. Sie speichert lediglich im lokalen Speicher Ihres Browsers (localStorage bzw.
+        sessionStorage) Ihre Wahl des hellen oder dunklen Designs sowie vorübergehend einen vorausgefüllten Nachrichtentext,
+        wenn Sie auf der Beispielseite eine Anfrage starten. Diese Angaben verlassen Ihr Gerät nicht, sind für die
+        Bereitstellung der gewünschten Funktion technisch erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG) und können jederzeit in
+        den Browser-Einstellungen gelöscht werden.
+      </p>
+
+      <h2>7. Ihre Rechte</h2>
       <p>Sie haben das Recht auf:</p>
       <ul>
         <li>Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO)</li>
@@ -132,7 +143,7 @@ export default function Datenschutz() {
         <a href="mailto:kontakt@khashman-webdesign.de">kontakt@khashman-webdesign.de</a>
       </p>
 
-      <h2>7. Beschwerderecht</h2>
+      <h2>8. Beschwerderecht</h2>
       <p>
         Sie haben das Recht, sich bei der zuständigen Aufsichtsbehörde zu beschweren. In NRW ist dies die Landesbeauftragte
         für Datenschutz und Informationsfreiheit NRW:{" "}
@@ -141,13 +152,13 @@ export default function Datenschutz() {
         </a>
       </p>
 
-      <h2>8. Speicherdauer</h2>
+      <h2>9. Speicherdauer</h2>
       <p>
-        Ihre Daten werden nur so lange gespeichert, wie es für die Bearbeitung Ihrer Anfrage notwendig ist, bzw. solange
-        gesetzliche Aufbewahrungspflichten bestehen.
+        Ihre Daten werden nur so lange gespeichert, wie es für die Bearbeitung Ihrer Anfrage notwendig ist, höchstens jedoch
+        6 Monate, bzw. solange gesetzliche Aufbewahrungspflichten bestehen (siehe auch Abschnitt 4).
       </p>
 
-      <h2>9. Änderungen dieser Datenschutzerklärung</h2>
+      <h2>10. Änderungen dieser Datenschutzerklärung</h2>
       <p>
         Ich behalte mir vor, diese Datenschutzerklärung bei Bedarf anzupassen. Die jeweils aktuelle Version ist auf dieser
         Seite abrufbar.
