@@ -35,6 +35,9 @@ const nextConfig: NextConfig = {
   experimental: {
     // Zwei Root-Layouts (Deutsch/Englisch) → 404 kommt aus app/global-not-found.tsx
     globalNotFound: true,
+    // Das (kleine) Tailwind-CSS direkt ins HTML einbetten: spart zwei blockierende Anfragen vor dem ersten
+    // Rendern (PageSpeed schätzt ~520 ms für LCP). Nachteil: Wiederkehrende Besucher laden das CSS jedes Mal mit.
+    inlineCss: true,
   },
   turbopack: {
     rules: {
