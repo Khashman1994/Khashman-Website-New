@@ -76,7 +76,10 @@ export default function WebdesignAachenPage() {
           a: "Nein. Ich sitze in Aachen, betreue Kunden aber auch bundesweit und international. Gespräche laufen bei Bedarf per Online-Meeting.",
         },
       ]}
-      related={[{ href: "/seo-aachen", label: "SEO in Aachen: Local SEO und Suchmaschinenoptimierung" }]}
+      related={[
+        { href: "/webentwicklung-aachen", label: "Webentwicklung in Aachen: individuelle Websites und Web-Apps" },
+        { href: "/seo-aachen", label: "SEO in Aachen: Local SEO und Suchmaschinenoptimierung" },
+      ]}
       ctaTitle="Erzählen Sie mir von Ihrem Projekt"
       ctaText="Schreiben Sie mir kurz, was Sie anbieten und was Ihre Website leisten soll. Ich melde mich in der Regel innerhalb von 24 Stunden."
       serviceName="Webdesign und Webentwicklung"

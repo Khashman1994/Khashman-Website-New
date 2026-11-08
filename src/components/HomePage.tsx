@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import AnimatedHero from "@/components/AnimatedHero";
 import ContactForm from "@/components/ContactForm";
 import { PackageLink, SpotlightCard } from "@/components/motion";
@@ -263,6 +264,22 @@ export default function HomePage({ locale }: { locale: Locale }) {
             );
           })}
         </div>
+        {locale === "de" && (
+          <p className="mt-8 text-sm text-fg/60">
+            Mehr dazu:{" "}
+            <Link href="/webdesign-aachen" className="text-accent-soft underline-offset-4 hover:underline">
+              Webdesign in Aachen
+            </Link>
+            {" · "}
+            <Link href="/webentwicklung-aachen" className="text-accent-soft underline-offset-4 hover:underline">
+              Webentwicklung in Aachen
+            </Link>
+            {" · "}
+            <Link href="/seo-aachen" className="text-accent-soft underline-offset-4 hover:underline">
+              SEO in Aachen
+            </Link>
+          </p>
+        )}
       </section>
 
       {/* Die Branchen-Beispiele liegen auf einer eigenen Seite: /beispiele (Nav & Footer verlinken sie) */}

@@ -104,6 +104,13 @@ export default async function BlogPostPage({ params }: Props) {
         <Link href="/#kontakt" className="mt-6 inline-flex min-h-12 items-center rounded-full bg-fg px-6 font-medium text-ink-950 transition-colors hover:bg-accent hover:text-white">
           Erstgespräch vereinbaren
         </Link>
+        <p className="mt-6 text-sm text-fg/60">
+          Mehr zu meinem Angebot: <Link href="/webdesign-aachen" className="text-accent-soft underline-offset-4 hover:underline">Webdesign in Aachen</Link>
+          {" · "}
+          <Link href="/webentwicklung-aachen" className="text-accent-soft underline-offset-4 hover:underline">Webentwicklung in Aachen</Link>
+          {" · "}
+          <Link href="/seo-aachen" className="text-accent-soft underline-offset-4 hover:underline">SEO in Aachen</Link>
+        </p>
       </aside>
 
       {others.length > 0 && (
