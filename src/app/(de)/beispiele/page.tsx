@@ -33,7 +33,7 @@ export default function BeispielePage() {
       />
 
       <header className="mx-auto max-w-3xl px-6 pt-36 md:pt-44">
-        <nav aria-label="Brotkrumen" className="text-sm text-fg/50">
+        <nav aria-label="Brotkrumen" className="text-sm text-fg/60">
           <Link href="/" className="transition-colors hover:text-fg">Startseite</Link> <span aria-hidden="true">/</span>{" "}
           <span className="text-fg/70">Beispiele</span>
         </nav>
@@ -42,7 +42,7 @@ export default function BeispielePage() {
           Hier sehen Sie, wie eine moderne Website für Handwerker, Praxen, Kanzleien, Gastronomie, Immobilien und viele weitere Branchen aussehen kann.
           Jedes Konzept zeigt die Funktionen, die Kunden in dem jeweiligen Bereich wirklich nutzen.
         </p>
-        <p className="mt-4 text-sm leading-relaxed text-fg/50">
+        <p className="mt-4 text-sm leading-relaxed text-fg/60">
           Wichtig: Alle Beispiele sind fiktive Design-Konzepte, keine Webseiten echter Kunden. Sie zeigen, was möglich ist. Ihre Seite gestalte ich passend zu
           Ihrem Betrieb. Mehr zu meinem Angebot finden Sie unter <Link href="/webdesign-aachen" className="text-accent-soft underline underline-offset-4">Webdesign in Aachen</Link>.
         </p>

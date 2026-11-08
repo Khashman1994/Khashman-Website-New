@@ -22,7 +22,7 @@ export default function LanguageSwitch({ current, label }: { current: Locale; la
             aria-current={active ? "page" : undefined}
             title={name}
             className={`flex items-center gap-1.5 rounded-full px-2 py-1 text-xs font-medium transition-colors ${
-              active ? "bg-fg/10 text-fg" : "text-fg/50 hover:text-fg"
+              active ? "bg-fg/10 text-fg" : "text-fg/60 hover:text-fg"
             }`}
           >
             <Flag className="h-3 w-[1.125rem] rounded-[2px] shadow-[0_0_0_1px_rgb(0_0_0/0.15)]" />

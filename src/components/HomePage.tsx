@@ -103,8 +103,8 @@ const SERVICE_LAYOUT = [
 
 function SectionLabel({ number, children }: { number: string; children: React.ReactNode }) {
   return (
-    <p className="flex items-center gap-3 text-sm text-fg/50">
-      <span className="font-mono text-accent">{number}</span>
+    <p className="flex items-center gap-3 text-sm text-fg/60">
+      <span className="font-mono text-accent-soft">{number}</span>
       <span className="h-px w-8 bg-fg/20" />
       {children}
     </p>
@@ -208,7 +208,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
         <div className="flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
           <div className="flex shrink-0 animate-marquee items-center motion-reduce:animate-none">
             {[...t.marquee, ...t.marquee].map((item, i) => (
-              <span key={i} className="flex items-center gap-8 pr-8 text-2xl font-medium tracking-tight text-fg/40 md:text-4xl">
+              <span key={i} className="flex items-center gap-8 pr-8 text-2xl font-medium tracking-tight text-fg/50 md:text-4xl">
                 {item}
                 <span className="text-accent" aria-hidden="true">✦</span>
               </span>
@@ -235,7 +235,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
               <SerifTitle {...t.services.title} />
             </h2>
           </div>
-          <p className="max-w-sm text-fg/50">{t.services.sub}</p>
+          <p className="max-w-sm text-fg/60">{t.services.sub}</p>
         </Reveal>
 
         <div className="grid gap-4 md:grid-cols-3 md:grid-rows-2">
@@ -287,7 +287,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
                     0{i + 1}
                   </span>
                   <Reveal className={i % 2 === 0 ? "md:text-right" : "md:order-2"}>
-                    <p className="font-mono text-sm text-fg/40">{step.time}</p>
+                    <p className="font-mono text-sm text-fg/60">{step.time}</p>
                     <h3 className="mt-2 text-3xl font-semibold tracking-tight">{step.title}</h3>
                   </Reveal>
                   <Reveal delay={0.1} className={i % 2 === 0 ? "" : "md:order-1 md:text-right"}>
@@ -315,7 +315,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950/90 to-transparent p-6">
                 <p className="text-sm text-fg/70">{SITE.owner}</p>
-                <p className="text-xs text-fg/40">{t.about.role} · {SITE.city}</p>
+                <p className="text-xs text-fg/60">{t.about.role} · {SITE.city}</p>
               </div>
             </div>
           </Reveal>
@@ -330,7 +330,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
             <dl className="mt-12 grid grid-cols-3 gap-6 border-t border-fg/10 pt-8">
               {t.about.facts.map((fact) => (
                 <div key={fact.term}>
-                  <dt className="text-sm text-fg/40">{fact.term}</dt>
+                  <dt className="text-sm text-fg/60">{fact.term}</dt>
                   <dd className="mt-1 font-medium">{fact.value}</dd>
                 </div>
               ))}
@@ -350,7 +350,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
             <h2 className="mt-6 text-4xl font-semibold tracking-tight md:text-6xl">
               <SerifTitle {...t.pricing.title} />
             </h2>
-            <p className="mt-6 text-fg/50">{t.pricing.sub}</p>
+            <p className="mt-6 text-fg/60">{t.pricing.sub}</p>
           </Reveal>
 
           <div className="grid items-stretch gap-6 lg:grid-cols-3">
@@ -369,14 +369,14 @@ export default function HomePage({ locale }: { locale: Locale }) {
                     )}
 
                     <h3 className="text-xl font-semibold">{pkg.name}</h3>
-                    <p className="text-sm text-fg/40">{pkg.subtitle}</p>
+                    <p className="text-sm text-fg/60">{pkg.subtitle}</p>
 
                     <div className="mt-8 flex items-baseline gap-2">
                       <span className="text-6xl font-semibold tracking-tighter">{pkg.price}</span>
-                      <span className="text-sm text-fg/40">{t.pricing.oneTime}</span>
+                      <span className="text-sm text-fg/60">{t.pricing.oneTime}</span>
                     </div>
                     <p className="mt-2 text-sm text-accent-soft">
-                      {pkg.monthly} <span className="text-fg/40">({pkg.monthlyNote})</span>
+                      {pkg.monthly} <span className="text-fg/60">({pkg.monthlyNote})</span>
                     </p>
 
                     <p className="mt-6 rounded-2xl border border-fg/5 bg-fg/[0.03] px-4 py-3 text-sm text-fg/60">
@@ -408,7 +408,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
             ))}
           </div>
 
-          <p className="mt-16 text-center text-sm text-fg/40">{t.pricing.note}</p>
+          <p className="mt-16 text-center text-sm text-fg/60">{t.pricing.note}</p>
         </div>
       </section>
 
@@ -420,7 +420,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
             <h2 className="mt-6 text-4xl font-semibold tracking-tight md:text-6xl">
               <SerifTitle {...t.faq.title} />
             </h2>
-            <p className="mt-6 text-fg/50">{t.faq.sub}</p>
+            <p className="mt-6 text-fg/60">{t.faq.sub}</p>
           </Reveal>
 
           <Reveal delay={0.1} className="divide-y divide-fg/10 border-y border-fg/10">
@@ -467,7 +467,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
                 </span>
                 <span>
                   <span className="block font-medium">{t.contact.whatsapp}</span>
-                  <span className="block text-sm text-fg/50">{SITE.whatsappDisplay}</span>
+                  <span className="block text-sm text-fg/60">{SITE.whatsappDisplay}</span>
                 </span>
               </a>
 
@@ -480,7 +480,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
                 </span>
                 <span>
                   <span className="block font-medium">{t.contact.call}</span>
-                  <span className="block text-sm text-fg/50">{SITE.phoneDisplay}</span>
+                  <span className="block text-sm text-fg/60">{SITE.phoneDisplay}</span>
                 </span>
               </a>
 
@@ -493,7 +493,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
                 </span>
                 <span>
                   <span className="block font-medium">{t.contact.email}</span>
-                  <span className="block text-sm text-fg/50">{SITE.email}</span>
+                  <span className="block text-sm text-fg/60">{SITE.email}</span>
                 </span>
               </a>
 
@@ -508,7 +508,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
                 </span>
                 <span>
                   <span className="block font-medium">{t.contact.google}</span>
-                  <span className="block text-sm text-fg/50">{t.contact.googleHint}</span>
+                  <span className="block text-sm text-fg/60">{t.contact.googleHint}</span>
                 </span>
               </a>
             </Reveal>

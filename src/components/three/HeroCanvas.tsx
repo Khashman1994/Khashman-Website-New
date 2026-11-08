@@ -72,18 +72,21 @@ export default function HeroCanvas() {
         src="/hero-poster.jpg"
         alt=""
         fill
-        // LCP-Element auf dem Handy: sofort und mit hoher Priorität laden
+        // Dunkles Bild: nur bei aktivem dunklem Theme sichtbar. Standard ist hell, deshalb niedrige Priorität –
+        // eager statt lazy, damit es bei Theme-Wechsel ohne Verzögerung da ist (nur ~30 KB)
         loading="eager"
-        fetchPriority="high"
+        fetchPriority="low"
         sizes="(min-width: 1024px) 70vw, 100vw"
         className={`${POSTER_CLASS} light:hidden ${ready ? "opacity-0" : "opacity-100"}`}
       />
-      {/* lazy + display:none → wird nur geladen, wenn der helle Modus aktiv ist */}
+      {/* Helles Bild = Standard-Theme und damit das LCP-Element der meisten Besucher:
+          sofort und mit hoher Priorität laden (lazy hatte den Start um ~1,4 s verzögert) */}
       <Image
         src="/hero-poster-light.jpg"
         alt=""
         fill
-        loading="lazy"
+        loading="eager"
+        fetchPriority="high"
         sizes="(min-width: 1024px) 70vw, 100vw"
         className={`${POSTER_CLASS} hidden light:block ${ready ? "opacity-0" : "opacity-100"}`}
       />

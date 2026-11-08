@@ -251,7 +251,7 @@ function MockupPlaceholder({ industry, wide = false }: { industry: Industry; wid
           <span className="h-2 w-2 rounded-full bg-fg/15" />
           <span className="h-2 w-2 rounded-full bg-fg/15" />
         </span>
-        <span className="ml-1 truncate rounded-md bg-fg/5 px-2 py-0.5 font-mono text-[10px] text-fg/50">{mock.domain}</span>
+        <span className="ml-1 truncate rounded-md bg-fg/5 px-2 py-0.5 font-mono text-[10px] text-fg/60">{mock.domain}</span>
       </div>
 
       {/* Seiteninhalt – wird beim Hover leicht hochgeschoben, als würde man scrollen */}
@@ -429,7 +429,7 @@ export default function IndustryShowcase({ number = "02", contactHref = "#kontak
                   }`}
                 >
                   {label}
-                  <span className={`font-mono text-xs ${isActive ? "text-ink-950/60" : "text-fg/40"}`}>{counts[id]}</span>
+                  <span className={`font-mono text-xs ${isActive ? "text-ink-950/60" : "text-fg/60"}`}>{counts[id]}</span>
                 </button>
               );
             })}

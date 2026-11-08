@@ -67,12 +67,12 @@ export default function ServicePage(props: ServicePageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
 
-      <nav aria-label="Brotkrumen" className="text-sm text-fg/50">
+      <nav aria-label="Brotkrumen" className="text-sm text-fg/60">
         <Link href="/" className="transition-colors hover:text-fg">Startseite</Link> <span aria-hidden="true">/</span>{" "}
         <span className="text-fg/70">{props.breadcrumb}</span>
       </nav>
 
-      <p className="mt-10 text-sm text-fg/50">{props.label}</p>
+      <p className="mt-10 text-sm text-fg/60">{props.label}</p>
       <h1 className="mt-3 text-4xl font-semibold tracking-tight md:text-6xl">{props.title}</h1>
       <p className="mt-6 text-lg leading-relaxed text-fg/60">{props.intro}</p>
 
@@ -105,7 +105,7 @@ export default function ServicePage(props: ServicePageProps) {
               <details key={item.q} className="group py-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium [&::-webkit-details-marker]:hidden">
                   {item.q}
-                  <span aria-hidden="true" className="text-fg/40 transition-transform group-open:rotate-45">+</span>
+                  <span aria-hidden="true" className="text-fg/60 transition-transform group-open:rotate-45">+</span>
                 </summary>
                 <p className="mt-3 leading-relaxed text-fg/60">{item.a}</p>
               </details>

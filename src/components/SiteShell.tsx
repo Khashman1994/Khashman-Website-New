@@ -47,11 +47,11 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
                 <p className="text-lg font-semibold">
                   Khashman<span className="text-accent">.</span>
                 </p>
-                <p className="mt-3 text-sm text-fg/50">{t.footer.tagline}</p>
+                <p className="mt-3 text-sm text-fg/60">{t.footer.tagline}</p>
               </div>
               <div className={`grid grid-cols-2 gap-10 text-sm ${locale === "de" ? "sm:grid-cols-3" : ""}`}>
                 <div className="flex flex-col gap-3">
-                  <p className="text-fg/40">{t.footer.contact}</p>
+                  <p className="text-fg/60">{t.footer.contact}</p>
                   <a href={`mailto:${SITE.email}`} className="text-fg/70 hover:text-fg">{SITE.email}</a>
                   <a href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-fg/70 hover:text-fg">
                     WhatsApp
@@ -63,21 +63,21 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
                 {/* Leistungsseiten gibt es nur auf Deutsch */}
                 {locale === "de" && (
                   <div className="flex flex-col gap-3">
-                    <p className="text-fg/40">Leistungen</p>
+                    <p className="text-fg/60">Leistungen</p>
                     <Link href="/webdesign-aachen" className="text-fg/70 hover:text-fg">Webdesign Aachen</Link>
                     <Link href="/seo-aachen" className="text-fg/70 hover:text-fg">SEO Aachen</Link>
                     <Link href="/beispiele" className="text-fg/70 hover:text-fg">Beispiele</Link>
                   </div>
                 )}
                 <div className="flex flex-col gap-3">
-                  <p className="text-fg/40">{t.footer.legal}</p>
+                  <p className="text-fg/60">{t.footer.legal}</p>
                   {/* Impressum & Datenschutz gibt es nur auf Deutsch (rechtlich maßgeblich) */}
                   <Link href="/impressum" hrefLang="de" className="text-fg/70 hover:text-fg">{t.footer.imprint}</Link>
                   <Link href="/datenschutz" hrefLang="de" className="text-fg/70 hover:text-fg">{t.footer.privacy}</Link>
                 </div>
               </div>
             </div>
-            <p className="mt-16 text-xs text-fg/40">© 2026 {SITE.owner}. {t.footer.rights}</p>
+            <p className="mt-16 text-xs text-fg/60">© 2026 {SITE.owner}. {t.footer.rights}</p>
           </div>
           {/* Riesiger Schriftzug als Abschluss */}
           <p

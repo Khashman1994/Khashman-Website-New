@@ -141,7 +141,7 @@ function PackagePicker({ locale, t, defaultValue, error }: { locale: Locale; t: 
               <span className="relative mt-3 block font-semibold text-fg">
                 {option.label}
               </span>
-              <span className="relative block text-xs text-fg/50 transition-colors group-has-checked:text-fg/60">
+              <span className="relative block text-xs text-fg/60 transition-colors group-has-checked:text-fg/60">
                 {option.tagline}
               </span>
               <span className="relative mt-2 block text-sm font-semibold text-accent-soft transition-colors group-has-checked:text-fg">
@@ -171,7 +171,7 @@ function BudgetSlider({ locale, t, index, onChange }: { locale: Locale; t: FormT
         {/* key erzwingt Neu-Mount → @starting-style-Animation bei jeder Änderung */}
         <span
           key={current.value}
-          className="rounded-full bg-accent px-3 py-1 text-sm font-semibold text-white shadow-md shadow-accent/30 transition-all duration-300 starting:scale-75 starting:opacity-0"
+          className="rounded-full bg-[#3a67e8] px-3 py-1 text-sm font-semibold text-white shadow-md shadow-accent/30 transition-all duration-300 starting:scale-75 starting:opacity-0"
         >
           {current.label}
         </span>
@@ -312,7 +312,7 @@ export default function ContactForm({ locale, t }: { locale: Locale; t: FormText
       </div>
       <div>
         <label htmlFor="phone" className="mb-1 block text-sm font-medium text-fg/70">
-          {t.phone} <span className="font-normal text-fg/40">{t.optional}</span>
+          {t.phone} <span className="font-normal text-fg/60">{t.optional}</span>
         </label>
         <input type="tel" maxLength={30} autoComplete="tel" placeholder={t.phonePlaceholder} {...fieldProps("phone")} />
         <FieldError id="phone-error" message={state.errors?.phone} />
@@ -344,7 +344,7 @@ export default function ContactForm({ locale, t }: { locale: Locale; t: FormText
             t.submit
           )}
         </button>
-        <p className="mt-3 text-center text-xs text-fg/40">
+        <p className="mt-3 text-center text-xs text-fg/60">
           {t.consentBefore}
           <Link href="/datenschutz" hrefLang="de" className="underline hover:text-fg">{t.consentLink}</Link>
           {t.consentAfter}

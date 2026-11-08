@@ -91,7 +91,7 @@ export default function ChatWidget() {
           <div className="flex items-center justify-between border-b border-fg/10 px-4 py-3">
             <div>
               <p className="text-sm font-semibold">Khashman Webdesign</p>
-              <p className="text-xs text-fg/50">Antwort in der Regel innerhalb eines Tages</p>
+              <p className="text-xs text-fg/60">Antwort in der Regel innerhalb eines Tages</p>
             </div>
           </div>
 
@@ -173,7 +173,7 @@ export default function ChatWidget() {
                 >
                   {pending ? "Wird gesendet …" : "Anfrage senden"}
                 </button>
-                <p className="text-[11px] leading-relaxed text-fg/45">
+                <p className="text-[11px] leading-relaxed text-fg/60">
                   Ich verwende deine Angaben nur, um dir zu antworten. Details in der{" "}
                   <a href="/datenschutz" className="underline">Datenschutzerklärung</a>.
                 </p>
