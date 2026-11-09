@@ -5,13 +5,13 @@ date: 2026-11-06
 image: /blog/was-kostet-professionelles-webdesign.webp
 ---
 
-Eine Website kann für 299 Euro starten oder fünfstellig kosten. Beides kann korrekt sein - entscheidend ist, was Sie tatsächlich bekommen und welches Ziel die Seite erfüllen soll. Auf die Frage „Was kostet professionelles Webdesign?“ gibt es deshalb keine seriöse Pauschalantwort. Es gibt aber klare Preisfaktoren, realistische Budgetrahmen und einige Leistungen, an denen Sie Qualität zuverlässig erkennen.
+Eine Website kann für 599 Euro starten oder fünfstellig kosten. Beides kann korrekt sein - entscheidend ist, was Sie tatsächlich bekommen und welches Ziel die Seite erfüllen soll. Auf die Frage „Was kostet professionelles Webdesign?“ gibt es deshalb keine seriöse Pauschalantwort. Es gibt aber klare Preisfaktoren, realistische Budgetrahmen und einige Leistungen, an denen Sie Qualität zuverlässig erkennen.
 
 Für Selbstständige, Handwerksbetriebe und lokale Unternehmen zählt vor allem ein Ergebnis: Die Website soll Vertrauen schaffen, bei Google gefunden werden und Anfragen erleichtern. Schönes Design allein reicht dafür nicht. Technik, Inhalte, Ladezeit, Datenschutz und laufende Betreuung gehören genauso zur Kalkulation.
 
 ## Was kostet professionelles Webdesign je nach Projekt?
 
-Eine kleine, klar abgegrenzte [One-Page-Website](/blog/one-page-website-erstellen-lassen-oder-mehr) kann bereits ab 299 Euro umsetzbar sein. Das funktioniert, wenn Struktur, Umfang und Anforderungen schlank bleiben: wenige Inhaltsbereiche, vorhandenes Material und ein eindeutiges Ziel wie Kontaktanfragen oder Terminbuchungen. Für Gründer oder Betriebe, die schnell professionell sichtbar werden möchten, kann das ein sinnvoller Einstieg sein.
+Eine kleine, klar abgegrenzte [One-Page-Website](/blog/one-page-website-erstellen-lassen-oder-mehr) kann bereits ab 599 Euro umsetzbar sein. Das funktioniert, wenn Struktur, Umfang und Anforderungen schlank bleiben: wenige Inhaltsbereiche, vorhandenes Material und ein eindeutiges Ziel wie Kontaktanfragen oder Terminbuchungen. Für Gründer oder Betriebe, die schnell professionell sichtbar werden möchten, kann das ein sinnvoller Einstieg sein.
 
 Eine individuell geplante Unternehmenswebsite mit mehreren Unterseiten liegt häufig zwischen 1.500 und 5.000 Euro. In diesem Bereich werden Inhalte sauber strukturiert, Gestaltung und Nutzerführung auf Ihr Unternehmen abgestimmt und technische Grundlagen professionell umgesetzt. Dazu gehören in der Regel eine responsive Darstellung, Kontaktmöglichkeiten, DSGVO-konforme Einbindung notwendiger Dienste sowie eine schnelle, wartbare technische Basis.
 
@@ -53,7 +53,7 @@ Auch ein hoher Preis ist kein automatisches Qualitätsmerkmal. Große Agenturstr
 
 Vergleichen Sie nicht nur die Endsumme. Prüfen Sie, ob das Angebot die Leistungen konkret benennt. Formulierungen wie „moderne Website inklusive allem“ klingen gut, sagen aber wenig aus. Sie sollten erkennen können, wie viele Seiten geplant sind, ob die Inhalte eingepflegt werden, wie Korrekturen ablaufen und welche technischen Leistungen enthalten sind.
 
-Achten Sie außerdem auf den Zeitplan. Eine schlanke Website kann bei guter Vorbereitung innerhalb von ein bis vier Wochen live gehen. Das ist realistisch, wenn Entscheidungen zügig getroffen werden, Materialien vorliegen und der Umfang klar definiert ist. Verspricht jemand eine umfangreiche Individualseite ohne Rückfragen in zwei Tagen, sollten Sie genauer hinschauen.
+Achten Sie außerdem auf den Zeitplan. Eine schlanke Website kann bei guter Vorbereitung innerhalb von zwei bis sechs Wochen live gehen. Das ist realistisch, wenn Entscheidungen zügig getroffen werden, Materialien vorliegen und der Umfang klar definiert ist. Verspricht jemand eine umfangreiche Individualseite ohne Rückfragen in zwei Tagen, sollten Sie genauer hinschauen.
 
 Fragen Sie nach der Übergabe. Können Sie später Texte oder Bilder ändern? Was passiert bei technischen Problemen? Wer ist erreichbar, wenn Ihre Domain verlängert werden muss oder ein Formular ausfällt? Professionelles Webdesign endet nicht mit dem Klick auf „Veröffentlichen“.
 

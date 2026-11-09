@@ -4,9 +4,9 @@ import type { Dictionary } from "@/lib/i18n";
 
 const en: Dictionary = {
   meta: {
-    title: "Web Design Aachen | Khashman Webdesign – Modern Websites from €299",
+    title: "Web Design Aachen | Khashman Webdesign – Modern Websites from €599",
     description:
-      "Web design from Aachen, Germany: modern, fast and GDPR-compliant websites for freelancers, small businesses and founders. Fixed prices from €299, hosting & maintenance optional. Book your free consultation now.",
+      "Web design from Aachen, Germany: modern, fast and GDPR-compliant websites for freelancers, small businesses and founders. Fixed prices from €599, hosting & maintenance optional. Book your free consultation now.",
     keywords: [
       "web design Aachen",
       "web designer Aachen",
@@ -134,8 +134,8 @@ const en: Dictionary = {
         value: "starter",
         name: "Starter",
         subtitle: "Business card",
-        amount: 299,
-        price: "€299",
+        amount: 599,
+        price: "€599",
         monthly: "+ €29 / month",
         monthlyNote: "optional: hosting & maintenance",
         idealFor: "Local service providers, tradespeople, founders",
@@ -154,8 +154,8 @@ const en: Dictionary = {
         value: "business",
         name: "Business",
         subtitle: "For growing businesses",
-        amount: 649,
-        price: "€649",
+        amount: 1199,
+        price: "€1,199",
         monthly: "+ €39 / month",
         monthlyNote: "optional: hosting & care",
         idealFor: "Established businesses that want to present several services",
@@ -174,8 +174,8 @@ const en: Dictionary = {
         value: "premium",
         name: "Premium",
         subtitle: "All-in-one",
-        amount: 1199,
-        price: "€1,199",
+        amount: 1999,
+        price: "€1,999",
         monthly: "+ €49 / month",
         monthlyNote: "optional: hosting & care",
         idealFor: "Businesses with an online shop, booking system or a large range of services",
@@ -199,7 +199,7 @@ const en: Dictionary = {
     items: [
       {
         q: "How long until my website is online?",
-        a: "A Starter project usually goes live within 1–2 weeks, Business and Premium projects within 2–4 weeks – depending on how quickly content and feedback are available.",
+        a: "A Starter project usually goes live within 2–3 weeks, a Business project within 3–4 weeks and a Premium project within up to 6 weeks. The clock starts once all texts, images and access details are in, and depends on how quickly feedback comes back.",
       },
       {
         q: "Do I have to pay the monthly fee?",

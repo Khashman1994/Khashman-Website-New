@@ -6,8 +6,8 @@ import type { Locale } from "@/lib/i18n";
 export const OG_SIZE = { width: 1200, height: 630 };
 
 const TEXT: Record<Locale, { line1: string; line2: string; left: string; right: string }> = {
-  de: { line1: "Webseiten, die", line2: "Eindruck hinterlassen.", left: "Webdesign aus Aachen", right: "Festpreise ab 299 €" },
-  en: { line1: "Websites that make", line2: "an impression.", left: "Web design from Aachen, Germany", right: "Fixed prices from €299" },
+  de: { line1: "Webseiten, die", line2: "Eindruck hinterlassen.", left: "Webdesign aus Aachen", right: "Festpreise ab 599 €" },
+  en: { line1: "Websites that make", line2: "an impression.", left: "Web design from Aachen, Germany", right: "Fixed prices from €599" },
 };
 
 export function renderOgImage(locale: Locale) {

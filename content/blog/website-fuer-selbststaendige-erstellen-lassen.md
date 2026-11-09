@@ -41,7 +41,7 @@ Dazu gehört eine verlässliche technische Basis: SSL-Zertifikat, regelmäßige 
 
 ## Der richtige Ablauf spart Zeit und Rückfragen
 
-Ein gutes Website-Projekt muss nicht monatelang dauern. Wenn Ziele, Inhalte und Verantwortlichkeiten früh geklärt sind, ist eine Umsetzung innerhalb von ein bis vier Wochen realistisch. Voraussetzung ist ein strukturierter Ablauf statt endloser Abstimmungsschleifen.
+Ein gutes Website-Projekt muss nicht monatelang dauern. Wenn Ziele, Inhalte und Verantwortlichkeiten früh geklärt sind, ist eine Umsetzung innerhalb von zwei bis sechs Wochen realistisch. Voraussetzung ist ein strukturierter Ablauf statt endloser Abstimmungsschleifen.
 
 Am Anfang steht ein kurzes, konkretes Gespräch: Welche Leistung soll sichtbar werden? Welche Zielgruppe möchten Sie ansprechen? Gibt es bereits Logo, Bilder, Texte oder Referenzen? Welche Region ist relevant? Daraus entsteht eine passende Seitenstruktur und ein verbindlicher Rahmen für Umfang, Preis und Zeitplan.
 
@@ -55,7 +55,7 @@ Die ehrliche Antwort lautet: Es kommt auf den Umfang an. Eine kompakte One-Page-
 
 Ein günstiger Einstiegspreis kann sinnvoll sein, wenn Seitenumfang, Gestaltung und Funktionen klar begrenzt sind. Problematisch wird es, wenn zentrale Bestandteile später als Zusatzkosten auftauchen: Hosting, Domain, SSL, Pflege, Sicherheitsupdates, Backups, Bildoptimierung oder Local SEO. Ein transparentes Festpreispaket schafft hier mehr Sicherheit als eine vage Kostenschätzung.
 
-Bei Khashman Webdesign beginnen Website-Projekte ab 299 Euro. Je nach Paket kommen monatliche Serviceleistungen für Hosting, Wartung, Sicherheit und auf Wunsch laufende Inhaltspflege hinzu. Das Modell passt besonders gut zu Selbstständigen, die keinen weiteren technischen Dienstleister koordinieren möchten und klare Zuständigkeiten schätzen.
+Bei Khashman Webdesign beginnen Website-Projekte ab 599 Euro. Je nach Paket kommen monatliche Serviceleistungen für Hosting, Wartung, Sicherheit und auf Wunsch laufende Inhaltspflege hinzu. Das Modell passt besonders gut zu Selbstständigen, die keinen weiteren technischen Dienstleister koordinieren möchten und klare Zuständigkeiten schätzen.
 
 ## Website für Selbstständige erstellen lassen: Darauf kommt es bei der Auswahl an
 

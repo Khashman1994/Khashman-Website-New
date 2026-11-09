@@ -3,7 +3,7 @@ import ServicePage from "@/components/ServicePage";
 
 const TITLE = "SEO Aachen: Local SEO & Suchmaschinenoptimierung";
 const DESCRIPTION =
-  "SEO in Aachen für Selbstständige und kleine Unternehmen: technisch saubere Website, Local SEO und Google Unternehmensprofil. Festpreis-Pakete ab 299 €, Beratung auch online.";
+  "SEO in Aachen für Selbstständige und kleine Unternehmen: technisch saubere Website, Local SEO und Google Unternehmensprofil. Festpreis-Pakete ab 599 €, Beratung auch online.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -49,7 +49,7 @@ export default function SeoAachenPage() {
         {
           title: "Welches Paket enthält SEO?",
           paragraphs: [
-            "Das Business-Paket (ab 649 €) enthält Basis-SEO für Google und die Einbindung von Google Maps. Das Premium-Paket (ab 1.199 €) enthält erweiterte SEO. Das Starter-Paket (ab 299 €) ist eine einfache Visitenkarte-Website ohne SEO-Paket. Alle Preise und Leistungen finden Sie in der Paketübersicht. Besondere Wünsche bespreche ich mit Ihnen im Erstgespräch.",
+            "Das Business-Paket (ab 1.199 €) enthält Basis-SEO für Google und die Einbindung von Google Maps. Das Premium-Paket (ab 1.999 €) enthält erweiterte SEO. Das Starter-Paket (ab 599 €) ist eine einfache Visitenkarte-Website ohne SEO-Paket. Alle Preise und Leistungen finden Sie in der Paketübersicht. Besondere Wünsche bespreche ich mit Ihnen im Erstgespräch.",
           ],
         },
         {
@@ -62,7 +62,7 @@ export default function SeoAachenPage() {
       faq={[
         {
           q: "Was kostet SEO in Aachen?",
-          a: "Die Grundlagen sind in den Website-Paketen enthalten: Basis-SEO im Business-Paket ab 649 €, erweiterte SEO im Premium-Paket ab 1.199 €. Alle Preise sind Festpreise. Was Sie darüber hinaus brauchen, klären wir im kostenlosen Erstgespräch.",
+          a: "Die Grundlagen sind in den Website-Paketen enthalten: Basis-SEO im Business-Paket ab 1.199 €, erweiterte SEO im Premium-Paket ab 1.999 €. Alle Preise sind Festpreise. Was Sie darüber hinaus brauchen, klären wir im kostenlosen Erstgespräch.",
         },
         {
           q: "Wie lange dauert es, bis meine Website bei Google erscheint?",

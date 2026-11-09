@@ -47,7 +47,7 @@ Für größere oder spezialisierte Betriebe können eigene Leistungsseiten sinnv
 
 Handwerksbetriebe haben selten Zeit, Texte, Bilder, Technik und Dienstleister zu koordinieren. Deshalb braucht ein Webprojekt klare Zuständigkeiten und eine realistische Reihenfolge. Zuerst werden Angebot, Zielkunden und die gewünschten Anfragen geschärft. Danach entstehen Seitenstruktur, Inhalte und Gestaltung. Erst wenn diese Grundlage steht, folgt die technische Umsetzung und Prüfung auf verschiedenen Geräten.
 
-Für eine kompakte Website kann dieser Prozess zügig laufen - oft innerhalb von ein bis vier Wochen, wenn Bilder, Leistungsdaten und Freigaben rechtzeitig vorliegen. Bei umfangreicheren Seiten, Shops oder Terminbuchungslösungen ist mehr Abstimmung sinnvoll. Schnelligkeit ist gut, aber sie sollte nicht dazu führen, dass wichtige Leistungen, Einsatzgebiete oder Kontaktwege fehlen.
+Für eine kompakte Website kann dieser Prozess zügig laufen - oft innerhalb von zwei bis sechs Wochen, wenn Bilder, Leistungsdaten und Freigaben rechtzeitig vorliegen. Bei umfangreicheren Seiten, Shops oder Terminbuchungslösungen ist mehr Abstimmung sinnvoll. Schnelligkeit ist gut, aber sie sollte nicht dazu führen, dass wichtige Leistungen, Einsatzgebiete oder Kontaktwege fehlen.
 
 Ein direkter Ansprechpartner spart dabei Zeit. Statt Design, Entwicklung, Hosting und Wartung bei mehreren Stellen nachzufragen, gibt es klare Zuständigkeiten. Khashman Webdesign setzt genau auf diese persönliche Umsetzung ohne Agentur-Wasserkopf: Planung, technische Entwicklung und langfristige Betreuung greifen ineinander.
 
@@ -55,7 +55,7 @@ Ein direkter Ansprechpartner spart dabei Zeit. Statt Design, Entwicklung, Hostin
 
 Eine pauschale Antwort wäre unseriös, denn der Aufwand hängt von Umfang und Zielen ab. Eine schlanke Unternehmensseite mit klarer Struktur ist etwas anderes als ein mehrsprachiger Auftritt mit vielen Leistungsseiten, Referenzbereich, Terminbuchung oder Shop. Auch die Qualität vorhandener Fotos und Texte beeinflusst den Aufwand.
 
-Transparente Festpreise sind trotzdem möglich, wenn der Leistungsumfang klar definiert ist. Einfache Projekte können bei einem einmaligen Preis ab 299 Euro starten. Entscheidend ist, was konkret enthalten ist: Konzeption, Gestaltung, technische Umsetzung, Inhalte, rechtliche Grundeinrichtung, Hosting und spätere Änderungen sollten nachvollziehbar benannt sein.
+Transparente Festpreise sind trotzdem möglich, wenn der Leistungsumfang klar definiert ist. Einfache Projekte können bei einem einmaligen Preis ab 599 Euro starten. Entscheidend ist, was konkret enthalten ist: Konzeption, Gestaltung, technische Umsetzung, Inhalte, rechtliche Grundeinrichtung, Hosting und spätere Änderungen sollten nachvollziehbar benannt sein.
 
 Neben dem Projektpreis entstehen meist laufende Kosten für Hosting, Domain, SSL-Zertifikat, Backups, Sicherheitsupdates und Pflege. Diese Betreuung ist kein unnötiger Zusatz. Eine Website bleibt nur dann ein verlässlicher Vertriebskanal, wenn sie technisch aktuell, erreichbar und bei Bedarf schnell anpassbar bleibt.
 
