@@ -56,7 +56,7 @@ Für kleine und mittlere Unternehmen ist die Zusammenarbeit oft wichtiger als da
 
 Ein pragmatischer Prozess beginnt mit einem kurzen Gespräch über Ziele, Zielgruppe, Leistungen und vorhandene Inhalte. Danach wird festgelegt, ob eine One-Page-Website, ein mehrseitiger Auftritt, ein Shop oder eine Terminlösung den größten Nutzen bringt. Auf dieser Basis entstehen Struktur, Design und Inhalte. Erst wenn die Richtung stimmt, folgt die technische Umsetzung und Optimierung für verschiedene Bildschirmgrößen.
 
-Bei gut vorbereiteten Projekten kann eine moderne Website innerhalb von ein bis vier Wochen live gehen. Das hängt allerdings davon ab, wie schnell Bilder, Logo, Leistungsinformationen und Freigaben vorliegen. Wer noch keine Texte oder professionellen Fotos hat, kann trotzdem starten. Dann sollte von Anfang an geklärt werden, welche Inhalte zuerst benötigt werden und was später ergänzt wird.
+Bei gut vorbereiteten Projekten kann eine moderne Website innerhalb von zwei bis sechs Wochen live gehen. Das hängt allerdings davon ab, wie schnell Bilder, Logo, Leistungsinformationen und Freigaben vorliegen. Wer noch keine Texte oder professionellen Fotos hat, kann trotzdem starten. Dann sollte von Anfang an geklärt werden, welche Inhalte zuerst benötigt werden und was später ergänzt wird.
 
 Khashman Webdesign setzt dabei auf direkte persönliche Zusammenarbeit statt auf anonyme Tickets und unnötige Abstimmungsebenen. Das ist besonders hilfreich, wenn Entscheidungen schnell getroffen werden sollen oder nach dem Launch neue Inhalte anstehen.
 
@@ -66,7 +66,7 @@ Eine Website muss nach dem Livegang erreichbar, sicher und aktuell bleiben. Doma
 
 Ein transparentes Modell trennt deshalb Projektkosten und laufende Leistungen sauber. Die einmalige Umsetzung umfasst Konzeption, Design und Entwicklung. Monatliche Gebühren können Hosting, Domain, SSL-Zertifikat, Sicherheitsupdates, tägliche Backups und je nach Bedarf Inhaltspflege abdecken. So wissen Sie vorab, was enthalten ist und wer reagiert, wenn etwas geändert werden muss.
 
-Günstige Einstiegsangebote ab 299 Euro können für klar abgegrenzte, schlanke Websites sinnvoll sein. Der Endpreis hängt jedoch von Umfang, Funktionen, Textbedarf und gewünschter Betreuung ab. Ein pauschales Schnäppchen wird teuer, wenn später jede Anpassung unklar abgerechnet wird oder technische Verantwortung offenbleibt.
+Günstige Einstiegsangebote ab 599 Euro können für klar abgegrenzte, schlanke Websites sinnvoll sein. Der Endpreis hängt jedoch von Umfang, Funktionen, Textbedarf und gewünschter Betreuung ab. Ein pauschales Schnäppchen wird teuer, wenn später jede Anpassung unklar abgerechnet wird oder technische Verantwortung offenbleibt.
 
 ## Woran Sie einen passenden Webdesign-Partner erkennen
 

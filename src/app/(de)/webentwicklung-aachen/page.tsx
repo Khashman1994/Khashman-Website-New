@@ -50,7 +50,7 @@ export default function WebentwicklungAachenPage() {
         {
           title: "Preise und Pakete",
           paragraphs: [
-            "Die meisten Projekte passen in eines meiner drei Pakete: Starter ab 299 €, Business ab 649 € und Premium ab 1.199 €. Für Sonderfunktionen erstelle ich ein individuelles Festpreis-Angebot. Hosting und Pflege sind optional.",
+            "Die meisten Projekte passen in eines meiner drei Pakete: Starter ab 599 €, Business ab 1.199 € und Premium ab 1.999 €. Für Sonderfunktionen erstelle ich ein individuelles Festpreis-Angebot. Hosting und Pflege sind optional.",
           ],
         },
         {
@@ -71,7 +71,7 @@ export default function WebentwicklungAachenPage() {
         },
         {
           q: "Was kostet individuelle Webentwicklung in Aachen?",
-          a: "Die meisten Projekte decken meine Pakete ab, ab 299 € bis ab 1.199 €. Für besondere Funktionen wie Buchungssysteme oder Shops erstelle ich ein Festpreis-Angebot nach dem Erstgespräch.",
+          a: "Die meisten Projekte decken meine Pakete ab, ab 599 € bis ab 1.999 €. Für besondere Funktionen wie Buchungssysteme oder Shops erstelle ich ein Festpreis-Angebot nach dem Erstgespräch.",
         },
         {
           q: "Kann ich meine Website später selbst erweitern lassen?",

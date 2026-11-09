@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ServicePage from "@/components/ServicePage";
 
-const TITLE = "Webdesigner Aachen: Website erstellen lassen ab 299 €";
+const TITLE = "Webdesigner Aachen: Website erstellen lassen ab 599 €";
 const DESCRIPTION =
   "Webdesign in Aachen für Selbstständige, Handwerker und kleine Unternehmen: moderne, mobiloptimierte und DSGVO-konforme Websites zum Festpreis. Persönlich betreut, auch online.";
 
@@ -35,7 +35,7 @@ export default function WebdesignAachenPage() {
         {
           title: "Drei Pakete, klare Preise",
           paragraphs: [
-            "Starter (ab 299 €) ist eine moderne One-Page-Website als digitale Visitenkarte. Business (ab 649 €) bietet bis zu 5 Unterseiten, Basis-SEO und Google Maps. Premium (ab 1.199 €) umfasst bis zu 10 Unterseiten oder einen Online-Shop beziehungsweise eine Terminbuchung, dazu erweiterte SEO. Hosting und Pflege können Sie optional monatlich dazubuchen. Alle Details stehen in der Paketübersicht.",
+            "Starter (ab 599 €) ist eine moderne One-Page-Website als digitale Visitenkarte. Business (ab 1.199 €) bietet bis zu 5 Unterseiten, Basis-SEO und Google Maps. Premium (ab 1.999 €) umfasst bis zu 10 Unterseiten oder einen Online-Shop beziehungsweise eine Terminbuchung, dazu erweiterte SEO. Hosting und Pflege können Sie optional monatlich dazubuchen. Alle Details stehen in der Paketübersicht.",
           ],
         },
         {
@@ -57,11 +57,11 @@ export default function WebdesignAachenPage() {
       faq={[
         {
           q: "Was kostet eine Website in Aachen?",
-          a: "Das Starter-Paket kostet ab 299 €, Business ab 649 € und Premium ab 1.199 €, jeweils als einmaliger Festpreis. Hosting und Pflege sind optional gegen eine monatliche Gebühr buchbar. Für besondere Wünsche erstelle ich ein individuelles Angebot.",
+          a: "Das Starter-Paket kostet ab 599 €, Business ab 1.199 € und Premium ab 1.999 €, jeweils als einmaliger Festpreis. Hosting und Pflege sind optional gegen eine monatliche Gebühr buchbar. Für besondere Wünsche erstelle ich ein individuelles Angebot.",
         },
         {
           q: "Wie lange dauert es, bis meine Website online ist?",
-          a: "Ein Starter-Projekt ist in der Regel in 1 bis 2 Wochen live, Business- und Premium-Projekte in 2 bis 4 Wochen. Das hängt davon ab, wie schnell Inhalte und Feedback vorliegen.",
+          a: "Ein Starter-Projekt ist in der Regel in 2 bis 3 Wochen live, ein Business-Projekt in 3 bis 4 Wochen und ein Premium-Projekt in bis zu 6 Wochen. Die Zeit beginnt, sobald Texte, Bilder und Zugangsdaten vollständig vorliegen, und hängt davon ab, wie schnell Feedback kommt.",
         },
         {
           q: "Muss ich Texte und Bilder selbst liefern?",

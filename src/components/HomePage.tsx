@@ -141,7 +141,7 @@ function buildJsonLd(locale: Locale, t: Dictionary) {
         image: `${SITE.url}/hero-poster.jpg`,
         email: SITE.email,
         telephone: SITE.phoneE164,
-        priceRange: "299 € – 1.199 €",
+        priceRange: "599 € – 1.999 €",
         address: {
           "@type": "PostalAddress",
           addressLocality: SITE.city,

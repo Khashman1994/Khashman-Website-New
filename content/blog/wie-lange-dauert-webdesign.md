@@ -1,11 +1,11 @@
 ---
 title: Wie lange dauert Webdesign? Der reale Zeitplan
-description: Wie lange dauert Webdesign? Erfahren Sie, welche Schritte Zeit kosten und wie Ihre professionelle Website in ein bis vier Wochen online geht - schnell.
+description: Wie lange dauert Webdesign? Erfahren Sie, welche Schritte Zeit kosten und wie Ihre professionelle Website in zwei bis sechs Wochen online geht - schnell.
 date: 2026-11-06
 image: /blog/wie-lange-dauert-webdesign.webp
 ---
 
-Eine Website soll idealerweise nicht monatelang in Abstimmungsschleifen hängen, während Interessenten weiter bei der Konkurrenz anfragen. Doch **wie lange dauert Webdesign** wirklich? Für viele Selbstständige, Handwerksbetriebe und lokale Dienstleister liegt ein realistischer Zeitraum bei ein bis vier Wochen - vorausgesetzt, Ziele, Inhalte und Zuständigkeiten sind von Beginn an klar.
+Eine Website soll idealerweise nicht monatelang in Abstimmungsschleifen hängen, während Interessenten weiter bei der Konkurrenz anfragen. Doch **wie lange dauert Webdesign** wirklich? Für viele Selbstständige, Handwerksbetriebe und lokale Dienstleister liegt ein realistischer Zeitraum bei zwei bis sechs Wochen - vorausgesetzt, Ziele, Inhalte und Zuständigkeiten sind von Beginn an klar.
 
 Die ehrliche Antwort lautet trotzdem: Es kommt auf den Umfang an. Eine fokussierte One-Page-Website kann sehr schnell online gehen. Ein mehrsprachiger Unternehmensauftritt mit vielen Unterseiten, Bildkonzept, Online-Shop oder Terminbuchung braucht mehr Planung. Entscheidend ist nicht, wie viele Pixel gestaltet werden, sondern wie schnell die richtigen Informationen, Entscheidungen und Freigaben vorliegen.
 
@@ -13,11 +13,11 @@ Die ehrliche Antwort lautet trotzdem: Es kommt auf den Umfang an. Eine fokussier
 
 Für eine professionell umgesetzte Website mit klarer Struktur sind diese Zeiträume realistisch:
 
-Eine kompakte [One-Page-Website](/blog/one-page-website-erstellen-lassen-oder-mehr) für Gründer oder lokale Dienstleister ist oft innerhalb von ein bis zwei Wochen umsetzbar. Sie bündelt Angebot, Vorteile, Referenzen, Kontaktmöglichkeiten und rechtliche Seiten auf einer conversion-starken Seite.
+Eine kompakte [One-Page-Website](/blog/one-page-website-erstellen-lassen-oder-mehr) für Gründer oder lokale Dienstleister ist oft innerhalb von zwei bis drei Wochen umsetzbar. Sie bündelt Angebot, Vorteile, Referenzen, Kontaktmöglichkeiten und rechtliche Seiten auf einer conversion-starken Seite.
 
-Eine klassische Unternehmenswebsite mit fünf bis zehn Unterseiten benötigt meist zwei bis vier Wochen. Dazu gehören etwa Startseite, Leistungen, Über-uns-Seite, Branchen- oder Leistungsdetailseiten, Kontakt und ein sauber aufgebauter lokaler Auftritt für Google.
+Eine klassische Unternehmenswebsite mit fünf bis zehn Unterseiten benötigt meist drei bis vier Wochen. Dazu gehören etwa Startseite, Leistungen, Über-uns-Seite, Branchen- oder Leistungsdetailseiten, Kontakt und ein sauber aufgebauter lokaler Auftritt für Google.
 
-[Bei Online-Shops](/blog/onlineshop-fuer-kleine-unternehmen-richtig-planen), individuellen Buchungsprozessen, komplexen Schnittstellen oder umfangreichen Text- und Bildproduktionen verlängert sich der Zeitrahmen. Das ist kein Zeichen langsamer Arbeit, sondern die Folge zusätzlicher Anforderungen: Produkte müssen gepflegt, Zahlungswege getestet, Datenschutzthemen geprüft und Nutzerwege sauber durchdacht werden.
+[Bei Online-Shops](/blog/onlineshop-fuer-kleine-unternehmen-richtig-planen), individuellen Buchungsprozessen, komplexen Schnittstellen oder umfangreichen Text- und Bildproduktionen verlängert sich der Zeitrahmen auf bis zu sechs Wochen. Das ist kein Zeichen langsamer Arbeit, sondern die Folge zusätzlicher Anforderungen: Produkte müssen gepflegt, Zahlungswege getestet, Datenschutzthemen geprüft und Nutzerwege sauber durchdacht werden.
 
 Ein schneller Launch ist wertvoll. Noch wertvoller ist ein Auftritt, der danach zuverlässig Anfragen erzeugt, auf dem Smartphone überzeugt und technisch gepflegt bleibt.
 

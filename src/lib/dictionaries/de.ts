@@ -2,9 +2,9 @@
 
 const de = {
   meta: {
-    title: "Webdesign Aachen | Khashman Webdesign – Moderne Webseiten ab 299 €",
+    title: "Webdesign Aachen | Khashman Webdesign – Moderne Webseiten ab 599 €",
     description:
-      "Webdesign aus Aachen: Moderne, schnelle und DSGVO-konforme Webseiten für Selbstständige, KMU und Gründer. Festpreise ab 299 €, Hosting & Wartung optional. Jetzt kostenloses Erstgespräch sichern.",
+      "Webdesign aus Aachen: Moderne, schnelle und DSGVO-konforme Webseiten für Selbstständige, KMU und Gründer. Festpreise ab 599 €, Hosting & Wartung optional. Jetzt kostenloses Erstgespräch sichern.",
     keywords: [
       "Webdesign Aachen",
       "Webdesigner Aachen",
@@ -133,8 +133,8 @@ const de = {
         value: "starter",
         name: "Starter",
         subtitle: "Visitenkarte",
-        amount: 299,
-        price: "299 €",
+        amount: 599,
+        price: "599 €",
         monthly: "+ 29 € / Monat",
         monthlyNote: "optional: Hosting & Wartung",
         idealFor: "Lokale Dienstleister, Handwerker, Gründer",
@@ -153,8 +153,8 @@ const de = {
         value: "business",
         name: "Business",
         subtitle: "Für wachsende Betriebe",
-        amount: 649,
-        price: "649 €",
+        amount: 1199,
+        price: "1.199 €",
         monthly: "+ 39 € / Monat",
         monthlyNote: "optional: Hosting & Pflege",
         idealFor: "Etablierte Betriebe, die mehrere Leistungen präsentieren wollen",
@@ -175,8 +175,8 @@ const de = {
         value: "premium",
         name: "Premium",
         subtitle: "All-in-One",
-        amount: 1199,
-        price: "1.199 €",
+        amount: 1999,
+        price: "1.999 €",
         monthly: "+ 49 € / Monat",
         monthlyNote: "optional: Hosting & Pflege",
         idealFor: "Unternehmen mit Shop, Terminbuchung oder großem Angebot",
@@ -202,7 +202,7 @@ const de = {
     items: [
       {
         q: "Wie lange dauert es, bis meine Website online ist?",
-        a: "Ein Starter-Projekt ist in der Regel in 1–2 Wochen live, Business- und Premium-Projekte in 2–4 Wochen – abhängig davon, wie schnell Inhalte und Feedback vorliegen.",
+        a: "Ein Starter-Projekt ist in der Regel in 2–3 Wochen live, ein Business-Projekt in 3–4 Wochen und ein Premium-Projekt in bis zu 6 Wochen. Die Zeit beginnt, sobald Texte, Bilder und Zugangsdaten vollständig vorliegen, und hängt davon ab, wie schnell Feedback kommt.",
       },
       {
         q: "Muss ich die monatliche Gebühr zahlen?",

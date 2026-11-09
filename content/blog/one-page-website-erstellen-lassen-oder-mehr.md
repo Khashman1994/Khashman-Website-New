@@ -55,7 +55,7 @@ Bei einer professionellen Umsetzung beginnt die Arbeit nicht mit Farben und Schr
 
 Danach folgen Texte, Gestaltung und technische Entwicklung. Idealerweise entstehen diese Bereiche nicht unabhängig voneinander. Ein Abschnitt mit einer starken Aussage braucht ein passendes Design, ein klares Bild und einen sichtbaren Kontaktweg. So wird aus einzelnen Bausteinen ein Webauftritt, der Besucher gezielt zur Anfrage führt.
 
-Für viele überschaubare Projekte ist eine Umsetzung innerhalb von ein bis vier Wochen realistisch, vorausgesetzt, die nötigen Inhalte und Rückmeldungen liegen rechtzeitig vor. Ein Festpreis mit klar definiertem Leistungsumfang schafft dabei Planungssicherheit. Ebenso wichtig ist die Frage, wer nach dem Launch zuständig bleibt. Eine Website ist kein gedruckter Flyer. Inhalte ändern sich, Sicherheitsupdates werden fällig und neue Anforderungen entstehen.
+Für viele überschaubare Projekte ist eine Umsetzung innerhalb von zwei bis sechs Wochen realistisch, vorausgesetzt, die nötigen Inhalte und Rückmeldungen liegen rechtzeitig vor. Ein Festpreis mit klar definiertem Leistungsumfang schafft dabei Planungssicherheit. Ebenso wichtig ist die Frage, wer nach dem Launch zuständig bleibt. Eine Website ist kein gedruckter Flyer. Inhalte ändern sich, Sicherheitsupdates werden fällig und neue Anforderungen entstehen.
 
 Khashman Webdesign verbindet deshalb die persönliche Umsetzung mit laufender technischer Betreuung. Sie haben einen direkten Ansprechpartner statt wechselnder Zuständigkeiten und müssen Hosting, Backups oder Updates nicht selbst organisieren.
 
@@ -63,7 +63,7 @@ Khashman Webdesign verbindet deshalb die persönliche Umsetzung mit laufender te
 
 Die Kosten hängen weniger von der Anzahl der Abschnitte ab als von Anspruch und Leistungsumfang. Eine einfache Seite mit vorhandenen Texten und Bildern ist deutlich schneller umgesetzt als ein individuell entwickelter Auftritt mit Texterstellung, Motion-Design, Terminbuchung, Local SEO und aufwendigen Bildkonzepten. Auch rechtliche Anforderungen und die gewünschte Betreuung spielen eine Rolle.
 
-Für kleine Unternehmen ist Transparenz wichtiger als ein scheinbar günstiger Einstiegspreis. Klären Sie vorab, ob Design, mobile Optimierung, Kontaktformular, DSGVO-Basis, Hosting, Domain, SSL-Zertifikat und Wartung enthalten sind. Ein Projektpreis ab 299 Euro kann für einen klar abgegrenzten Einstieg sinnvoll sein. Entscheidend ist, welche Leistungen konkret darin stecken und welche monatlichen Gebühren für Betrieb und Pflege anfallen.
+Für kleine Unternehmen ist Transparenz wichtiger als ein scheinbar günstiger Einstiegspreis. Klären Sie vorab, ob Design, mobile Optimierung, Kontaktformular, DSGVO-Basis, Hosting, Domain, SSL-Zertifikat und Wartung enthalten sind. Ein Projektpreis ab 599 Euro kann für einen klar abgegrenzten Einstieg sinnvoll sein. Entscheidend ist, welche Leistungen konkret darin stecken und welche monatlichen Gebühren für Betrieb und Pflege anfallen.
 
 Günstig wird teuer, wenn eine Seite später weder bearbeitet noch abgesichert werden kann. Umgekehrt muss nicht jedes Unternehmen sofort ein umfangreiches Webportal bezahlen. Die passende Lösung ist die, die Ihren aktuellen Bedarf zuverlässig abdeckt und Raum für Wachstum lässt.
 
