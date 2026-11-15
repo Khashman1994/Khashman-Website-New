@@ -34,15 +34,42 @@ async function ensureTable() {
   tableReady = true;
 }
 
+const MESSAGES = {
+  de: {
+    thanks: "Danke! Deine Anfrage ist angekommen.",
+    name: "Bitte gib deinen Namen an.",
+    email: "Bitte gib eine gültige E-Mail-Adresse an.",
+    phone: "Bitte prüfe die Telefonnummer.",
+    short: "Bitte schreib ein, zwei Sätze zu deinem Anliegen.",
+    long: "Bitte kürze deine Nachricht auf 2000 Zeichen.",
+    check: "Bitte prüfe deine Angaben.",
+    failed: "Das hat leider nicht geklappt. Schreib mir gern direkt per E-Mail oder WhatsApp.",
+    success: "Danke! Deine Anfrage ist angekommen. Ich melde mich bei dir.",
+  },
+  en: {
+    thanks: "Thank you! Your message has arrived.",
+    name: "Please enter your name.",
+    email: "Please enter a valid email address.",
+    phone: "Please check the phone number.",
+    short: "Please write a sentence or two about your request.",
+    long: "Please shorten your message to 2000 characters.",
+    check: "Please check your details.",
+    failed: "Sorry, that didn't work. Feel free to email me or message me on WhatsApp directly.",
+    success: "Thank you! Your message has arrived. I'll get back to you.",
+  },
+};
+
 function readField(formData: FormData, key: string): string {
   const value = formData.get(key);
   return typeof value === "string" ? value.trim() : "";
 }
 
 export async function submitChatLead(_prev: ChatState, formData: FormData): Promise<ChatState> {
+  const t = MESSAGES[readField(formData, "lang") === "en" ? "en" : "de"];
+
   // Honeypot: Bots füllen das unsichtbare Feld aus – dann so tun, als wäre alles geklappt
   if (readField(formData, "website") !== "") {
-    return { status: "success", message: "Danke! Deine Anfrage ist angekommen." };
+    return { status: "success", message: t.thanks };
   }
 
   const values = {
@@ -54,17 +81,17 @@ export async function submitChatLead(_prev: ChatState, formData: FormData): Prom
   };
 
   const errors: NonNullable<ChatState["errors"]> = {};
-  if (!values.name || values.name.length > 100) errors.name = "Bitte gib deinen Namen an.";
+  if (!values.name || values.name.length > 100) errors.name = t.name;
   if (!EMAIL_PATTERN.test(values.email) || values.email.length > 254)
-    errors.email = "Bitte gib eine gültige E-Mail-Adresse an.";
-  if (values.phone && !PHONE_PATTERN.test(values.phone)) errors.phone = "Bitte prüfe die Telefonnummer.";
-  if (values.message.length < 5) errors.message = "Bitte schreib ein, zwei Sätze zu deinem Anliegen.";
-  else if (values.message.length > 2000) errors.message = "Bitte kürze deine Nachricht auf 2000 Zeichen.";
+    errors.email = t.email;
+  if (values.phone && !PHONE_PATTERN.test(values.phone)) errors.phone = t.phone;
+  if (values.message.length < 5) errors.message = t.short;
+  else if (values.message.length > 2000) errors.message = t.long;
 
   if (Object.keys(errors).length > 0) {
     return {
       status: "error",
-      message: "Bitte prüfe deine Angaben.",
+      message: t.check,
       errors,
       values: { name: values.name, email: values.email, phone: values.phone, message: values.message },
     };
@@ -83,7 +110,7 @@ export async function submitChatLead(_prev: ChatState, formData: FormData): Prom
     console.error("[chat] Speichern fehlgeschlagen:", error);
     return {
       status: "error",
-      message: "Das hat leider nicht geklappt. Schreib mir gern direkt per E-Mail oder WhatsApp.",
+      message: t.failed,
     };
   }
 
@@ -94,5 +121,5 @@ export async function submitChatLead(_prev: ChatState, formData: FormData): Prom
     console.error("[chat] Benachrichtigung fehlgeschlagen:", error);
   }
 
-  return { status: "success", message: "Danke! Deine Anfrage ist angekommen. Ich melde mich bei dir." };
+  return { status: "success", message: t.success };
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ServicePage from "@/components/ServicePage";
+import { alternatesFor } from "@/lib/i18n";
 
 const TITLE = "SEO Aachen: Local SEO & Suchmaschinenoptimierung";
 const DESCRIPTION =
@@ -8,7 +9,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: "/seo-aachen" },
+  alternates: alternatesFor("/seo-aachen", "de"),
   openGraph: { type: "website", url: "/seo-aachen", title: TITLE, description: DESCRIPTION },
 };
 
@@ -84,6 +85,7 @@ export default function SeoAachenPage() {
       ctaTitle="Lassen Sie uns über Ihre Sichtbarkeit sprechen"
       ctaText="Schreiben Sie mir kurz, was Sie anbieten und wo Ihre Kunden sitzen. Ich melde mich in der Regel innerhalb von 24 Stunden mit einer ehrlichen Einschätzung."
       related={[
+        { href: "/ki-automatisierung", label: "KI-Automatisierung: Anfragen, Termine und Bewertungen automatisch" },
         { href: "/webdesign-aachen", label: "Webdesign in Aachen: Website erstellen lassen" },
         { href: "/webentwicklung-aachen", label: "Webentwicklung in Aachen: individuelle Websites und Web-Apps" },
       ]}

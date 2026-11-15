@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { getAllPosts } from "@/lib/blog";
-import { HOME_PATH, LOCALES } from "@/lib/i18n";
+import { getAllPosts, getBlogPairs } from "@/lib/blog";
+import { HOME_PATH, LOCALES, PAGE_PAIRS } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 
 // Beide Sprachfassungen mit gegenseitigem hreflang-Verweis.
@@ -17,57 +17,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: { languages },
   }));
 
-  // Leistungsseiten (nur Deutsch)
-  pages.push({
-    url: absolute("/seo-aachen"),
-    lastModified: new Date("2026-11-05"),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  });
-
-  pages.push({
-    url: absolute("/webdesign-aachen"),
-    lastModified: new Date("2026-11-05"),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  });
-
-  pages.push({
-    url: absolute("/webentwicklung-aachen"),
-    lastModified: new Date("2026-11-08"),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  });
-
-  pages.push({
-    url: absolute("/ki-automatisierung"),
-    lastModified: new Date("2026-11-15"),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  });
-
-  pages.push({
-    url: absolute("/beispiele"),
-    lastModified: new Date("2026-11-05"),
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  });
-
-  // Blog (nur Deutsch, Inhalte kommen von Soro)
-  pages.push({
-    url: absolute("/blog"),
-    lastModified: new Date("2026-10-27"),
-    changeFrequency: "weekly" as const,
-    priority: 0.7,
-  });
+  // Zweisprachige Seiten (Leistungen, Beispiele, Blog-Übersicht) mit hreflang
+  const PRIORITY: Record<string, number> = { "/beispiele": 0.6, "/blog": 0.7 };
+  for (const pair of PAGE_PAIRS.filter((p) => p.de !== "/")) {
+    const languages = { de: absolute(pair.de), en: absolute(pair.en) };
+    for (const locale of LOCALES) {
+      pages.push({
+        url: absolute(pair[locale]),
+        lastModified: new Date("2026-11-15"),
+        changeFrequency: pair.de === "/blog" ? ("weekly" as const) : ("monthly" as const),
+        priority: (PRIORITY[pair.de] ?? 0.8) - (locale === "en" ? 0.2 : 0),
+        alternates: { languages },
+      });
+    }
+  }
 
   // Jeder Blog-Artikel mit eigener Adresse
+  const blogPairs = getBlogPairs();
   for (const post of getAllPosts()) {
+    const pair = blogPairs.find((p) => p.de === `/blog/${post.slug}`);
     pages.push({
       url: absolute(`/blog/${post.slug}`),
       lastModified: new Date(post.date),
       changeFrequency: "yearly" as const,
       priority: 0.6,
+      alternates: pair ? { languages: { de: absolute(pair.de), en: absolute(pair.en) } } : undefined,
+    });
+  }
+
+  // Englische Artikel
+  for (const post of getAllPosts("en")) {
+    const pair = blogPairs.find((p) => p.en === `/en/blog/${post.slug}`);
+    pages.push({
+      url: absolute(`/en/blog/${post.slug}`),
+      lastModified: new Date(post.date),
+      changeFrequency: "yearly" as const,
+      priority: 0.5,
+      alternates: pair ? { languages: { de: absolute(pair.de), en: absolute(pair.en) } } : undefined,
     });
   }
 

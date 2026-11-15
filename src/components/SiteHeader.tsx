@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import LanguageSwitch from "@/components/LanguageSwitch";
 import ThemeToggle from "@/components/ThemeToggle";
-import { HOME_PATH, type Dictionary, type Locale } from "@/lib/i18n";
+import { HOME_PATH, type Dictionary, type Locale, type PagePair } from "@/lib/i18n";
 
-export default function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary["nav"] }) {
+export default function SiteHeader({ locale, t, pairs }: { locale: Locale; t: Dictionary["nav"]; pairs: PagePair[] }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -46,7 +46,7 @@ export default function SiteHeader({ locale, t }: { locale: Locale; t: Dictionar
         </div>
 
         <div className="flex items-center gap-2">
-          <LanguageSwitch current={locale} label={t.language} />
+          <LanguageSwitch current={locale} label={t.language} pairs={pairs} />
           <ThemeToggle label={t.themeToggle} />
           <Link
             href={anchor("#kontakt")}

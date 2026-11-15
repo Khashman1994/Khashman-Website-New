@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import IndustryShowcase from "@/components/IndustryShowcase";
+import { alternatesFor } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 
 const TITLE = "Website-Beispiele für Branchen: Designs für Handwerk, Praxen & mehr";
@@ -10,7 +11,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: "/beispiele" },
+  alternates: alternatesFor("/beispiele", "de"),
   openGraph: { type: "website", url: "/beispiele", title: TITLE, description: DESCRIPTION },
 };
 

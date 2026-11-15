@@ -6,7 +6,7 @@ const en: Dictionary = {
   meta: {
     title: "Web Design Aachen | Khashman Webdesign – Modern Websites from €599",
     description:
-      "Web design from Aachen, Germany: modern, fast and GDPR-compliant websites for freelancers, small businesses and founders. Fixed prices from €599, hosting & maintenance optional. Book your free consultation now.",
+      "Web design & AI automation from Aachen, Germany: modern, fast and GDPR-compliant websites for freelancers, small businesses and founders – with automations for enquiries and bookings on request. Fixed prices from €599. Book your free consultation now.",
     keywords: [
       "web design Aachen",
       "web designer Aachen",
@@ -15,6 +15,7 @@ const en: Dictionary = {
       "website for freelancers",
       "web development Aachen",
       "local SEO Aachen",
+      "AI automation Aachen",
     ],
     ogLocale: "en_US",
     ogImageAlt: "Khashman Webdesign – Modern websites from Aachen, Germany",
@@ -22,13 +23,14 @@ const en: Dictionary = {
 
   nav: {
     links: [
+      { href: "/en/ai-automation", label: "AI automation" },
       { href: "#leistungen", label: "Services" },
+      { href: "/en/examples", label: "Examples" },
       { href: "#prozess", label: "Process" },
       { href: "#ueber-mich", label: "About" },
       { href: "#preise", label: "Pricing" },
       { href: "#faq", label: "FAQ" },
-      // Der Blog ist nur auf Deutsch verfügbar
-      { href: "/blog", label: "Blog (DE)" },
+      { href: "/en/blog", label: "Blog" },
     ],
     cta: "Start a project",
     openMenu: "Open menu",
@@ -38,13 +40,13 @@ const en: Dictionary = {
   },
 
   hero: {
-    badge: "Web design from Aachen · Available for new projects",
+    badge: "Web design & AI automation from Aachen",
     headline: [
       [{ text: "Websites" }, { text: "that" }],
       [{ text: "make" }, { text: "an" }],
       [{ text: "impression.", serif: true }],
     ],
-    sub: "Modern, lightning-fast, high-converting websites for small businesses & founders – built personally, at a fixed price.",
+    sub: "Modern, lightning-fast websites for small businesses & founders – with AI automations that answer enquiries and book appointments on request. Built personally.",
     ctaPrimary: "Free consultation",
     ctaSecondary: "View packages",
   },
@@ -96,7 +98,7 @@ const en: Dictionary = {
       { title: "More Google reviews", text: "After each job, customers are asked for a review automatically." },
     ],
     cta: "Free consultation",
-    more: "Learn more (German)",
+    more: "Learn more",
     prefill:
       "Hi Khashman, I'm interested in AI automation and would like to book a free consultation. What costs me the most time in my business: ",
   },
@@ -180,6 +182,8 @@ const en: Dictionary = {
           "Everything in Starter",
           "Basic SEO for Google",
           "Google Maps integration",
+          "Contact chat with saved enquiries",
+          "Add-on: AI assistant & automations, on request",
           "30 min of content updates / month with hosting & care",
           "1 feedback & revision round",
         ],
@@ -198,6 +202,8 @@ const en: Dictionary = {
         features: [
           "Up to 10 subpages or online shop / booking",
           "Advanced SEO",
+          "Contact chat with saved enquiries",
+          "Add-on: AI assistant & automations, on request",
           "Priority support",
           "60 min of content updates / month with hosting & care",
           "2 feedback rounds",
@@ -232,6 +238,46 @@ const en: Dictionary = {
       {
         q: "Can I upgrade to a bigger package later?",
         a: "Yes, at any time. Your website grows with your business – the amount you've already paid is fairly taken into account.",
+      },
+      {
+        q: "What is an AI chatbot for a website?",
+        a: "An assistant on your website that answers visitors' questions in plain language, around the clock. It uses the information we store together for your business, such as services, prices, opening hours and process.",
+      },
+      {
+        q: "How much does an AI chatbot cost?",
+        a: "The costs consist of a one-time setup and a monthly fee for operation and maintenance. I'll give you exact prices after a short call, because they depend on the scope and the number of visitors.",
+      },
+      {
+        q: "How much work is an AI chatbot for me?",
+        a: "Very little. We discuss once what the chat should know. I set it up, test it and fine-tune it. You send me any changes, for example to opening hours or prices, and I update them.",
+      },
+      {
+        q: "Is an AI chatbot GDPR-compliant?",
+        a: "I set up the chat so visitors clearly know they're talking to an AI, and I update your privacy policy. Because the questions go to an AI provider in the USA, I clarify the legal basis with you before launch.",
+      },
+      {
+        q: "What happens if the chatbot can't answer a question?",
+        a: "It says so openly and refers to you. If you like, it collects the name, contact details and question and sends them to you by email.",
+      },
+      {
+        q: "Can an AI chatbot give wrong answers?",
+        a: "AI can make mistakes. That's why I limit it to the information you've approved and test typical questions before launch. When unsure, it refers to you instead of making something up.",
+      },
+      {
+        q: "Which businesses benefit from an AI chatbot?",
+        a: "Especially those where many visitors ask the same questions and get in touch after hours: trades, medical practices, real estate, service providers with many services. For businesses with few visitors, a simple FAQ chat is often enough.",
+      },
+      {
+        q: "Can you also automate workflows in my business?",
+        a: "Yes. I build AI automations that answer enquiries instantly, book appointments and ask customers for a Google review – even for businesses that don't need a new website. In a free initial call we look at what's worth it for you. More on the AI automation page.",
+      },
+      {
+        q: "Do you only work in Aachen?",
+        a: "No. I also work with clients across Germany and internationally, with calls held online if needed.",
+      },
+      {
+        q: "Is there a simpler option than an AI chatbot?",
+        a: "Yes. The FAQ chat is included in the Business and Premium packages. It answers set questions and takes enquiries, without AI.",
       },
     ],
   },
@@ -285,6 +331,14 @@ const en: Dictionary = {
   footer: {
     tagline: "Web design & development from Aachen, Germany. Fast, modern websites for businesses that want to stand out.",
     contact: "Contact",
+    services: "Services",
+    serviceLinks: [
+      { href: "/en/ai-automation", label: "AI automation" },
+      { href: "/en/web-design-aachen", label: "Web design Aachen" },
+      { href: "/en/web-development-aachen", label: "Web development Aachen" },
+      { href: "/en/seo-aachen", label: "SEO Aachen" },
+      { href: "/en/examples", label: "Examples" },
+    ],
     legal: "Legal",
     imprint: "Legal notice (German)",
     privacy: "Privacy policy (German)",

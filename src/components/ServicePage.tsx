@@ -1,14 +1,41 @@
 import Link from "next/link";
 import MagneticButton from "@/components/MagneticButton";
+import { HOME_PATH, type Locale } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 
-// Gemeinsame Vorlage für Leistungsseiten (z. B. /seo-aachen). Reiner Server-Code, keine Animation.
+// Gemeinsame Vorlage für Leistungsseiten (z. B. /seo-aachen, /en/seo-aachen). Reiner Server-Code, keine Animation.
+
+const UI = {
+  de: {
+    home: "Startseite",
+    breadcrumb: "Brotkrumen",
+    consult: "Kostenloses Erstgespräch",
+    packages: "Pakete ansehen",
+    faq: "Häufige Fragen",
+    related: "Weitere Leistungen",
+    send: "Anfrage senden",
+    whatsapp: "WhatsApp schreiben",
+    country: "Deutschland",
+  },
+  en: {
+    home: "Home",
+    breadcrumb: "Breadcrumb",
+    consult: "Free consultation",
+    packages: "View packages",
+    faq: "Frequently asked questions",
+    related: "More services",
+    send: "Send an enquiry",
+    whatsapp: "Message on WhatsApp",
+    country: "Germany",
+  },
+};
 
 export type ServiceSection = { title: string; paragraphs?: string[]; bullets?: string[] };
 export type ServiceFaq = { q: string; a: string };
 
 export type ServicePageProps = {
   path: string; // z. B. "/seo-aachen"
+  locale?: Locale; // Standard: Deutsch
   label: string;
   title: string;
   intro: string;
@@ -23,6 +50,10 @@ export type ServicePageProps = {
 };
 
 export default function ServicePage(props: ServicePageProps) {
+  const locale = props.locale ?? "de";
+  const ui = UI[locale];
+  const home = HOME_PATH[locale];
+  const homeAnchor = home === "/" ? "/" : home; // "/#kontakt" bzw. "/en#kontakt"
   const url = `${SITE.url}${props.path}`;
 
   const jsonLd = [
@@ -37,7 +68,7 @@ export default function ServicePage(props: ServicePageProps) {
       areaServed: [
         { "@type": "City", name: "Aachen" },
         { "@type": "AdministrativeArea", name: "StädteRegion Aachen" },
-        { "@type": "Country", name: "Deutschland" },
+        { "@type": "Country", name: ui.country },
       ],
     },
     {
@@ -53,7 +84,7 @@ export default function ServicePage(props: ServicePageProps) {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: SITE.name, item: SITE.url },
+        { "@type": "ListItem", position: 1, name: SITE.name, item: home === "/" ? SITE.url : `${SITE.url}${home}` },
         { "@type": "ListItem", position: 2, name: props.breadcrumb, item: url },
       ],
     },
@@ -67,8 +98,8 @@ export default function ServicePage(props: ServicePageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
 
-      <nav aria-label="Brotkrumen" className="text-sm text-fg/60">
-        <Link href="/" className="transition-colors hover:text-fg">Startseite</Link> <span aria-hidden="true">/</span>{" "}
+      <nav aria-label={ui.breadcrumb} className="text-sm text-fg/60">
+        <Link href={home} className="transition-colors hover:text-fg">{ui.home}</Link> <span aria-hidden="true">/</span>{" "}
         <span className="text-fg/70">{props.breadcrumb}</span>
       </nav>
 
@@ -77,8 +108,8 @@ export default function ServicePage(props: ServicePageProps) {
       <p className="mt-6 text-lg leading-relaxed text-fg/60">{props.intro}</p>
 
       <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-        <MagneticButton href="/#kontakt" variant="primary">Kostenloses Erstgespräch</MagneticButton>
-        <MagneticButton href="/#preise" variant="outline">Pakete ansehen</MagneticButton>
+        <MagneticButton href={`${homeAnchor}#kontakt`} variant="primary">{ui.consult}</MagneticButton>
+        <MagneticButton href={`${homeAnchor}#preise`} variant="outline">{ui.packages}</MagneticButton>
       </div>
 
       <div className="mt-16 space-y-12">
@@ -99,7 +130,7 @@ export default function ServicePage(props: ServicePageProps) {
         ))}
 
         <section>
-          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">Häufige Fragen</h2>
+          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">{ui.faq}</h2>
           <div className="mt-4 divide-y divide-fg/10 border-y border-fg/10">
             {props.faq.map((item) => (
               <details key={item.q} className="group py-5">
@@ -115,7 +146,7 @@ export default function ServicePage(props: ServicePageProps) {
 
         {props.related && props.related.length > 0 && (
           <section>
-            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">Weitere Leistungen</h2>
+            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">{ui.related}</h2>
             <ul className="mt-4 space-y-2">
               {props.related.map((link) => (
                 <li key={link.href}>
@@ -130,8 +161,8 @@ export default function ServicePage(props: ServicePageProps) {
           <h2 className="text-2xl font-semibold tracking-tight">{props.ctaTitle}</h2>
           <p className="mt-3 leading-relaxed text-fg/60">{props.ctaText}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <MagneticButton href="/#kontakt" variant="primary">Anfrage senden</MagneticButton>
-            <MagneticButton href={SITE.whatsappUrl} variant="outline">WhatsApp schreiben</MagneticButton>
+            <MagneticButton href={`${homeAnchor}#kontakt`} variant="primary">{ui.send}</MagneticButton>
+            <MagneticButton href={SITE.whatsappUrl} variant="outline">{ui.whatsapp}</MagneticButton>
           </div>
         </section>
       </div>
