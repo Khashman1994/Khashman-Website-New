@@ -40,6 +40,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   pages.push({
+    url: absolute("/ki-automatisierung"),
+    lastModified: new Date("2026-11-15"),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  });
+
+  pages.push({
     url: absolute("/beispiele"),
     lastModified: new Date("2026-11-05"),
     changeFrequency: "monthly" as const,

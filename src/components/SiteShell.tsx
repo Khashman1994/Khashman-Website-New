@@ -67,6 +67,7 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
                     <Link href="/webdesign-aachen" className="text-fg/70 hover:text-fg">Webdesign Aachen</Link>
                     <Link href="/webentwicklung-aachen" className="text-fg/70 hover:text-fg">Webentwicklung Aachen</Link>
                     <Link href="/seo-aachen" className="text-fg/70 hover:text-fg">SEO Aachen</Link>
+                    <Link href="/ki-automatisierung" className="text-fg/70 hover:text-fg">KI-Automatisierung</Link>
                     <Link href="/beispiele" className="text-fg/70 hover:text-fg">Beispiele</Link>
                   </div>
                 )}
