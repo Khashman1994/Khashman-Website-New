@@ -22,8 +22,8 @@ const de = {
 
   nav: {
     links: [
-      { href: "#leistungen", label: "Leistungen" },
       { href: "/ki-automatisierung", label: "KI-Automatisierung" },
+      { href: "#leistungen", label: "Leistungen" },
       { href: "/beispiele", label: "Beispiele" },
       { href: "#prozess", label: "Prozess" },
       { href: "#ueber-mich", label: "Über mich" },
