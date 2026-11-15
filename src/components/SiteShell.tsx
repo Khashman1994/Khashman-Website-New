@@ -5,7 +5,8 @@ import { Analytics } from "@vercel/analytics/next";
 import SiteHeader from "@/components/SiteHeader";
 import ChatWidget from "@/components/ChatWidget";
 import SmoothScroll from "@/components/SmoothScroll";
-import { getDictionary, type Locale } from "@/lib/i18n";
+import { getBlogPairs } from "@/lib/blog";
+import { getDictionary, PAGE_PAIRS, type Locale } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 import { DEFAULT_THEME, THEME_INIT_SCRIPT } from "@/lib/theme";
 
@@ -25,6 +26,8 @@ const instrument = Instrument_Serif({
 // ((de)/layout.tsx und (en)/en/layout.tsx), damit <html lang> stimmt.
 export default function SiteShell({ locale, children }: { locale: Locale; children: React.ReactNode }) {
   const t = getDictionary(locale);
+  // Zweisprachige Seiten inkl. übersetzter Blogartikel – für den Sprachumschalter
+  const pairs = [...PAGE_PAIRS, ...getBlogPairs()];
 
   return (
     // suppressHydrationWarning: Das Theme-Skript ändert data-theme vor React – das ist gewollt
@@ -36,7 +39,7 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
       </head>
       <body className={`${geist.variable} ${instrument.variable} grain bg-ink-950 font-sans text-fg antialiased`}>
         <SmoothScroll />
-        <SiteHeader locale={locale} t={t.nav} />
+        <SiteHeader locale={locale} t={t.nav} pairs={pairs} />
 
         <main className="min-h-screen">{children}</main>
 
@@ -49,7 +52,7 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
                 </p>
                 <p className="mt-3 text-sm text-fg/60">{t.footer.tagline}</p>
               </div>
-              <div className={`grid grid-cols-2 gap-10 text-sm ${locale === "de" ? "sm:grid-cols-3" : ""}`}>
+              <div className="grid grid-cols-2 gap-10 text-sm sm:grid-cols-3">
                 <div className="flex flex-col gap-3">
                   <p className="text-fg/60">{t.footer.contact}</p>
                   <a href={`mailto:${SITE.email}`} className="text-fg/70 hover:text-fg">{SITE.email}</a>
@@ -60,17 +63,12 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
                     {t.footer.google}
                   </a>
                 </div>
-                {/* Leistungsseiten gibt es nur auf Deutsch */}
-                {locale === "de" && (
-                  <div className="flex flex-col gap-3">
-                    <p className="text-fg/60">Leistungen</p>
-                    <Link href="/webdesign-aachen" className="text-fg/70 hover:text-fg">Webdesign Aachen</Link>
-                    <Link href="/webentwicklung-aachen" className="text-fg/70 hover:text-fg">Webentwicklung Aachen</Link>
-                    <Link href="/seo-aachen" className="text-fg/70 hover:text-fg">SEO Aachen</Link>
-                    <Link href="/ki-automatisierung" className="text-fg/70 hover:text-fg">KI-Automatisierung</Link>
-                    <Link href="/beispiele" className="text-fg/70 hover:text-fg">Beispiele</Link>
-                  </div>
-                )}
+                <div className="flex flex-col gap-3">
+                  <p className="text-fg/60">{t.footer.services}</p>
+                  {t.footer.serviceLinks.map((link) => (
+                    <Link key={link.href} href={link.href} className="text-fg/70 hover:text-fg">{link.label}</Link>
+                  ))}
+                </div>
                 <div className="flex flex-col gap-3">
                   <p className="text-fg/60">{t.footer.legal}</p>
                   {/* Impressum & Datenschutz gibt es nur auf Deutsch (rechtlich maßgeblich) */}
@@ -89,8 +87,7 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
             KHASHMAN
           </p>
         </footer>
-        {/* Chat-Assistent nur auf Deutsch – die FAQ ist ausschließlich deutsch */}
-        {locale === "de" && <ChatWidget />}
+        <ChatWidget locale={locale} />
         <Analytics />
       </body>
     </html>

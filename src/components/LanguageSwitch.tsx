@@ -1,14 +1,21 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { FlagDE, FlagUS } from "@/components/Flags";
-import { HOME_PATH, type Locale } from "@/lib/i18n";
+import { HOME_PATH, type Locale, type PagePair } from "@/lib/i18n";
 
 const OPTIONS: { locale: Locale; code: string; name: string; Flag: typeof FlagDE }[] = [
   { locale: "de", code: "DE", name: "Deutsch", Flag: FlagDE },
   { locale: "en", code: "EN", name: "English", Flag: FlagUS },
 ];
 
-// Umschalter Deutsch/Englisch. Normale Links (kein <Link>): Die Sprachen haben getrennte
+// Umschalter Deutsch/Englisch. Führt auf dieselbe Seite in der anderen Sprache, wenn es sie gibt,
+// sonst auf die Startseite. Normale Links (kein <Link>): Die Sprachen haben getrennte
 // Root-Layouts, ein Wechsel lädt die Seite ohnehin komplett neu.
-export default function LanguageSwitch({ current, label }: { current: Locale; label: string }) {
+export default function LanguageSwitch({ current, label, pairs }: { current: Locale; label: string; pairs: PagePair[] }) {
+  const pathname = usePathname();
+  const pair = pairs.find((p) => p[current] === pathname);
+
   return (
     <nav aria-label={label} className="flex items-center rounded-full border border-fg/15 p-0.5">
       {OPTIONS.map(({ locale, code, name, Flag }) => {
@@ -16,7 +23,7 @@ export default function LanguageSwitch({ current, label }: { current: Locale; la
         return (
           <a
             key={locale}
-            href={HOME_PATH[locale]}
+            href={pair ? pair[locale] : HOME_PATH[locale]}
             hrefLang={locale}
             lang={locale}
             aria-current={active ? "page" : undefined}

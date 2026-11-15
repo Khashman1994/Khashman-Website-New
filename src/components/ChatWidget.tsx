@@ -2,18 +2,63 @@
 
 import { useActionState, useEffect, useRef, useState } from "react";
 import { submitChatLead, type ChatState } from "@/app/actions/chat";
-import { CHAT_FAQ, type FaqEntry } from "@/lib/chat-faq";
+import { CHAT_FAQ, CHAT_FAQ_EN, type FaqEntry } from "@/lib/chat-faq";
+
+const UI = {
+  de: {
+    hello: "Hallo! Ich beantworte gern die häufigsten Fragen. Was möchtest du wissen?",
+    toForm: "Super, dann schreib mir kurz, wie ich dich erreichen kann.",
+    again: "Gern! Was möchtest du noch wissen?",
+    close: "Chat schließen",
+    open: "Chat öffnen",
+    dialog: "Fragen an Khashman Webdesign",
+    reply: "Antwort in der Regel innerhalb eines Tages",
+    other: "Anderes Anliegen → Nachricht senden",
+    name: "Name",
+    email: "E-Mail",
+    phone: "Telefon (optional)",
+    message: "Deine Nachricht",
+    topicPrefix: "Ich habe eine Frage zu: ",
+    sending: "Wird gesendet …",
+    send: "Anfrage senden",
+    privacyBefore: "Ich verwende deine Angaben nur, um dir zu antworten. Details in der",
+    privacy: "Datenschutzerklärung",
+    another: "Noch eine Frage stellen",
+  },
+  en: {
+    hello: "Hi! I'm happy to answer the most common questions. What would you like to know?",
+    toForm: "Great, just tell me how I can reach you.",
+    again: "Sure! What else would you like to know?",
+    close: "Close chat",
+    open: "Open chat",
+    dialog: "Questions for Khashman Webdesign",
+    reply: "Usually replies within a day",
+    other: "Something else → send a message",
+    name: "Name",
+    email: "Email",
+    phone: "Phone (optional)",
+    message: "Your message",
+    topicPrefix: "I have a question about: ",
+    sending: "Sending …",
+    send: "Send message",
+    privacyBefore: "I only use your details to reply to you. Details in the",
+    privacy: "privacy policy (German)",
+    another: "Ask another question",
+  },
+};
 
 type Message = { id: number; from: "bot" | "user"; text: string; link?: FaqEntry["link"] };
 type View = "faq" | "form" | "done";
 
 const initialState: ChatState = { status: "idle", message: "" };
 
-export default function ChatWidget() {
+export default function ChatWidget({ locale = "de" }: { locale?: "de" | "en" }) {
+  const ui = UI[locale];
+  const faq = locale === "en" ? CHAT_FAQ_EN : CHAT_FAQ;
   const [open, setOpen] = useState(false);
   const [view, setView] = useState<View>("faq");
   const [messages, setMessages] = useState<Message[]>([
-    { id: 0, from: "bot", text: "Hallo! Ich beantworte gern die häufigsten Fragen. Was möchtest du wissen?" },
+    { id: 0, from: "bot", text: ui.hello },
   ]);
   const [topic, setTopic] = useState("");
   const nextId = useRef(1);
@@ -46,12 +91,12 @@ export default function ChatWidget() {
 
   const startForm = (text?: string) => {
     if (text) setTopic(text);
-    push({ from: "bot", text: "Super, dann schreib mir kurz, wie ich dich erreichen kann." });
+    push({ from: "bot", text: ui.toForm });
     setView("form");
   };
 
   const restart = () => {
-    setMessages([{ id: nextId.current++, from: "bot", text: "Gern! Was möchtest du noch wissen?" }]);
+    setMessages([{ id: nextId.current++, from: "bot", text: ui.again }]);
     setView("faq");
     setTopic("");
   };
@@ -65,7 +110,7 @@ export default function ChatWidget() {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls="chat-panel"
-        aria-label={open ? "Chat schließen" : "Chat öffnen"}
+        aria-label={open ? ui.close : ui.open}
         className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-ink-950 shadow-lg shadow-accent/30 transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
       >
         {open ? (
@@ -85,13 +130,13 @@ export default function ChatWidget() {
           ref={panelRef}
           tabIndex={-1}
           role="dialog"
-          aria-label="Fragen an Khashman Webdesign"
+          aria-label={ui.dialog}
           className="fixed bottom-24 right-5 z-50 flex max-h-[min(70vh,560px)] w-[min(360px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-2xl border border-fg/10 bg-ink-900 text-fg shadow-2xl outline-none"
         >
           <div className="flex items-center justify-between border-b border-fg/10 px-4 py-3">
             <div>
               <p className="text-sm font-semibold">Khashman Webdesign</p>
-              <p className="text-xs text-fg/60">Antwort in der Regel innerhalb eines Tages</p>
+              <p className="text-xs text-fg/60">{ui.reply}</p>
             </div>
           </div>
 
@@ -122,7 +167,7 @@ export default function ChatWidget() {
 
             {view === "faq" && (
               <div className="grid gap-2 pt-1">
-                {CHAT_FAQ.map((entry) => (
+                {faq.map((entry) => (
                   <button
                     key={entry.id}
                     type="button"
@@ -137,7 +182,7 @@ export default function ChatWidget() {
                   onClick={() => startForm()}
                   className="rounded-xl bg-accent/15 px-3.5 py-2 text-left text-sm font-semibold text-accent-soft hover:bg-accent/25"
                 >
-                  Anderes Anliegen → Nachricht senden
+                  {ui.other}
                 </button>
               </div>
             )}
@@ -146,12 +191,13 @@ export default function ChatWidget() {
               <form action={formAction} className="space-y-3 pt-1" noValidate>
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
                 <input type="hidden" name="topic" value={topic} />
+                <input type="hidden" name="lang" value={locale} />
 
-                <Field label="Name" name="name" error={fieldError("name")} autoComplete="name" defaultValue={state.values?.name} />
-                <Field label="E-Mail" name="email" type="email" error={fieldError("email")} autoComplete="email" defaultValue={state.values?.email} />
-                <Field label="Telefon (optional)" name="phone" type="tel" error={fieldError("phone")} autoComplete="tel" defaultValue={state.values?.phone} />
+                <Field label={ui.name} name="name" error={fieldError("name")} autoComplete="name" defaultValue={state.values?.name} />
+                <Field label={ui.email} name="email" type="email" error={fieldError("email")} autoComplete="email" defaultValue={state.values?.email} />
+                <Field label={ui.phone} name="phone" type="tel" error={fieldError("phone")} autoComplete="tel" defaultValue={state.values?.phone} />
                 <div>
-                  <label htmlFor="chat-message" className="mb-1 block text-xs text-fg/60">Deine Nachricht</label>
+                  <label htmlFor="chat-message" className="mb-1 block text-xs text-fg/60">{ui.message}</label>
                   <textarea
                     id="chat-message"
                     name="message"
@@ -159,7 +205,7 @@ export default function ChatWidget() {
                     maxLength={2000}
                     required
                     className="w-full rounded-lg border border-fg/15 bg-ink-950 px-3 py-2 text-sm text-fg focus-visible:outline-2 focus-visible:outline-accent"
-                    defaultValue={state.values?.message ?? (topic ? `Ich habe eine Frage zu: ${topic}\n\n` : "")}
+                    defaultValue={state.values?.message ?? (topic ? `${ui.topicPrefix}${topic}\n\n` : "")}
                   />
                   {fieldError("message") && <p className="mt-1 text-xs text-red-400">{fieldError("message")}</p>}
                 </div>
@@ -171,11 +217,11 @@ export default function ChatWidget() {
                   disabled={pending}
                   className="w-full rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-ink-950 disabled:opacity-60"
                 >
-                  {pending ? "Wird gesendet …" : "Anfrage senden"}
+                  {pending ? ui.sending : ui.send}
                 </button>
                 <p className="text-[11px] leading-relaxed text-fg/60">
-                  Ich verwende deine Angaben nur, um dir zu antworten. Details in der{" "}
-                  <a href="/datenschutz" className="underline">Datenschutzerklärung</a>.
+                  {ui.privacyBefore}{" "}
+                  <a href="/datenschutz" className="underline">{ui.privacy}</a>.
                 </p>
               </form>
             )}
@@ -184,7 +230,7 @@ export default function ChatWidget() {
               <div className="space-y-3">
                 <p className="text-sm text-fg/90">{state.message}</p>
                 <button type="button" onClick={restart} className="text-sm text-accent-soft underline underline-offset-4">
-                  Noch eine Frage stellen
+                  {ui.another}
                 </button>
               </div>
             )}

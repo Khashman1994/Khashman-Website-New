@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ServicePage from "@/components/ServicePage";
+import { alternatesFor } from "@/lib/i18n";
 
 const TITLE = "Webentwicklung Aachen: Individuelle Websites & Web-Apps";
 const DESCRIPTION =
@@ -8,7 +9,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: "/webentwicklung-aachen" },
+  alternates: alternatesFor("/webentwicklung-aachen", "de"),
   openGraph: { type: "website", url: "/webentwicklung-aachen", title: TITLE, description: DESCRIPTION },
 };
 
@@ -83,6 +84,7 @@ export default function WebentwicklungAachenPage() {
         },
       ]}
       related={[
+        { href: "/ki-automatisierung", label: "KI-Automatisierung: Anfragen, Termine und Bewertungen automatisch" },
         { href: "/webdesign-aachen", label: "Webdesign in Aachen: Website erstellen lassen" },
         { href: "/seo-aachen", label: "SEO in Aachen: Local SEO und Suchmaschinenoptimierung" },
       ]}

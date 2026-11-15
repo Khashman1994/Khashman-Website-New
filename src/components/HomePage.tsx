@@ -4,7 +4,7 @@ import AnimatedHero from "@/components/AnimatedHero";
 import ContactForm from "@/components/ContactForm";
 import { PackageLink, SpotlightCard } from "@/components/motion";
 import { ProcessTimeline, Reveal, ScrollWords } from "@/components/scroll-effects";
-import { getDictionary, HOME_PATH, type Dictionary, type Locale } from "@/lib/i18n";
+import { getDictionary, HOME_PATH, pathFor, type Dictionary, type Locale } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 import ParticleField from "@/components/ParticleField";
 import PrefillLink from "@/components/PrefillLink";
@@ -265,26 +265,17 @@ export default function HomePage({ locale }: { locale: Locale }) {
             );
           })}
         </div>
-        {locale === "de" && (
-          <p className="mt-8 text-sm text-fg/60">
-            Mehr dazu:{" "}
-            <Link href="/webdesign-aachen" className="text-accent-soft underline-offset-4 hover:underline">
-              Webdesign in Aachen
-            </Link>
-            {" · "}
-            <Link href="/webentwicklung-aachen" className="text-accent-soft underline-offset-4 hover:underline">
-              Webentwicklung in Aachen
-            </Link>
-            {" · "}
-            <Link href="/seo-aachen" className="text-accent-soft underline-offset-4 hover:underline">
-              SEO in Aachen
-            </Link>
-            {" · "}
-            <Link href="/ki-automatisierung" className="text-accent-soft underline-offset-4 hover:underline">
-              KI-Automatisierung
-            </Link>
-          </p>
-        )}
+        <p className="mt-8 text-sm text-fg/60">
+          {locale === "de" ? "Mehr dazu:" : "Learn more:"}{" "}
+          {t.footer.serviceLinks.slice(0, 4).map((link, i) => (
+            <span key={link.href}>
+              {i > 0 && " · "}
+              <Link href={link.href} className="text-accent-soft underline-offset-4 hover:underline">
+                {link.label}
+              </Link>
+            </span>
+          ))}
+        </p>
       </section>
 
       {/* KI-Automatisierung – auffälliges Band, damit Besucher das Angebot sofort sehen */}
@@ -323,11 +314,9 @@ export default function HomePage({ locale }: { locale: Locale }) {
                   {t.automation.cta}
                   <span aria-hidden="true">→</span>
                 </PrefillLink>
-                {locale === "de" && (
-                  <Link href="/ki-automatisierung" className="px-2 text-center font-medium text-accent-soft underline-offset-4 hover:underline">
-                    {t.automation.more}
-                  </Link>
-                )}
+                <Link href={pathFor("/ki-automatisierung", locale)} className="px-2 text-center font-medium text-accent-soft underline-offset-4 hover:underline">
+                  {t.automation.more}
+                </Link>
               </div>
             </div>
           </div>

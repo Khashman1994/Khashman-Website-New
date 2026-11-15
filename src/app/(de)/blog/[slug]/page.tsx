@@ -17,10 +17,15 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPost((await params).slug);
   if (!post) return {};
+  const path = `/blog/${post.slug}`;
+  const english = getAllPosts("en").find((p) => p.translationOf === post.slug);
   return {
     title: post.title,
     description: post.description,
-    alternates: { canonical: `/blog/${post.slug}` },
+    alternates: {
+      canonical: path,
+      languages: english ? { de: path, en: `/en/blog/${english.slug}`, "x-default": path } : undefined,
+    },
     openGraph: {
       type: "article",
       title: post.title,
@@ -105,7 +110,9 @@ export default async function BlogPostPage({ params }: Props) {
           Erstgespräch vereinbaren
         </Link>
         <p className="mt-6 text-sm text-fg/60">
-          Mehr zu meinem Angebot: <Link href="/webdesign-aachen" className="text-accent-soft underline-offset-4 hover:underline">Webdesign in Aachen</Link>
+          Mehr zu meinem Angebot: <Link href="/ki-automatisierung" className="text-accent-soft underline-offset-4 hover:underline">KI-Automatisierung</Link>
+          {" · "}
+          <Link href="/webdesign-aachen" className="text-accent-soft underline-offset-4 hover:underline">Webdesign in Aachen</Link>
           {" · "}
           <Link href="/webentwicklung-aachen" className="text-accent-soft underline-offset-4 hover:underline">Webentwicklung in Aachen</Link>
           {" · "}

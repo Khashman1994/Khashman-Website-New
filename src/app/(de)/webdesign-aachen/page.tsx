@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ServicePage from "@/components/ServicePage";
+import { alternatesFor } from "@/lib/i18n";
 
 const TITLE = "Webdesigner Aachen: Website erstellen lassen ab 599 €";
 const DESCRIPTION =
@@ -8,7 +9,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: "/webdesign-aachen" },
+  alternates: alternatesFor("/webdesign-aachen", "de"),
   openGraph: { type: "website", url: "/webdesign-aachen", title: TITLE, description: DESCRIPTION },
 };
 
@@ -77,6 +78,7 @@ export default function WebdesignAachenPage() {
         },
       ]}
       related={[
+        { href: "/ki-automatisierung", label: "KI-Automatisierung: Anfragen, Termine und Bewertungen automatisch" },
         { href: "/webentwicklung-aachen", label: "Webentwicklung in Aachen: individuelle Websites und Web-Apps" },
         { href: "/seo-aachen", label: "SEO in Aachen: Local SEO und Suchmaschinenoptimierung" },
       ]}

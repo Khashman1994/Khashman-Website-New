@@ -332,6 +332,14 @@ const de = {
   footer: {
     tagline: "Webdesign & Entwicklung aus Aachen. Schnelle, moderne Webseiten für Unternehmen, die auffallen wollen.",
     contact: "Kontakt",
+    services: "Leistungen",
+    serviceLinks: [
+      { href: "/ki-automatisierung", label: "KI-Automatisierung" },
+      { href: "/webdesign-aachen", label: "Webdesign Aachen" },
+      { href: "/webentwicklung-aachen", label: "Webentwicklung Aachen" },
+      { href: "/seo-aachen", label: "SEO Aachen" },
+      { href: "/beispiele", label: "Beispiele" },
+    ],
     legal: "Rechtliches",
     imprint: "Impressum",
     privacy: "Datenschutz",

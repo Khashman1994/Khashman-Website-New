@@ -12,6 +12,9 @@ import path from "node:path";
    image: /blog/dateiname.webp      (optional, Bild in public/blog/)
    ---
 
+   Englische Artikel liegen in content/blog-en/ (Adresse /en/blog/…). Dort zusätzlich
+   "translationOf: deutscher-dateiname" angeben, damit der Sprachumschalter den Artikel verknüpft.
+
    Danach der Text: "## Überschrift", "### Unterüberschrift", Absätze,
    Listen mit "- ", **fett** und [Linktext](https://…). Der Dateiname ist die Adresse:
    content/blog/mein-artikel.md → /blog/mein-artikel */
@@ -23,12 +26,18 @@ export type BlogPost = {
   date: string; // ISO, z. B. 2026-10-31
   image?: string;
   body: string; // Markdown
+  translationOf?: string; // nur englische Artikel: Dateiname des deutschen Originals
 };
 
-const DIR = path.join(process.cwd(), "content", "blog");
+type BlogLocale = "de" | "en";
 
-function parse(file: string): BlogPost {
-  const raw = fs.readFileSync(path.join(DIR, file), "utf8").replace(/\r\n/g, "\n");
+const DIRS: Record<BlogLocale, string> = {
+  de: path.join(process.cwd(), "content", "blog"),
+  en: path.join(process.cwd(), "content", "blog-en"),
+};
+
+function parse(dir: string, file: string): BlogPost {
+  const raw = fs.readFileSync(path.join(dir, file), "utf8").replace(/\r\n/g, "\n");
   const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   if (!match) throw new Error(`Blog-Datei ohne Frontmatter: ${file}`);
   const meta: Record<string, string> = {};
@@ -43,25 +52,38 @@ function parse(file: string): BlogPost {
     date: meta.date ?? "",
     image: meta.image || undefined,
     body: match[2].trim(),
+    translationOf: meta.translationOf || undefined,
   };
 }
 
 /** Alle Artikel, neueste zuerst */
-export function getAllPosts(): BlogPost[] {
-  if (!fs.existsSync(DIR)) return [];
+export function getAllPosts(locale: BlogLocale = "de"): BlogPost[] {
+  const dir = DIRS[locale];
+  if (!fs.existsSync(dir)) return [];
   return fs
-    .readdirSync(DIR)
+    .readdirSync(dir)
     .filter((f) => f.endsWith(".md"))
-    .map(parse)
+    .map((file) => parse(dir, file))
     .sort((a, b) => b.date.localeCompare(a.date));
 }
 
-export function getPost(slug: string): BlogPost | undefined {
-  return getAllPosts().find((p) => p.slug === slug);
+export function getPost(slug: string, locale: BlogLocale = "de"): BlogPost | undefined {
+  return getAllPosts(locale).find((p) => p.slug === slug);
 }
 
-export function formatDate(iso: string) {
-  return new Date(`${iso}T12:00:00`).toLocaleDateString("de-DE", { day: "numeric", month: "long", year: "numeric" });
+/** Paare deutscher und englischer Artikel, z. B. für den Sprachumschalter */
+export function getBlogPairs(): { de: string; en: string }[] {
+  return getAllPosts("en")
+    .filter((post) => post.translationOf)
+    .map((post) => ({ de: `/blog/${post.translationOf}`, en: `/en/blog/${post.slug}` }));
+}
+
+export function formatDate(iso: string, locale: BlogLocale = "de") {
+  return new Date(`${iso}T12:00:00`).toLocaleDateString(locale === "en" ? "en-GB" : "de-DE", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 }
 
 /** Lesezeit in Minuten (ca. 200 Wörter pro Minute) */
