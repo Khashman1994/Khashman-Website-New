@@ -49,7 +49,7 @@ const en: Dictionary = {
     ctaSecondary: "View packages",
   },
 
-  marquee: ["Web design", "Development", "Local SEO", "Hosting", "Performance", "GDPR compliant", "Online shops", "Online booking"],
+  marquee: ["Web design", "Development", "Local SEO", "Hosting", "Performance", "GDPR compliant", "Online shops", "Online booking", "AI automation"],
   marqueeLabel: "Focus areas",
 
   statement: {
@@ -83,6 +83,22 @@ const en: Dictionary = {
         tags: ["UI", "Motion", "Branding"],
       },
     ],
+  },
+
+  automation: {
+    label: "AI automation",
+    badge: "New",
+    title: { before: "Your website can do more than ", serif: "look good.", after: "" },
+    sub: "I build automations that take routine work off your business – so no enquiry gets lost again.",
+    items: [
+      { title: "Replies in seconds", text: "Every enquiry gets an instant answer – even after hours." },
+      { title: "Customers book themselves", text: "With automatic confirmation and reminders." },
+      { title: "More Google reviews", text: "After each job, customers are asked for a review automatically." },
+    ],
+    cta: "Free consultation",
+    more: "Learn more (German)",
+    prefill:
+      "Hi Khashman, I'm interested in AI automation and would like to book a free consultation. What costs me the most time in my business: ",
   },
 
   process: {
@@ -278,7 +294,7 @@ const en: Dictionary = {
 
   jsonLd: {
     jobTitle: "Web developer",
-    knowsAbout: ["Web design", "Web development", "Local SEO", "Web hosting", "Online shops"],
+    knowsAbout: ["Web design", "Web development", "Local SEO", "Web hosting", "Online shops", "AI automation"],
     catalogName: "Web design packages",
     offerPrefix: "Website package",
     language: "en",

@@ -7,6 +7,7 @@ import { ProcessTimeline, Reveal, ScrollWords } from "@/components/scroll-effect
 import { getDictionary, HOME_PATH, type Dictionary, type Locale } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 import ParticleField from "@/components/ParticleField";
+import PrefillLink from "@/components/PrefillLink";
 
 // Startseite für beide Sprachen – alle Texte kommen aus src/lib/dictionaries/.
 
@@ -278,8 +279,59 @@ export default function HomePage({ locale }: { locale: Locale }) {
             <Link href="/seo-aachen" className="text-accent-soft underline-offset-4 hover:underline">
               SEO in Aachen
             </Link>
+            {" · "}
+            <Link href="/ki-automatisierung" className="text-accent-soft underline-offset-4 hover:underline">
+              KI-Automatisierung
+            </Link>
           </p>
         )}
+      </section>
+
+      {/* KI-Automatisierung – auffälliges Band, damit Besucher das Angebot sofort sehen */}
+      <section id="ki-automatisierung" className="mx-auto max-w-6xl px-6 pb-32">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-accent via-violet/60 to-fg/10 p-px">
+            <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-40 h-[30rem] w-[30rem] glow-accent" />
+            <div className="relative rounded-[calc(2rem-1px)] bg-ink-900 p-8 md:p-14">
+              <p className="flex items-center gap-3 text-sm text-fg/60">
+                <span className="rounded-full bg-gradient-to-r from-accent to-violet px-3 py-0.5 text-xs font-medium uppercase tracking-wider text-white">
+                  {t.automation.badge}
+                </span>
+                {t.automation.label}
+              </p>
+              <h2 className="mt-6 max-w-3xl text-4xl font-semibold tracking-tight md:text-5xl">
+                <SerifTitle {...t.automation.title} />
+              </h2>
+              <p className="mt-6 max-w-2xl text-lg text-fg/60">{t.automation.sub}</p>
+
+              <ul className="mt-12 grid gap-4 md:grid-cols-3">
+                {t.automation.items.map((item) => (
+                  <li key={item.title} className="rounded-3xl border border-fg/10 bg-fg/[0.03] p-6">
+                    <CheckIcon className="h-6 w-6 text-accent" />
+                    <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-fg/60">{item.text}</p>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
+                <PrefillLink
+                  href="#kontakt"
+                  message={t.automation.prefill}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-fg px-7 py-4 font-medium text-ink-950 transition-colors duration-300 hover:bg-accent hover:text-white"
+                >
+                  {t.automation.cta}
+                  <span aria-hidden="true">→</span>
+                </PrefillLink>
+                {locale === "de" && (
+                  <Link href="/ki-automatisierung" className="px-2 text-center font-medium text-accent-soft underline-offset-4 hover:underline">
+                    {t.automation.more}
+                  </Link>
+                )}
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* Die Branchen-Beispiele liegen auf einer eigenen Seite: /beispiele (Nav & Footer verlinken sie) */}

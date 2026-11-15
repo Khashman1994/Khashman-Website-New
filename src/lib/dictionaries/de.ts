@@ -4,7 +4,7 @@ const de = {
   meta: {
     title: "Webdesign Aachen | Khashman Webdesign – Moderne Webseiten ab 599 €",
     description:
-      "Webdesign aus Aachen: Moderne, schnelle und DSGVO-konforme Webseiten für Selbstständige, KMU und Gründer. Festpreise ab 599 €, Hosting & Wartung optional. Jetzt kostenloses Erstgespräch sichern.",
+      "Webdesign & KI-Automatisierung aus Aachen: Moderne, schnelle und DSGVO-konforme Webseiten für Selbstständige, KMU und Gründer – auf Wunsch mit Automatisierungen für Anfragen und Termine. Festpreise ab 599 €. Jetzt kostenloses Erstgespräch sichern.",
     keywords: [
       "Webdesign Aachen",
       "Webdesigner Aachen",
@@ -14,6 +14,7 @@ const de = {
       "Website für Handwerker",
       "Website für Selbstständige",
       "Local SEO Aachen",
+      "KI-Automatisierung Aachen",
     ],
     ogLocale: "de_DE",
     ogImageAlt: "Khashman Webdesign – Moderne Webseiten aus Aachen",
@@ -21,6 +22,7 @@ const de = {
 
   nav: {
     links: [
+      { href: "/ki-automatisierung", label: "KI-Automatisierung" },
       { href: "#leistungen", label: "Leistungen" },
       { href: "/beispiele", label: "Beispiele" },
       { href: "#prozess", label: "Prozess" },
@@ -37,18 +39,18 @@ const de = {
   },
 
   hero: {
-    badge: "Webdesign aus Aachen · Verfügbar für neue Projekte",
+    badge: "Webdesign & KI-Automatisierung aus Aachen",
     headline: [
       [{ text: "Webseiten," }, { text: "die" }],
       [{ text: "Eindruck", serif: true }],
       [{ text: "hinterlassen." }],
     ] as { text: string; serif?: boolean }[][],
-    sub: "Moderne, blitzschnelle und conversion-starke Webseiten für KMU & Gründer – persönlich umgesetzt, zum Festpreis.",
+    sub: "Moderne, blitzschnelle Webseiten für KMU & Gründer – auf Wunsch mit KI-Automatisierungen, die Anfragen beantworten und Termine buchen. Persönlich umgesetzt.",
     ctaPrimary: "Kostenloses Erstgespräch",
     ctaSecondary: "Pakete ansehen",
   },
 
-  marquee: ["Webdesign", "Entwicklung", "Local SEO", "Hosting", "Performance", "DSGVO-konform", "Online-Shops", "Terminbuchung"],
+  marquee: ["Webdesign", "Entwicklung", "Local SEO", "Hosting", "Performance", "DSGVO-konform", "Online-Shops", "Terminbuchung", "KI-Automatisierung"],
   marqueeLabel: "Schwerpunkte",
 
   statement: {
@@ -82,6 +84,22 @@ const de = {
         tags: ["UI", "Motion", "Branding"],
       },
     ],
+  },
+
+  automation: {
+    label: "KI-Automatisierung",
+    badge: "Neu",
+    title: { before: "Ihre Website kann mehr als ", serif: "gut aussehen.", after: "" },
+    sub: "Ich baue Automatisierungen, die Ihrem Betrieb Routinearbeit abnehmen – damit keine Anfrage mehr verloren geht.",
+    items: [
+      { title: "Antwort in Sekunden", text: "Jede Anfrage wird sofort beantwortet – auch nach Feierabend." },
+      { title: "Termine bucht der Kunde selbst", text: "Mit automatischer Bestätigung und Erinnerung." },
+      { title: "Mehr Google-Bewertungen", text: "Nach dem Auftrag kommt automatisch die Bitte um eine Bewertung." },
+    ],
+    cta: "Kostenloses Erstgespräch",
+    more: "Mehr erfahren",
+    prefill:
+      "Hallo Khashman, ich interessiere mich für KI-Automatisierung und möchte ein kostenloses Erstgespräch vereinbaren. In meinem Betrieb kostet mich vor allem Folgendes Zeit: ",
   },
 
   process: {
@@ -164,7 +182,7 @@ const de = {
           "Basis-SEO für Google",
           "Google Maps Integration",
           "Kontakt-Chat mit Anfragen-Speicherung",
-          "Zusatz: KI-Assistent für deine Website, auf Anfrage",
+          "Zusatz: KI-Assistent & Automatisierungen, auf Anfrage",
           "30 Min. Inhaltspflege / Monat mit Hosting & Pflege",
           "1 Feedback- & Revisionsrunde",
         ],
@@ -184,7 +202,7 @@ const de = {
           "Bis zu 10 Unterseiten oder Online-Shop / Terminbuchung",
           "Erweiterte SEO",
           "Kontakt-Chat mit Anfragen-Speicherung",
-          "Zusatz: KI-Assistent für deine Website, auf Anfrage",
+          "Zusatz: KI-Assistent & Automatisierungen, auf Anfrage",
           "Prioritäts-Support",
           "60 Min. Inhaltspflege / Monat mit Hosting & Pflege",
           "2 Feedbackrunden",
@@ -247,6 +265,10 @@ const de = {
       {
         q: "Für welche Betriebe lohnt sich ein KI-Chatbot?",
         a: "Vor allem dort, wo viele Besucher dieselben Fragen stellen und nach Feierabend anfragen: Handwerk, Praxen, Immobilien, Dienstleister mit vielen Leistungen. Bei Betrieben mit wenigen Besuchern reicht oft ein einfacher FAQ-Chat.",
+      },
+      {
+        q: "Können Sie auch Abläufe in meinem Betrieb automatisieren?",
+        a: "Ja. Ich baue KI-Automatisierungen, die Anfragen sofort beantworten, Termine buchen und Kunden nach einer Google-Bewertung fragen – auch für Betriebe ohne neue Website. Im kostenlosen Erstgespräch schauen wir, was sich bei Ihnen lohnt. Mehr dazu auf der Seite KI-Automatisierung.",
       },
       {
         q: "Arbeiten Sie nur in Aachen?",
@@ -319,7 +341,7 @@ const de = {
 
   jsonLd: {
     jobTitle: "Webentwickler",
-    knowsAbout: ["Webdesign", "Webentwicklung", "Local SEO", "Webhosting", "Online-Shops"],
+    knowsAbout: ["Webdesign", "Webentwicklung", "Local SEO", "Webhosting", "Online-Shops", "KI-Automatisierung"],
     catalogName: "Webdesign-Pakete",
     offerPrefix: "Website-Paket",
     language: "de-DE",

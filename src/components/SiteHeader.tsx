@@ -37,7 +37,7 @@ export default function SiteHeader({ locale, t }: { locale: Locale; t: Dictionar
           Khashman<span className="text-accent">.</span>
         </Link>
 
-        <div className="hidden items-center gap-8 text-sm lg:flex">
+        <div className="hidden items-center gap-6 whitespace-nowrap text-sm xl:flex">
           {t.links.map((link) => (
             <Link key={link.href} href={anchor(link.href)} className="text-fg/60 transition-colors hover:text-fg">
               {link.label}
@@ -59,7 +59,7 @@ export default function SiteHeader({ locale, t }: { locale: Locale; t: Dictionar
             onClick={() => setOpen((value) => !value)}
             aria-expanded={open}
             aria-label={open ? t.closeMenu : t.openMenu}
-            className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-full border border-fg/15 lg:hidden"
+            className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-full border border-fg/15 xl:hidden"
           >
             <span className={`h-px w-4 bg-fg transition-transform duration-300 ${open ? "translate-y-[3.5px] rotate-45" : ""}`} />
             <span className={`h-px w-4 bg-fg transition-transform duration-300 ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`} />
@@ -69,7 +69,7 @@ export default function SiteHeader({ locale, t }: { locale: Locale; t: Dictionar
 
       {open && (
         // starting: → @starting-style, das Menü gleitet beim Öffnen ein
-        <div className="mx-auto mt-2 max-w-6xl rounded-3xl border border-fg/10 bg-ink-900/90 p-3 backdrop-blur-xl transition-[opacity,translate] duration-300 starting:-translate-y-3 starting:opacity-0 lg:hidden">
+        <div className="mx-auto mt-2 max-w-6xl rounded-3xl border border-fg/10 bg-ink-900/90 p-3 backdrop-blur-xl transition-[opacity,translate] duration-300 starting:-translate-y-3 starting:opacity-0 xl:hidden">
           {t.links.map((link) => (
             <Link
               key={link.href}
