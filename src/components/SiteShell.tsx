@@ -59,6 +59,9 @@ export default function SiteShell({ locale, children }: { locale: Locale; childr
                   <a href={SITE.googleProfileUrl} target="_blank" rel="noopener noreferrer" className="text-fg/70 hover:text-fg">
                     {t.footer.google}
                   </a>
+                  <a href={SITE.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-fg/70 hover:text-fg">
+                    Instagram
+                  </a>
                 </div>
                 {/* Leistungsseiten gibt es nur auf Deutsch */}
                 {locale === "de" && (

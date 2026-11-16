@@ -270,6 +270,8 @@ const de = {
     email: "E-Mail",
     google: "Google-Profil",
     googleHint: "Bewertungen lesen und schreiben",
+    instagram: "Instagram",
+    instagramHint: "Einblicke, Tipps und Projekte",
   },
 
   form: {

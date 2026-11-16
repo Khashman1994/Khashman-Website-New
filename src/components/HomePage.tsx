@@ -82,6 +82,16 @@ function StarIcon({ className }: IconProps) {
   );
 }
 
+function InstagramIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 function MailIcon({ className }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -154,7 +164,7 @@ function buildJsonLd(locale: Locale, t: Dictionary) {
           { "@type": "Country", name: t.jsonLd.country },
         ],
         founder: { "@type": "Person", name: SITE.owner, jobTitle: t.jsonLd.jobTitle },
-        sameAs: [SITE.googleProfileUrl],
+        sameAs: [SITE.googleProfileUrl, SITE.instagramUrl],
         knowsAbout: t.jsonLd.knowsAbout,
         hasOfferCatalog: {
           "@type": "OfferCatalog",
@@ -526,6 +536,21 @@ export default function HomePage({ locale }: { locale: Locale }) {
                 <span>
                   <span className="block font-medium">{t.contact.google}</span>
                   <span className="block text-sm text-fg/60">{t.contact.googleHint}</span>
+                </span>
+              </a>
+
+              <a
+                href={SITE.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-3xl border border-fg/10 bg-fg/[0.03] p-5 transition-colors hover:border-accent/50 hover:bg-accent/5"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-fg text-ink-950">
+                  <InstagramIcon className="h-6 w-6" />
+                </span>
+                <span>
+                  <span className="block font-medium">{t.contact.instagram}</span>
+                  <span className="block text-sm text-fg/60">{t.contact.instagramHint}</span>
                 </span>
               </a>
             </Reveal>

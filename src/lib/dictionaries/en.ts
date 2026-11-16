@@ -230,6 +230,8 @@ const en: Dictionary = {
     email: "Email",
     google: "Google profile",
     googleHint: "Read and write reviews",
+    instagram: "Instagram",
+    instagramHint: "Insights, tips and projects",
   },
 
   form: {
