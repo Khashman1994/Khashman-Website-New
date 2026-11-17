@@ -11,8 +11,15 @@ export default function Impressum() {
   return (
     <LegalPage title="Impressum" subtitle="Angaben gemäß § 5 DDG">
       <h2>Angaben zum Diensteanbieter</h2>
-      <p>Khashman Alturki</p>
-      <p>Aachen, Deutschland</p>
+      <p>
+        Khashman Alturki
+        <br />
+        Hüttenstraße 112
+        <br />
+        52068 Aachen
+        <br />
+        Deutschland
+      </p>
 
       <h2>Kontakt</h2>
       <p>Telefon: +49 173 5434710</p>
@@ -27,7 +34,7 @@ export default function Impressum() {
       <p>Gemäß § 19 UStG wird keine Umsatzsteuer berechnet (Kleinunternehmerregelung).</p>
 
       <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-      <p>Khashman Alturki, Aachen</p>
+      <p>Khashman Alturki, Hüttenstraße 112, 52068 Aachen</p>
 
       <h2>Verbraucherstreitbeilegung</h2>
       <p>
