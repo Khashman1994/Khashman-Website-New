@@ -14,7 +14,11 @@ export default function Datenschutz() {
       <p>
         Khashman Alturki
         <br />
-        Aachen, Deutschland
+        Hüttenstraße 112
+        <br />
+        52068 Aachen
+        <br />
+        Deutschland
         <br />
         E-Mail: <a href="mailto:kontakt@khashman-webdesign.de">kontakt@khashman-webdesign.de</a>
         <br />
