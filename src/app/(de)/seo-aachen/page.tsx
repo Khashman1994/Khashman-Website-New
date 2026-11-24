@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ServicePage from "@/components/ServicePage";
 import { alternatesFor } from "@/lib/i18n";
 
-const TITLE = "SEO Aachen: Local SEO & Suchmaschinenoptimierung";
+const TITLE = "SEO Aachen: Suchmaschinenoptimierung für kleine Unternehmen";
 const DESCRIPTION =
   "SEO in Aachen für Selbstständige und kleine Unternehmen: technisch saubere Website, Local SEO und Google Unternehmensprofil. Festpreis-Pakete ab 599 €, Beratung auch online.";
 
