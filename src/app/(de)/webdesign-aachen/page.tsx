@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ServicePage from "@/components/ServicePage";
 import { alternatesFor } from "@/lib/i18n";
 
-const TITLE = "Webdesigner Aachen: Website erstellen lassen ab 599 €";
+const TITLE = "Webdesign Aachen: Website zum Festpreis ab 599 €";
 const DESCRIPTION =
   "Webdesign in Aachen für Selbstständige, Handwerker und kleine Unternehmen: moderne, mobiloptimierte und DSGVO-konforme Websites zum Festpreis. Persönlich betreut, auch online.";
 
