@@ -166,6 +166,7 @@ function buildJsonLd(locale: Locale, t: Dictionary) {
         ],
         founder: { "@type": "Person", name: SITE.owner, jobTitle: t.jsonLd.jobTitle },
         sameAs: [SITE.googleProfileUrl, SITE.instagramUrl],
+        hasMap: SITE.googleProfileUrl,
         knowsAbout: t.jsonLd.knowsAbout,
         hasOfferCatalog: {
           "@type": "OfferCatalog",

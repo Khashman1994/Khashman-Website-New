@@ -64,7 +64,7 @@ export default function ServicePage(props: ServicePageProps) {
       description: props.serviceDescription,
       url,
       serviceType: props.serviceName,
-      provider: { "@type": "ProfessionalService", name: SITE.name, url: SITE.url, telephone: SITE.phoneE164, email: SITE.email },
+      provider: { "@type": "ProfessionalService", "@id": `${SITE.url}/#business`, name: SITE.name, url: SITE.url, telephone: SITE.phoneE164, email: SITE.email },
       areaServed: [
         { "@type": "City", name: "Aachen" },
         { "@type": "AdministrativeArea", name: "StädteRegion Aachen" },

@@ -44,17 +44,32 @@ export default async function BlogPostEnglishPage({ params }: Props) {
 
   const toc = headings(post.body);
   const others = getAllPosts("en").filter((p) => p.slug !== post.slug).slice(0, 3);
+  const postUrl = `${SITE.url}/en/blog/${post.slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date,
-    image: post.image ? `${SITE.url}${post.image}` : undefined,
-    url: `${SITE.url}/en/blog/${post.slug}`,
-    inLanguage: "en",
-    author: { "@type": "Person", name: SITE.owner, url: SITE.url },
-    publisher: { "@id": `${SITE.url}/#business` },
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.description,
+        datePublished: post.date,
+        dateModified: post.date,
+        image: post.image ? `${SITE.url}${post.image}` : undefined,
+        url: postUrl,
+        mainEntityOfPage: postUrl,
+        inLanguage: "en",
+        author: { "@type": "Person", name: SITE.owner, url: SITE.url, sameAs: [SITE.instagramUrl] },
+        publisher: { "@type": "ProfessionalService", "@id": `${SITE.url}/#business`, name: SITE.name, url: SITE.url },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: SITE.name, item: `${SITE.url}/en` },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE.url}/en/blog` },
+          { "@type": "ListItem", position: 3, name: post.title, item: postUrl },
+        ],
+      },
+    ],
   };
 
   return (
