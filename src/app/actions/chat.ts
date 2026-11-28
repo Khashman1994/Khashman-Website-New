@@ -1,7 +1,7 @@
 "use server";
 
 import { getDb } from "@/lib/db";
-import { sendChatNotification } from "@/lib/mailer";
+import { sendChatNotification, sendConfirmation } from "@/lib/mailer";
 
 export type ChatState = {
   status: "idle" | "success" | "error";
@@ -119,6 +119,12 @@ export async function submitChatLead(_prev: ChatState, formData: FormData): Prom
   } catch (error) {
     // Anfrage ist gespeichert – für den Besucher trotzdem ein Erfolg
     console.error("[chat] Benachrichtigung fehlgeschlagen:", error);
+  }
+
+  try {
+    await sendConfirmation(values.email, readField(formData, "lang") === "en" ? "en" : "de");
+  } catch (error) {
+    console.error("[chat] Bestätigung fehlgeschlagen:", error);
   }
 
   return { status: "success", message: t.success };
