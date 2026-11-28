@@ -1,6 +1,7 @@
 "use server";
 
 import { getDb } from "@/lib/db";
+import { mayConfirm } from "@/lib/confirmation-limit";
 import { sendChatNotification, sendConfirmation } from "@/lib/mailer";
 
 export type ChatState = {
@@ -122,7 +123,9 @@ export async function submitChatLead(_prev: ChatState, formData: FormData): Prom
   }
 
   try {
-    await sendConfirmation(values.email, readField(formData, "lang") === "en" ? "en" : "de");
+    if (await mayConfirm(values.email, "chat_requests")) {
+      await sendConfirmation(values.email, readField(formData, "lang") === "en" ? "en" : "de");
+    }
   } catch (error) {
     console.error("[chat] Bestätigung fehlgeschlagen:", error);
   }

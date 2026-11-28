@@ -2,6 +2,7 @@
 
 import { getDb } from "@/lib/db";
 import { findBudget, findPackage, type BudgetValue, type PackageValue } from "@/lib/contact-options";
+import { mayConfirm } from "@/lib/confirmation-limit";
 import { sendConfirmation, sendContactNotification } from "@/lib/mailer";
 import { DEFAULT_LOCALE, getDictionary, isLocale } from "@/lib/i18n";
 
@@ -113,7 +114,9 @@ export async function submitContactForm(
   }
 
   try {
-    await sendConfirmation(values.email, locale, insertId);
+    if (await mayConfirm(values.email, "contact_requests")) {
+      await sendConfirmation(values.email, locale, insertId);
+    }
   } catch (error) {
     console.error(`[contact] Bestätigung für Anfrage #${insertId} fehlgeschlagen:`, error);
   }

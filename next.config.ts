@@ -13,6 +13,17 @@ const nextConfig: NextConfig = {
         destination: "/blog/:slug",
         permanent: true,
       },
+      // Domain ohne www → www (Google hatte noch Seiten ohne www im Index)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "khashman-webdesign.de" }],
+        destination: "https://www.khashman-webdesign.de/:path*",
+        permanent: true,
+      },
+      // Alte Adressen der früheren HTML-Version der Website
+      { source: "/index.html", destination: "/", permanent: true },
+      { source: "/datenschutz.html", destination: "/datenschutz", permanent: true },
+      { source: "/impressum.html", destination: "/impressum", permanent: true },
     ];
   },
   // Sicherheits-Header für alle Seiten: Schutz vor Einbettung (Clickjacking),
