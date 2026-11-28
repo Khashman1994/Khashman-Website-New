@@ -174,7 +174,7 @@ export async function sendConfirmation(to: string, locale: "de" | "en", requestI
   await transporter.sendMail({
     from: `"Khashman Webdesign" <${process.env.EMAIL_USER}>`,
     to,
-    replyTo: { name: "Khashman Webdesign", address: "kontakt@khashman-webdesign.de" },
+    replyTo: { name: "Khashman Webdesign", address: CONTACT_RECIPIENT },
     subject: c.subject,
     text: [c.greeting, "", c.body(ref), "", c.extra, "", `${c.regards}`, ...signature, "", "—", c.ignore].join("\n"),
     html: `
