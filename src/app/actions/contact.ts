@@ -2,7 +2,7 @@
 
 import { getDb } from "@/lib/db";
 import { findBudget, findPackage, type BudgetValue, type PackageValue } from "@/lib/contact-options";
-import { sendContactNotification } from "@/lib/mailer";
+import { sendConfirmation, sendContactNotification } from "@/lib/mailer";
 import { DEFAULT_LOCALE, getDictionary, isLocale } from "@/lib/i18n";
 
 export type ContactField = "name" | "email" | "phone" | "message" | "package" | "budget";
@@ -110,6 +110,12 @@ export async function submitContactForm(
   } catch (error) {
     // Anfrage ist bereits gespeichert – für den Kunden trotzdem ein Erfolg
     console.error(`[contact] Benachrichtigung für Anfrage #${insertId} fehlgeschlagen:`, error);
+  }
+
+  try {
+    await sendConfirmation(values.email, locale, insertId);
+  } catch (error) {
+    console.error(`[contact] Bestätigung für Anfrage #${insertId} fehlgeschlagen:`, error);
   }
 
   return {

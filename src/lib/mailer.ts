@@ -139,3 +139,68 @@ export async function sendChatNotification(data: ChatMail): Promise<void> {
     ].join("\n"),
   });
 }
+
+// Eingangsbestätigung an den Absender.
+// Bewusst ohne Name und Nachricht des Absenders: Sonst könnte jemand über das
+// Formular beliebigen Text an fremde Adressen schicken lassen (Spam über unser Konto).
+const CONFIRMATION = {
+  de: {
+    subject: "Ihre Anfrage bei Khashman Webdesign ist angekommen",
+    greeting: "Guten Tag,",
+    body: (ref: string) =>
+      `vielen Dank für Ihre Anfrage${ref}. Sie ist bei mir angekommen, und ich melde mich in der Regel innerhalb von 24 Stunden persönlich bei Ihnen.`,
+    extra:
+      "Wenn Sie in der Zwischenzeit noch etwas ergänzen möchten, antworten Sie einfach auf diese E-Mail oder schreiben Sie mir per WhatsApp.",
+    ignore: "Sie haben keine Anfrage gestellt? Dann können Sie diese E-Mail ignorieren.",
+    regards: "Viele Grüße",
+  },
+  en: {
+    subject: "Your request to Khashman Webdesign has arrived",
+    greeting: "Hello,",
+    body: (ref: string) =>
+      `thank you for your request${ref}. It has reached me, and I usually get back to you personally within 24 hours.`,
+    extra:
+      "If you would like to add anything in the meantime, simply reply to this email or message me on WhatsApp.",
+    ignore: "Didn't send a request? Then you can ignore this email.",
+    regards: "Best regards",
+  },
+} as const;
+
+export async function sendConfirmation(to: string, locale: "de" | "en", requestId?: number): Promise<void> {
+  const c = CONFIRMATION[locale];
+  const ref = requestId ? (locale === "en" ? ` (no. ${requestId})` : ` (Nr. ${requestId})`) : "";
+  const signature = ["Khashman Alturki", "Khashman Webdesign", "kontakt@khashman-webdesign.de", "+49 173 5434710", "https://www.khashman-webdesign.de"];
+
+  await transporter.sendMail({
+    from: `"Khashman Webdesign" <${process.env.EMAIL_USER}>`,
+    to,
+    replyTo: { name: "Khashman Webdesign", address: "kontakt@khashman-webdesign.de" },
+    subject: c.subject,
+    text: [c.greeting, "", c.body(ref), "", c.extra, "", `${c.regards}`, ...signature, "", "—", c.ignore].join("\n"),
+    html: `
+<!DOCTYPE html>
+<html lang="${locale}">
+  <body style="margin:0;padding:24px;background:#f1f5f9;font-family:Arial,Helvetica,sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:16px;overflow:hidden;">
+      <tr>
+        <td style="background:#0f172a;padding:22px 32px;">
+          <p style="margin:0;color:#ffffff;font-size:18px;font-weight:700;">Khashman Webdesign</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:28px 32px;color:#0f172a;font-size:15px;line-height:1.6;">
+          <p style="margin:0 0 14px;">${c.greeting}</p>
+          <p style="margin:0 0 14px;">${c.body(ref)}</p>
+          <p style="margin:0 0 22px;">${c.extra}</p>
+          <p style="margin:0;">${c.regards}<br /><strong>Khashman Alturki</strong><br />
+            <span style="color:#64748b;font-size:14px;">Khashman Webdesign · <a href="mailto:kontakt@khashman-webdesign.de" style="color:#2563eb;">kontakt@khashman-webdesign.de</a> · +49 173 5434710</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:14px 32px 22px;border-top:1px solid #e2e8f0;color:#94a3b8;font-size:12px;">${c.ignore}</td>
+      </tr>
+    </table>
+  </body>
+</html>`,
+  });
+}
